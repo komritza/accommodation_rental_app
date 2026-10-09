@@ -1,0 +1,7 @@
+name: accommodation_core
+description: Shared foundation for the accommodation rental app.
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.12.2

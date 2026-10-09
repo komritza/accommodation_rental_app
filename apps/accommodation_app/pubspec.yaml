@@ -1,0 +1,27 @@
+name: accommodation_app
+description: Accommodation rental application.
+publish_to: none
+version: 1.0.0+1
+resolution: workspace
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  accommodation_core:
+    path: ../../packages/accommodation_core
+  accommodation_features:
+    path: ../../packages/accommodation_features
+  go_router: ^18.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

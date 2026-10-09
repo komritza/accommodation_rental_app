@@ -1,0 +1,14 @@
+name: accommodation_features
+description: Features for the accommodation rental app.
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  accommodation_core:
+    path: ../accommodation_core
+  riverpod: ^3.4.3
