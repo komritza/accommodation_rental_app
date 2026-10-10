@@ -1,0 +1,13 @@
+{
+    "@@locale": "de",
+    "appTitle": "Ferienunterkünfte",
+    "loading": "Konfiguration wird geladen...",
+    "loadError": "Die Unterkunftskonfiguration konnte nicht geladen werden.",
+    "retry": "Erneut versuchen",
+    "tenant": "Mandant",
+    "currency": "Währung",
+    "defaultLanguage": "Standardsprache",
+    "availableLanguages": "Verfügbare Sprachen",
+    "english": "Englisch",
+    "german": "Deutsch"
+}

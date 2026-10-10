@@ -11,3 +11,12 @@ workspace:
 
 dev_dependencies:
   melos: ^8.9.0
+
+melos:
+  scripts:
+    analyze:
+      run: flutter analyze
+    test:
+      run: melos exec --dir-exists=test --concurrency=1 --fail-fast -- "flutter test"
+    format:
+      run: dart format apps packages

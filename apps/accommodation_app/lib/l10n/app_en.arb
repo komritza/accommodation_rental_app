@@ -1,0 +1,13 @@
+{
+    "@@locale": "en",
+    "appTitle": "Accommodation Rental",
+    "loading": "Loading configuration...",
+    "loadError": "Unable to load the accommodation configuration.",
+    "retry": "Retry",
+    "tenant": "Tenant",
+    "currency": "Currency",
+    "defaultLanguage": "Default language",
+    "availableLanguages": "Available languages",
+    "english": "English",
+    "german": "German"
+}
