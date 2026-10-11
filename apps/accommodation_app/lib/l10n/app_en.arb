@@ -9,5 +9,51 @@
     "defaultLanguage": "Default language",
     "availableLanguages": "Available languages",
     "english": "English",
-    "german": "German"
+    "german": "German",
+    "authWelcomeBack": "Welcome back",
+    "authSignInSubtitle": "Sign in to continue.",
+    "authCreateAccountTitle": "Create an account",
+    "authRegisterSubtitle": "Register as a guest to start exploring stays.",
+    "authFirstName": "First name",
+    "authLastName": "Last name",
+    "authEmail": "Email",
+    "authPassword": "Password",
+    "authSignIn": "Sign in",
+    "authRegister": "Register",
+    "authPleaseWait": "Please wait…",
+    "authAlreadyHaveAccount": "Already have an account? ",
+    "authNewHere": "New here? ",
+    "authCreateAnAccount": "Create an account",
+    "authFirstNameRequired": "First name is required",
+    "authLastNameRequired": "Last name is required",
+    "authEmailRequired": "Email is required",
+    "authEmailInvalid": "Enter a valid email",
+    "authPasswordRequired": "Password is required",
+    "authPasswordTooShort": "Password must be at least 8 characters",
+    "authErrorBadCredentials": "Wrong email or password.",
+    "authErrorUserAlreadyExists": "That email is already registered.",
+    "authErrorBadRequest": "Please check your details and try again.",
+    "authErrorNetwork": "Unable to reach the server. Check your connection and try again.",
+    "authErrorGeneric": "Something went wrong. Please try again.",
+    "sessionRestoreErrorTitle": "Could not restore your session",
+    "sessionRestoreErrorMessage": "We could not restore your signed-in session. Check your connection and try again.",
+    "clientHomePlaceholderTitle": "Client home (placeholder)",
+    "hostHomePlaceholderTitle": "Host home (placeholder)",
+    "signedInAs": "Signed in as {name}",
+    "@signedInAs": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "authenticatedRole": "Authenticated role: {role}",
+    "@authenticatedRole": {
+        "placeholders": {
+            "role": {
+                "type": "String"
+            }
+        }
+    },
+    "signOut": "Sign out"
 }

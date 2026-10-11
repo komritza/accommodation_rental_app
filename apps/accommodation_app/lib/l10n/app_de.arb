@@ -9,5 +9,51 @@
     "defaultLanguage": "Standardsprache",
     "availableLanguages": "Verfügbare Sprachen",
     "english": "Englisch",
-    "german": "Deutsch"
+    "german": "Deutsch",
+    "authWelcomeBack": "Willkommen zurück",
+    "authSignInSubtitle": "Melde dich an, um fortzufahren.",
+    "authCreateAccountTitle": "Konto erstellen",
+    "authRegisterSubtitle": "Registriere dich als Gast, um Unterkünfte zu entdecken.",
+    "authFirstName": "Vorname",
+    "authLastName": "Nachname",
+    "authEmail": "E-Mail",
+    "authPassword": "Passwort",
+    "authSignIn": "Anmelden",
+    "authRegister": "Registrieren",
+    "authPleaseWait": "Bitte warten…",
+    "authAlreadyHaveAccount": "Du hast bereits ein Konto? ",
+    "authNewHere": "Neu hier? ",
+    "authCreateAnAccount": "Konto erstellen",
+    "authFirstNameRequired": "Vorname ist erforderlich",
+    "authLastNameRequired": "Nachname ist erforderlich",
+    "authEmailRequired": "E-Mail ist erforderlich",
+    "authEmailInvalid": "Gib eine gültige E-Mail-Adresse ein",
+    "authPasswordRequired": "Passwort ist erforderlich",
+    "authPasswordTooShort": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "authErrorBadCredentials": "Falsche E-Mail oder falsches Passwort.",
+    "authErrorUserAlreadyExists": "Diese E-Mail ist bereits registriert.",
+    "authErrorBadRequest": "Bitte prüfe deine Angaben und versuche es erneut.",
+    "authErrorNetwork": "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.",
+    "authErrorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "sessionRestoreErrorTitle": "Sitzung konnte nicht wiederhergestellt werden",
+    "sessionRestoreErrorMessage": "Wir konnten deine Sitzung nicht wiederherstellen. Prüfe deine Verbindung und versuche es erneut.",
+    "clientHomePlaceholderTitle": "Kundenstartseite (Platzhalter)",
+    "hostHomePlaceholderTitle": "Gastgeberstartseite (Platzhalter)",
+    "signedInAs": "Angemeldet als {name}",
+    "@signedInAs": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "authenticatedRole": "Authentifizierte Rolle: {role}",
+    "@authenticatedRole": {
+        "placeholders": {
+            "role": {
+                "type": "String"
+            }
+        }
+    },
+    "signOut": "Abmelden"
 }

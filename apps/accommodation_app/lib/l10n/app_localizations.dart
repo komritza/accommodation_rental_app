@@ -157,6 +157,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'German'**
   String get german;
+
+  /// No description provided for @authWelcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get authWelcomeBack;
+
+  /// No description provided for @authSignInSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to continue.'**
+  String get authSignInSubtitle;
+
+  /// No description provided for @authCreateAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get authCreateAccountTitle;
+
+  /// No description provided for @authRegisterSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register as a guest to start exploring stays.'**
+  String get authRegisterSubtitle;
+
+  /// No description provided for @authFirstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get authFirstName;
+
+  /// No description provided for @authLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get authLastName;
+
+  /// No description provided for @authEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get authEmail;
+
+  /// No description provided for @authPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get authPassword;
+
+  /// No description provided for @authSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get authSignIn;
+
+  /// No description provided for @authRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get authRegister;
+
+  /// No description provided for @authPleaseWait.
+  ///
+  /// In en, this message translates to:
+  /// **'Please wait…'**
+  String get authPleaseWait;
+
+  /// No description provided for @authAlreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? '**
+  String get authAlreadyHaveAccount;
+
+  /// No description provided for @authNewHere.
+  ///
+  /// In en, this message translates to:
+  /// **'New here? '**
+  String get authNewHere;
+
+  /// No description provided for @authCreateAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account'**
+  String get authCreateAnAccount;
+
+  /// No description provided for @authFirstNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'First name is required'**
+  String get authFirstNameRequired;
+
+  /// No description provided for @authLastNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name is required'**
+  String get authLastNameRequired;
+
+  /// No description provided for @authEmailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get authEmailRequired;
+
+  /// No description provided for @authEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get authEmailInvalid;
+
+  /// No description provided for @authPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get authPasswordRequired;
+
+  /// No description provided for @authPasswordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters'**
+  String get authPasswordTooShort;
+
+  /// No description provided for @authErrorBadCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong email or password.'**
+  String get authErrorBadCredentials;
+
+  /// No description provided for @authErrorUserAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'That email is already registered.'**
+  String get authErrorUserAlreadyExists;
+
+  /// No description provided for @authErrorBadRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your details and try again.'**
+  String get authErrorBadRequest;
+
+  /// No description provided for @authErrorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to reach the server. Check your connection and try again.'**
+  String get authErrorNetwork;
+
+  /// No description provided for @authErrorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get authErrorGeneric;
+
+  /// No description provided for @sessionRestoreErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not restore your session'**
+  String get sessionRestoreErrorTitle;
+
+  /// No description provided for @sessionRestoreErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'We could not restore your signed-in session. Check your connection and try again.'**
+  String get sessionRestoreErrorMessage;
+
+  /// No description provided for @clientHomePlaceholderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Client home (placeholder)'**
+  String get clientHomePlaceholderTitle;
+
+  /// No description provided for @hostHomePlaceholderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Host home (placeholder)'**
+  String get hostHomePlaceholderTitle;
+
+  /// No description provided for @signedInAs.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in as {name}'**
+  String signedInAs(String name);
+
+  /// No description provided for @authenticatedRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Authenticated role: {role}'**
+  String authenticatedRole(String role);
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
 }
 
 class _AppLocalizationsDelegate
