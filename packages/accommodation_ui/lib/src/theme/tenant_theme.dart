@@ -1,6 +1,7 @@
-import 'package:accommodation_app/design_system/design_system.dart';
 import 'package:accommodation_core/accommodation_core.dart';
 import 'package:flutter/material.dart';
+
+import '../design_system/design_system.dart';
 
 ThemeData buildTenantTheme(
   ThemePalette palette, {

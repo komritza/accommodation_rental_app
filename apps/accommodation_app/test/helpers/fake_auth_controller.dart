@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:accommodation_app/providers/auth_providers.dart';
 import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_core/testing.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
-
-import 'test_data.dart';
 
 class FakeAuthController extends AuthController {
   FakeAuthController({

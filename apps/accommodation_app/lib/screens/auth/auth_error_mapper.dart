@@ -1,5 +1,5 @@
-import 'package:accommodation_app/l10n/app_localizations.dart';
 import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_ui/accommodation_ui.dart';
 
 String localizedAuthError(AppLocalizations l10n, ApiFailure failure) {
   if (failure.type == ApiFailureType.network) {

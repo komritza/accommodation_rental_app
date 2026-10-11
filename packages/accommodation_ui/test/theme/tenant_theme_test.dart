@@ -1,9 +1,7 @@
-import 'package:accommodation_app/design_system/design_system.dart';
-import 'package:accommodation_app/theme/tenant_theme.dart';
+import 'package:accommodation_core/testing.dart';
+import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import '../helpers/test_data.dart';
 
 void main() {
   final config = createTestConfig();

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:accommodation_app/providers/runtime_config_providers.dart';
 import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_core/testing.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,37 +16,6 @@ class FakeRuntimeConfigRemoteDataSource extends RuntimeConfigRemoteDataSource {
   Future<TenantRuntimeConfig> fetchRuntimeConfig(TenantSlug tenant) {
     return _fetch(tenant);
   }
-}
-
-TenantRuntimeConfig createTestConfig() {
-  const palette = ThemePalette(
-    surfacePrimary: '#FFFFFF',
-    surfaceSecondary: '#F5F5F5',
-    surfaceAction: '#3366FF',
-    textDefault: '#111111',
-    textMuted: '#666666',
-    textOnAction: '#FFFFFF',
-    borderPrimary: '#DDDDDD',
-    iconAction: '#3366FF',
-  );
-
-  return const TenantRuntimeConfig(
-    slug: TenantSlug.alpine,
-    name: 'Alpine',
-    currency: 'EUR',
-    locales: [TenantLocale.en, TenantLocale.de],
-    defaultLocale: TenantLocale.en,
-    supportEmail: '[support@alpine.example](mailto:support@alpine.example)',
-    termsOfUseUrl: 'https://example.com/terms',
-    privacyPolicyUrl: 'https://example.com/privacy',
-    permissions: TenantPermissions(
-      hostPanel: true,
-      favourites: true,
-      reviews: true,
-      blockedDays: true,
-    ),
-    theme: TenantTheme(light: palette, dark: palette),
-  );
 }
 
 void main() {

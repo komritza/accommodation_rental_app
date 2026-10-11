@@ -1,6 +1,5 @@
-import 'package:accommodation_app/design_system/design_system.dart';
-import 'package:accommodation_app/l10n/app_localizations.dart';
 import 'package:accommodation_app/providers/auth_providers.dart';
+import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

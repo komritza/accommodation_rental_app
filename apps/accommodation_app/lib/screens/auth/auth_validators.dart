@@ -1,4 +1,4 @@
-import 'package:accommodation_app/l10n/app_localizations.dart';
+import 'package:accommodation_ui/accommodation_ui.dart';
 
 final emailPattern = RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]{2,}$');
 

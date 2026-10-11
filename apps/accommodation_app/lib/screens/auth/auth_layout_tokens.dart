@@ -1,4 +1,4 @@
-import 'package:accommodation_app/design_system/design_system.dart';
+import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/widgets.dart';
 
 abstract final class AuthLayoutTokens {

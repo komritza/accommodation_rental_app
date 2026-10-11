@@ -1,10 +1,10 @@
-import 'package:accommodation_app/l10n/app_localizations.dart';
 import 'package:accommodation_app/providers/runtime_config_providers.dart';
 import 'package:accommodation_app/router/app_router.dart';
 import 'package:accommodation_app/screens/loading_screen.dart';
-import 'package:accommodation_app/theme/tenant_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:accommodation_ui/accommodation_ui.dart';
 
 void main() {
   runApp(const ProviderScope(child: AccommodationApp()));
