@@ -1,0 +1,6 @@
+include: package:flutter_lints/flutter.yaml
+linter:
+  rules:
+    - implementation_imports
+    - directives_ordering
+    - depend_on_referenced_packages

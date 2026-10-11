@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../providers/auth_providers.dart';
 import 'auth_form_state.dart';
+import 'auth_providers.dart';
 
 part 'auth_form_controller.g.dart';
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'runtime_config_providers.dart';
+part of 'dependencies.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -48,7 +48,7 @@ final class TenantSlugProvider
   }
 }
 
-String _$tenantSlugHash() => r'c774b0666444663f98bff24ab6bd09eac58b4649';
+String _$tenantSlugHash() => r'bc7cb9dea301eeb2ae3b41376041a930f296805e';
 
 @ProviderFor(apiClient)
 final apiClientProvider = ApiClientProvider._();
@@ -88,7 +88,89 @@ final class ApiClientProvider extends $FunctionalProvider<Dio, Dio, Dio>
   }
 }
 
-String _$apiClientHash() => r'5c8893a3c91075798a035b264af8969075e3d39c';
+String _$apiClientHash() => r'51fd7a42b2df0fc4dc2eaf5a0268b0800d71d341';
+
+@ProviderFor(tokenStorage)
+final tokenStorageProvider = TokenStorageProvider._();
+
+final class TokenStorageProvider
+    extends $FunctionalProvider<TokenStorage, TokenStorage, TokenStorage>
+    with $Provider<TokenStorage> {
+  TokenStorageProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'tokenStorageProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$tokenStorageHash();
+
+  @$internal
+  @override
+  $ProviderElement<TokenStorage> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  TokenStorage create(Ref ref) {
+    return tokenStorage(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(TokenStorage value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<TokenStorage>(value),
+    );
+  }
+}
+
+String _$tokenStorageHash() => r'3fdf49529dcb681d714f2321cd7bfc7e01e6eec4';
+
+@ProviderFor(runtimeConfig)
+final runtimeConfigProvider = RuntimeConfigProvider._();
+
+final class RuntimeConfigProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<TenantRuntimeConfig>,
+          TenantRuntimeConfig,
+          FutureOr<TenantRuntimeConfig>
+        >
+    with
+        $FutureModifier<TenantRuntimeConfig>,
+        $FutureProvider<TenantRuntimeConfig> {
+  RuntimeConfigProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'runtimeConfigProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$runtimeConfigHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<TenantRuntimeConfig> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<TenantRuntimeConfig> create(Ref ref) {
+    return runtimeConfig(ref);
+  }
+}
+
+String _$runtimeConfigHash() => r'9cfae0cb6681b47ef6e587aa6cbd8816bd129a72';
 
 @ProviderFor(runtimeConfigRemoteDataSource)
 final runtimeConfigRemoteDataSourceProvider =
@@ -188,44 +270,3 @@ final class RuntimeConfigRepositoryProvider
 
 String _$runtimeConfigRepositoryHash() =>
     r'005f36afc27c37be74d504ccc499b49b17535ca0';
-
-@ProviderFor(runtimeConfig)
-final runtimeConfigProvider = RuntimeConfigProvider._();
-
-final class RuntimeConfigProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<TenantRuntimeConfig>,
-          TenantRuntimeConfig,
-          FutureOr<TenantRuntimeConfig>
-        >
-    with
-        $FutureModifier<TenantRuntimeConfig>,
-        $FutureProvider<TenantRuntimeConfig> {
-  RuntimeConfigProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'runtimeConfigProvider',
-        isAutoDispose: false,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$runtimeConfigHash();
-
-  @$internal
-  @override
-  $FutureProviderElement<TenantRuntimeConfig> $createElement(
-    $ProviderPointer pointer,
-  ) => $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<TenantRuntimeConfig> create(Ref ref) {
-    return runtimeConfig(ref);
-  }
-}
-
-String _$runtimeConfigHash() => r'9cfae0cb6681b47ef6e587aa6cbd8816bd129a72';

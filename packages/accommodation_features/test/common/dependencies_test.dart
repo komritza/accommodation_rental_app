@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
 import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_core/testing.dart';
+import 'package:accommodation_features/src/common/dependencies.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';

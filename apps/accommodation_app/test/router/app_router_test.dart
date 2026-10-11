@@ -1,18 +1,16 @@
-import 'package:accommodation_app/providers/auth_providers.dart';
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
+import 'package:accommodation_features/auth.dart';
 import 'package:accommodation_app/router/app_router.dart';
-import 'package:accommodation_app/screens/auth/auth_screen.dart';
 import 'package:accommodation_app/screens/loading_screen.dart';
 import 'package:accommodation_app/screens/placeholders/role_home_placeholder.dart';
 import 'package:accommodation_app/screens/session_restore_error_screen.dart';
 import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_core/testing.dart';
+import 'package:accommodation_features/testing.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import '../helpers/fake_auth_controller.dart';
+import 'package:accommodation_features/dependencies.dart';
 
 Widget _wrap(
   ProviderContainer container, {

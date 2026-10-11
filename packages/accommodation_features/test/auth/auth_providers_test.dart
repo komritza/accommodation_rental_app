@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:accommodation_app/providers/auth_providers.dart';
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
 import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_features/src/auth/auth_providers.dart';
+import 'package:accommodation_features/src/common/dependencies.dart';
 import 'package:dio/dio.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 const testUser = AuthUser(

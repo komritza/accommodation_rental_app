@@ -1,11 +1,10 @@
-import 'package:accommodation_app/providers/auth_providers.dart';
 import 'package:accommodation_app/router/app_routes.dart';
 import 'package:accommodation_app/router/auth_redirect.dart';
-import 'package:accommodation_app/screens/auth/auth_screen.dart';
 import 'package:accommodation_app/screens/loading_screen.dart';
 import 'package:accommodation_app/screens/placeholders/role_home_placeholder.dart';
 import 'package:accommodation_app/screens/session_restore_error_screen.dart';
 import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_features/auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

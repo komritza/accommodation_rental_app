@@ -1,9 +1,9 @@
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
-import 'package:accommodation_app/screens/auth/auth_error_mapper.dart';
-import 'package:accommodation_app/screens/auth/auth_form_controller.dart';
-import 'package:accommodation_app/screens/auth/auth_form_state.dart';
-import 'package:accommodation_app/screens/auth/auth_layout_tokens.dart';
-import 'package:accommodation_app/screens/auth/auth_validators.dart';
+import 'package:accommodation_features/dependencies.dart';
+import 'package:accommodation_features/src/auth/auth_error_mapper.dart';
+import 'package:accommodation_features/src/auth/auth_form_controller.dart';
+import 'package:accommodation_features/src/auth/auth_form_state.dart';
+import 'package:accommodation_features/src/auth/auth_layout_tokens.dart';
+import 'package:accommodation_features/src/auth/auth_validators.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

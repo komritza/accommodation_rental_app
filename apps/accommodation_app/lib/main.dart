@@ -1,13 +1,32 @@
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
+import 'package:accommodation_app/config/app_environment.dart';
 import 'package:accommodation_app/router/app_router.dart';
 import 'package:accommodation_app/screens/loading_screen.dart';
+import 'package:accommodation_app/services/secure_token_storage.dart';
+import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_features/dependencies.dart';
+import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:accommodation_ui/accommodation_ui.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
-  runApp(const ProviderScope(child: AccommodationApp()));
+  runApp(
+    ProviderScope(
+      overrides: [
+        tenantSlugProvider.overrideWith((ref) => tenantFromEnvironment()),
+        apiClientProvider.overrideWith(
+          (ref) => createApiClient(
+            baseUrl: apiBaseUrl,
+            tenant: ref.watch(tenantSlugProvider),
+          ),
+        ),
+        tokenStorageProvider.overrideWithValue(
+          SecureTokenStorage(const FlutterSecureStorage()),
+        ),
+      ],
+      child: const AccommodationApp(),
+    ),
+  );
 }
 
 class AccommodationApp extends ConsumerWidget {

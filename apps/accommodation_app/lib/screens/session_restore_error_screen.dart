@@ -1,4 +1,4 @@
-import 'package:accommodation_app/providers/auth_providers.dart';
+import 'package:accommodation_features/auth.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

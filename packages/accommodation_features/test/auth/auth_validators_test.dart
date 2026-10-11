@@ -1,6 +1,6 @@
-import 'package:accommodation_app/screens/auth/auth_error_mapper.dart';
-import 'package:accommodation_app/screens/auth/auth_validators.dart';
 import 'package:accommodation_core/accommodation_core.dart';
+import 'package:accommodation_features/src/auth/auth_error_mapper.dart';
+import 'package:accommodation_features/src/auth/auth_validators.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 

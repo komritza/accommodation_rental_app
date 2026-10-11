@@ -1,15 +1,14 @@
-import 'package:accommodation_app/providers/auth_providers.dart';
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
-import 'package:accommodation_app/screens/auth/auth_screen.dart';
 import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_core/testing.dart';
+import 'package:accommodation_features/src/auth/auth_providers.dart';
+import 'package:accommodation_features/src/auth/auth_screen.dart';
+import 'package:accommodation_features/src/common/dependencies.dart';
+import 'package:accommodation_features/testing.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
-
-import '../helpers/fake_auth_controller.dart';
 
 Widget _wrap({
   required AuthController Function() createController,

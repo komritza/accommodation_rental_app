@@ -9,47 +9,6 @@ part of 'auth_providers.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(tokenStorage)
-final tokenStorageProvider = TokenStorageProvider._();
-
-final class TokenStorageProvider
-    extends $FunctionalProvider<TokenStorage, TokenStorage, TokenStorage>
-    with $Provider<TokenStorage> {
-  TokenStorageProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'tokenStorageProvider',
-        isAutoDispose: false,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$tokenStorageHash();
-
-  @$internal
-  @override
-  $ProviderElement<TokenStorage> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  TokenStorage create(Ref ref) {
-    return tokenStorage(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(TokenStorage value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<TokenStorage>(value),
-    );
-  }
-}
-
-String _$tokenStorageHash() => r'bb6cd2234783fade84f088f5b54ca8ba93189141';
-
 @ProviderFor(authRemoteDataSource)
 final authRemoteDataSourceProvider = AuthRemoteDataSourceProvider._();
 

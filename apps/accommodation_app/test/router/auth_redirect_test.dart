@@ -1,7 +1,7 @@
-import 'package:accommodation_app/providers/auth_providers.dart';
 import 'package:accommodation_app/router/app_router.dart';
 import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_core/testing.dart';
+import 'package:accommodation_features/auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 

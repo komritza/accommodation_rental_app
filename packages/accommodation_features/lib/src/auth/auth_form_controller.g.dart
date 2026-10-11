@@ -42,7 +42,7 @@ final class AuthFormControllerProvider
 }
 
 String _$authFormControllerHash() =>
-    r'473516f473c934669cb00e5369c269dc8f73d6e2';
+    r'f112910a7b089ea7dfb566be882ba2f6500d4983';
 
 abstract class _$AuthFormController extends $Notifier<AuthFormState> {
   AuthFormState build();

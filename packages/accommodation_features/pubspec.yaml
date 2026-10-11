@@ -11,4 +11,17 @@ dependencies:
     sdk: flutter
   accommodation_core:
     path: ../accommodation_core
-  riverpod: ^3.4.3
+  accommodation_ui:
+    path: ../accommodation_ui
+  flutter_riverpod: ^3.4.3
+  riverpod_annotation: ^4.0.7
+  freezed_annotation: ^3.1.0
+  fpdart: ^1.2.0
+  dio: ^5.11.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.16.2
+  riverpod_generator: ^4.0.9
+  freezed: ^4.0.2

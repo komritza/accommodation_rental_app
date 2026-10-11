@@ -1,16 +1,8 @@
-import 'package:accommodation_app/providers/runtime_config_providers.dart';
-import 'package:accommodation_app/services/secure_token_storage.dart';
 import 'package:accommodation_core/accommodation_core.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
+import '../common/dependencies.dart';
 part 'auth_providers.g.dart';
-
-@Riverpod(keepAlive: true)
-TokenStorage tokenStorage(Ref ref) {
-  return SecureTokenStorage(const FlutterSecureStorage());
-}
 
 @Riverpod(keepAlive: true)
 AuthRemoteDataSource authRemoteDataSource(Ref ref) {
