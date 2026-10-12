@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 abstract final class AppSpacing {
+  static const xxs = 4.0;
   static const xs = 8.0;
   static const md = 16.0;
   static const lg = 24.0;
@@ -36,5 +37,8 @@ abstract final class AppTypography {
 }
 
 abstract final class AppIconSizes {
+  static const sm = 16.0;
+  static const md = 20.0;
+  static const lg = 32.0;
   static const status = 48.0;
 }

@@ -22,3 +22,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# devtools
+devtools_options.yaml

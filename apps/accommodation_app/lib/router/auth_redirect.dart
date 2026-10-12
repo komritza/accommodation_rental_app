@@ -35,13 +35,19 @@ String? resolveAuthRedirect({
     return home;
   }
 
-  if (location == AppRoutePaths.hostHome && user.role != UserRole.host) {
+  if (_isWithin(location, AppRoutePaths.hostHome) &&
+      user.role != UserRole.host) {
     return AppRoutePaths.clientHome;
   }
 
-  if (location == AppRoutePaths.clientHome && user.role != UserRole.client) {
+  if (_isWithin(location, AppRoutePaths.clientHome) &&
+      user.role != UserRole.client) {
     return AppRoutePaths.hostHome;
   }
 
   return null;
+}
+
+bool _isWithin(String location, String areaRoot) {
+  return location == areaRoot || location.startsWith('$areaRoot/');
 }

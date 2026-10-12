@@ -320,11 +320,23 @@ abstract class AppLocalizations {
   /// **'We could not restore your signed-in session. Check your connection and try again.'**
   String get sessionRestoreErrorMessage;
 
-  /// No description provided for @clientHomePlaceholderTitle.
+  /// No description provided for @guestProfilePlaceholderTitle.
   ///
   /// In en, this message translates to:
-  /// **'Client home (placeholder)'**
-  String get clientHomePlaceholderTitle;
+  /// **'Profile (placeholder)'**
+  String get guestProfilePlaceholderTitle;
+
+  /// No description provided for @guestSavedPlaceholderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved (placeholder)'**
+  String get guestSavedPlaceholderTitle;
+
+  /// No description provided for @guestSavedPlaceholderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your saved stays will appear here.'**
+  String get guestSavedPlaceholderMessage;
 
   /// No description provided for @hostHomePlaceholderTitle.
   ///
@@ -349,6 +361,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign out'**
   String get signOut;
+
+  /// No description provided for @guestNavExplore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get guestNavExplore;
+
+  /// No description provided for @guestNavSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get guestNavSaved;
+
+  /// No description provided for @guestNavProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get guestNavProfile;
+
+  /// No description provided for @guestHomeFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get guestHomeFilters;
+
+  /// No description provided for @guestHomeAnywhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Anywhere'**
+  String get guestHomeAnywhere;
+
+  /// No description provided for @guestHomeAnyDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Any dates'**
+  String get guestHomeAnyDates;
+
+  /// No description provided for @guestHomeAddGuests.
+  ///
+  /// In en, this message translates to:
+  /// **'Add guests'**
+  String get guestHomeAddGuests;
+
+  /// No description provided for @guestHomeAnyPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Any price'**
+  String get guestHomeAnyPrice;
+
+  /// No description provided for @guestHomeClearAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get guestHomeClearAll;
+
+  /// No description provided for @guestHomeRemoveFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove filter {label}'**
+  String guestHomeRemoveFilter(String label);
+
+  /// No description provided for @guestHomeStayCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 stay} other{{count} stays}}'**
+  String guestHomeStayCount(int count);
+
+  /// No description provided for @guestHomeNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No stays match your filters'**
+  String get guestHomeNoResultsTitle;
+
+  /// No description provided for @guestHomeNoResultsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different city or widen the price range'**
+  String get guestHomeNoResultsMessage;
+
+  /// No description provided for @guestHomeClearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get guestHomeClearFilters;
+
+  /// No description provided for @guestHomeEndOfResults.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve seen all stays'**
+  String get guestHomeEndOfResults;
+
+  /// No description provided for @guestHomeLoadErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load stays'**
+  String get guestHomeLoadErrorTitle;
+
+  /// No description provided for @guestHomeLoadMoreError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load more stays.'**
+  String get guestHomeLoadMoreError;
+
+  /// No description provided for @listingsErrorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to reach the server. Check your connection and try again.'**
+  String get listingsErrorNetwork;
+
+  /// No description provided for @listingsErrorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get listingsErrorGeneric;
+
+  /// No description provided for @guestCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 guest} other{{count} guests}}'**
+  String guestCount(int count);
+
+  /// No description provided for @listingUpToGuests.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Up to 1 guest} other{Up to {count} guests}}'**
+  String listingUpToGuests(int count);
+
+  /// No description provided for @listingPerNight.
+  ///
+  /// In en, this message translates to:
+  /// **' / night'**
+  String get listingPerNight;
+
+  /// No description provided for @priceRange.
+  ///
+  /// In en, this message translates to:
+  /// **'{min}–{max}'**
+  String priceRange(String min, String max);
+
+  /// No description provided for @dateRange.
+  ///
+  /// In en, this message translates to:
+  /// **'{start}–{end}'**
+  String dateRange(String start, String end);
+
+  /// No description provided for @guestFiltersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get guestFiltersTitle;
+
+  /// No description provided for @guestFiltersDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Dates'**
+  String get guestFiltersDates;
+
+  /// No description provided for @guestFiltersCheckIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-in'**
+  String get guestFiltersCheckIn;
+
+  /// No description provided for @guestFiltersCheckOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-out'**
+  String get guestFiltersCheckOut;
+
+  /// No description provided for @guestFiltersAddDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Add date'**
+  String get guestFiltersAddDate;
+
+  /// No description provided for @guestFiltersPickDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick check-in and check-out'**
+  String get guestFiltersPickDates;
+
+  /// No description provided for @guestFiltersNightsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 night} other{{count} nights}} · only stays free for the whole range are shown'**
+  String guestFiltersNightsHint(int count);
+
+  /// No description provided for @guestFiltersClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get guestFiltersClose;
+
+  /// No description provided for @guestFiltersDestination.
+  ///
+  /// In en, this message translates to:
+  /// **'Destination'**
+  String get guestFiltersDestination;
+
+  /// No description provided for @guestFiltersGuests.
+  ///
+  /// In en, this message translates to:
+  /// **'Guests'**
+  String get guestFiltersGuests;
+
+  /// No description provided for @guestFiltersFewerGuests.
+  ///
+  /// In en, this message translates to:
+  /// **'Fewer guests'**
+  String get guestFiltersFewerGuests;
+
+  /// No description provided for @guestFiltersMoreGuests.
+  ///
+  /// In en, this message translates to:
+  /// **'More guests'**
+  String get guestFiltersMoreGuests;
+
+  /// No description provided for @guestFiltersPricePerNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per night'**
+  String get guestFiltersPricePerNight;
+
+  /// No description provided for @guestFiltersShowStays.
+  ///
+  /// In en, this message translates to:
+  /// **'Show stays'**
+  String get guestFiltersShowStays;
+
+  /// No description provided for @guestFiltersShowStayCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Show 1 stay} other{Show {count} stays}}'**
+  String guestFiltersShowStayCount(int count);
+
+  /// No description provided for @guestFiltersLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load the filter options.'**
+  String get guestFiltersLoadError;
+
+  /// No description provided for @routeNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Route not found'**
+  String get routeNotFoundTitle;
+
+  /// No description provided for @routeNotFoundMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The route you tried to open doesn\'t exist.'**
+  String get routeNotFoundMessage;
+
+  /// No description provided for @routeNotFoundAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to home'**
+  String get routeNotFoundAction;
 }
 
 class _AppLocalizationsDelegate

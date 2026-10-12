@@ -37,7 +37,9 @@
     "authErrorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
     "sessionRestoreErrorTitle": "Sitzung konnte nicht wiederhergestellt werden",
     "sessionRestoreErrorMessage": "Wir konnten deine Sitzung nicht wiederherstellen. Prüfe deine Verbindung und versuche es erneut.",
-    "clientHomePlaceholderTitle": "Kundenstartseite (Platzhalter)",
+    "guestProfilePlaceholderTitle": "Profil (Platzhalter)",
+    "guestSavedPlaceholderTitle": "Gespeichert (Platzhalter)",
+    "guestSavedPlaceholderMessage": "Deine gespeicherten Unterkünfte erscheinen hier.",
     "hostHomePlaceholderTitle": "Gastgeberstartseite (Platzhalter)",
     "signedInAs": "Angemeldet als {name}",
     "@signedInAs": {
@@ -55,5 +57,113 @@
             }
         }
     },
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "guestNavExplore": "Entdecken",
+    "guestNavSaved": "Gespeichert",
+    "guestNavProfile": "Profil",
+    "guestHomeFilters": "Filter",
+    "guestHomeAnywhere": "Überall",
+    "guestHomeAnyDates": "Beliebige Daten",
+    "guestHomeAddGuests": "Gäste hinzufügen",
+    "guestHomeAnyPrice": "Beliebiger Preis",
+    "guestHomeClearAll": "Alle löschen",
+    "guestHomeRemoveFilter": "Filter {label} entfernen",
+    "@guestHomeRemoveFilter": {
+        "placeholders": {
+            "label": {
+                "type": "String"
+            }
+        }
+    },
+    "guestHomeStayCount": "{count, plural, =1{1 Unterkunft} other{{count} Unterkünfte}}",
+    "@guestHomeStayCount": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "guestHomeNoResultsTitle": "Keine Unterkünfte entsprechen deinen Filtern",
+    "guestHomeNoResultsMessage": "Versuche eine andere Stadt oder erweitere die Preisspanne",
+    "guestHomeClearFilters": "Filter zurücksetzen",
+    "guestHomeEndOfResults": "Du hast alle Unterkünfte gesehen",
+    "guestHomeLoadErrorTitle": "Unterkünfte konnten nicht geladen werden",
+    "guestHomeLoadMoreError": "Weitere Unterkünfte konnten nicht geladen werden.",
+    "listingsErrorNetwork": "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.",
+    "listingsErrorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "guestCount": "{count, plural, =1{1 Gast} other{{count} Gäste}}",
+    "@guestCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingUpToGuests": "{count, plural, =1{Bis zu 1 Gast} other{Bis zu {count} Gäste}}",
+    "@listingUpToGuests": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingPerNight": " / Nacht",
+    "priceRange": "{min}–{max}",
+    "@priceRange": {
+        "placeholders": {
+            "min": {
+                "type": "String"
+            },
+            "max": {
+                "type": "String"
+            }
+        }
+    },
+    "dateRange": "{start}–{end}",
+    "@dateRange": {
+        "placeholders": {
+            "start": {
+                "type": "String"
+            },
+            "end": {
+                "type": "String"
+            }
+        }
+    },
+    "guestFiltersTitle": "Filter",
+    "guestFiltersDates": "Reisedaten",
+    "guestFiltersCheckIn": "Anreise",
+    "guestFiltersCheckOut": "Abreise",
+    "guestFiltersAddDate": "Datum hinzufügen",
+    "guestFiltersPickDates": "Wähle An- und Abreise",
+    "guestFiltersNightsHint": "{count, plural, =1{1 Nacht} other{{count} Nächte}} · nur durchgehend freie Unterkünfte werden angezeigt",
+    "@guestFiltersNightsHint": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "guestFiltersClose": "Schließen",
+    "guestFiltersDestination": "Reiseziel",
+    "guestFiltersGuests": "Gäste",
+    "guestFiltersFewerGuests": "Weniger Gäste",
+    "guestFiltersMoreGuests": "Mehr Gäste",
+    "guestFiltersPricePerNight": "Preis pro Nacht",
+    "guestFiltersShowStays": "Unterkünfte anzeigen",
+    "guestFiltersShowStayCount": "{count, plural, =1{1 Unterkunft anzeigen} other{{count} Unterkünfte anzeigen}}",
+    "@guestFiltersShowStayCount": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "guestFiltersLoadError": "Die Filteroptionen konnten nicht geladen werden.",
+    "routeNotFoundTitle": "Route nicht gefunden",
+    "routeNotFoundMessage": "Die Route, die du versucht hast zu öffnen, existiert nicht.",
+    "routeNotFoundAction": "Zurück zur Startseite"
 }

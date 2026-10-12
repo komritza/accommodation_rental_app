@@ -63,3 +63,57 @@ const testHost = AuthUser(
   firstName: 'Nina',
   lastName: 'Brunner',
 );
+
+Listing createTestListing({
+  String id = 'lst_00001',
+  String title = 'Sunlit Quarters in Lucerne',
+  String city = 'Lucerne',
+  int maxGuests = 2,
+  num pricePerNight = 173,
+  String currency = 'CHF',
+  List<String> images = const ['https://example.com/lst_00001.jpg'],
+}) {
+  return Listing(
+    id: id,
+    tenantId: 'alpine',
+    hostId: 'host-1',
+    title: title,
+    description: 'A test listing.',
+    city: city,
+    country: 'CH',
+    address: 'Bahnhofstrasse 1',
+    latitude: 47.05,
+    longitude: 8.29,
+    propertyType: 'apartment',
+    maxGuests: maxGuests,
+    bedrooms: 1,
+    beds: 1,
+    bathrooms: 1,
+    pricePerNight: pricePerNight,
+    cleaningFee: 60,
+    currency: currency,
+    amenities: const ['wifi'],
+    rating: 4.5,
+    reviewsCount: 10,
+    images: images,
+    createdAt: DateTime.utc(2026, 1, 1),
+  );
+}
+
+ListingFacets createTestFacets({
+  List<String> cities = const ['Lucerne', 'Zermatt'],
+  num priceMin = 80,
+  num priceMax = 400,
+  int maxGuests = 8,
+  String currency = 'CHF',
+}) {
+  return ListingFacets(
+    cities: cities,
+    propertyTypes: const ['apartment', 'chalet'],
+    amenities: const ['wifi'],
+    priceMin: priceMin,
+    priceMax: priceMax,
+    maxGuests: maxGuests,
+    currency: currency,
+  );
+}

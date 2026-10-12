@@ -37,7 +37,9 @@
     "authErrorGeneric": "Something went wrong. Please try again.",
     "sessionRestoreErrorTitle": "Could not restore your session",
     "sessionRestoreErrorMessage": "We could not restore your signed-in session. Check your connection and try again.",
-    "clientHomePlaceholderTitle": "Client home (placeholder)",
+    "guestProfilePlaceholderTitle": "Profile (placeholder)",
+    "guestSavedPlaceholderTitle": "Saved (placeholder)",
+    "guestSavedPlaceholderMessage": "Your saved stays will appear here.",
     "hostHomePlaceholderTitle": "Host home (placeholder)",
     "signedInAs": "Signed in as {name}",
     "@signedInAs": {
@@ -55,5 +57,113 @@
             }
         }
     },
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "guestNavExplore": "Explore",
+    "guestNavSaved": "Saved",
+    "guestNavProfile": "Profile",
+    "guestHomeFilters": "Filters",
+    "guestHomeAnywhere": "Anywhere",
+    "guestHomeAnyDates": "Any dates",
+    "guestHomeAddGuests": "Add guests",
+    "guestHomeAnyPrice": "Any price",
+    "guestHomeClearAll": "Clear all",
+    "guestHomeRemoveFilter": "Remove filter {label}",
+    "@guestHomeRemoveFilter": {
+        "placeholders": {
+            "label": {
+                "type": "String"
+            }
+        }
+    },
+    "guestHomeStayCount": "{count, plural, =1{1 stay} other{{count} stays}}",
+    "@guestHomeStayCount": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "guestHomeNoResultsTitle": "No stays match your filters",
+    "guestHomeNoResultsMessage": "Try a different city or widen the price range",
+    "guestHomeClearFilters": "Clear filters",
+    "guestHomeEndOfResults": "You've seen all stays",
+    "guestHomeLoadErrorTitle": "Couldn't load stays",
+    "guestHomeLoadMoreError": "Couldn't load more stays.",
+    "listingsErrorNetwork": "Unable to reach the server. Check your connection and try again.",
+    "listingsErrorGeneric": "Something went wrong. Please try again.",
+    "guestCount": "{count, plural, =1{1 guest} other{{count} guests}}",
+    "@guestCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingUpToGuests": "{count, plural, =1{Up to 1 guest} other{Up to {count} guests}}",
+    "@listingUpToGuests": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingPerNight": " / night",
+    "priceRange": "{min}–{max}",
+    "@priceRange": {
+        "placeholders": {
+            "min": {
+                "type": "String"
+            },
+            "max": {
+                "type": "String"
+            }
+        }
+    },
+    "dateRange": "{start}–{end}",
+    "@dateRange": {
+        "placeholders": {
+            "start": {
+                "type": "String"
+            },
+            "end": {
+                "type": "String"
+            }
+        }
+    },
+    "guestFiltersTitle": "Filters",
+    "guestFiltersDates": "Dates",
+    "guestFiltersCheckIn": "Check-in",
+    "guestFiltersCheckOut": "Check-out",
+    "guestFiltersAddDate": "Add date",
+    "guestFiltersPickDates": "Pick check-in and check-out",
+    "guestFiltersNightsHint": "{count, plural, =1{1 night} other{{count} nights}} · only stays free for the whole range are shown",
+    "@guestFiltersNightsHint": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "guestFiltersClose": "Close",
+    "guestFiltersDestination": "Destination",
+    "guestFiltersGuests": "Guests",
+    "guestFiltersFewerGuests": "Fewer guests",
+    "guestFiltersMoreGuests": "More guests",
+    "guestFiltersPricePerNight": "Price per night",
+    "guestFiltersShowStays": "Show stays",
+    "guestFiltersShowStayCount": "{count, plural, =1{Show 1 stay} other{Show {count} stays}}",
+    "@guestFiltersShowStayCount": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "guestFiltersLoadError": "Couldn't load the filter options.",
+    "routeNotFoundTitle": "Route not found",
+    "routeNotFoundMessage": "The route you tried to open doesn't exist.",
+    "routeNotFoundAction": "Back to home"
 }

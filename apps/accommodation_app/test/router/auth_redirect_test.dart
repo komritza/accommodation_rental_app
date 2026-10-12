@@ -94,6 +94,50 @@ void main() {
       );
     });
 
+    test('lets each role move within its own area', () {
+      expect(
+        resolveAuthRedirect(
+          auth: const AsyncData(testClient),
+          location: AppRoutePaths.clientProfile,
+        ),
+        isNull,
+      );
+      expect(
+        resolveAuthRedirect(
+          auth: const AsyncData(testHost),
+          location: AppRoutePaths.hostHome,
+        ),
+        isNull,
+      );
+    });
+
+    test('keeps a host out of every guest route', () {
+      for (final location in [
+        AppRoutePaths.clientHome,
+        AppRoutePaths.clientSaved,
+        AppRoutePaths.clientProfile,
+      ]) {
+        expect(
+          resolveAuthRedirect(
+            auth: const AsyncData(testHost),
+            location: location,
+          ),
+          AppRoutePaths.hostHome,
+          reason: location,
+        );
+      }
+    });
+
+    test('does not treat a lookalike path as part of an area', () {
+      expect(
+        resolveAuthRedirect(
+          auth: const AsyncData(testHost),
+          location: '/clients',
+        ),
+        isNull,
+      );
+    });
+
     test('keeps a user off the other role destination', () {
       expect(
         resolveAuthRedirect(

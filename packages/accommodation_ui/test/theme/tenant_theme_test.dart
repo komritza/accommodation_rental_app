@@ -75,6 +75,24 @@ void main() {
       );
     });
 
+    test('styles outlined buttons, dividers, sheets and navigation', () {
+      final theme = buildTenantTheme(
+        config.theme.light,
+        brightness: Brightness.light,
+      );
+      final colors = theme.extension<AccommodationColors>()!;
+
+      final outlined = theme.outlinedButtonTheme.style!;
+      expect(outlined.minimumSize!.resolve({})!.height, AppButtonTokens.height);
+      expect(outlined.side!.resolve({})!.color, colors.borderPrimary);
+
+      expect(theme.dividerTheme.color, colors.borderPrimary);
+      expect(theme.bottomSheetTheme.backgroundColor, colors.surfacePrimary);
+      expect(theme.bottomSheetTheme.showDragHandle, isTrue);
+      expect(theme.navigationBarTheme.backgroundColor, colors.surfacePrimary);
+      expect(theme.navigationBarTheme.indicatorColor, colors.surfaceSecondary);
+    });
+
     test('applies the shared type scale', () {
       final textTheme = buildTenantTheme(
         config.theme.light,

@@ -1,8 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../data/auth_remote_data_source.dart';
 import '../models/auth_session.dart';
+import '../networking/api_call.dart';
 import '../networking/api_failure.dart';
 
 class AuthRepository {
@@ -17,7 +17,7 @@ class AuthRepository {
     required String lastName,
     required String language,
   }) {
-    return _run(
+    return runApiCall(
       () => _remoteDataSource.register(
         email: email,
         password: password,
@@ -33,7 +33,7 @@ class AuthRepository {
     required String password,
     required String language,
   }) {
-    return _run(
+    return runApiCall(
       () => _remoteDataSource.login(
         email: email,
         password: password,
@@ -45,43 +45,16 @@ class AuthRepository {
   Future<Either<ApiFailure, AuthUser>> getCurrentUser({
     required String accessToken,
   }) {
-    return _run(
+    return runApiCall(
       () => _remoteDataSource.getCurrentUser(accessToken: accessToken),
     );
   }
 
   Future<Either<ApiFailure, bool>> logout({required String accessToken}) async {
-    final result = await _run(
+    final result = await runApiCall(
       () => _remoteDataSource.logout(accessToken: accessToken),
     );
 
     return result.map((_) => true);
-  }
-
-  Future<Either<ApiFailure, T>> _run<T>(Future<T> Function() operation) async {
-    try {
-      return Right(await operation());
-    } on DioException catch (error) {
-      return Left(
-        ApiFailure(
-          type: error.response == null
-              ? ApiFailureType.network
-              : ApiFailureType.http,
-          statusCode: error.response?.statusCode,
-          message: error.message,
-        ),
-      );
-    } on FormatException catch (error) {
-      return Left(
-        ApiFailure(
-          type: ApiFailureType.invalidResponse,
-          message: error.message,
-        ),
-      );
-    } catch (error) {
-      return Left(
-        ApiFailure(type: ApiFailureType.unexpected, message: error.toString()),
-      );
-    }
   }
 }

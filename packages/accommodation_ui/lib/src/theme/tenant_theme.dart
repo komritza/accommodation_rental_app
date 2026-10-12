@@ -32,6 +32,26 @@ ThemeData buildTenantTheme(
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme(colors),
     filledButtonTheme: _filledButtonTheme(colors),
+    outlinedButtonTheme: _outlinedButtonTheme(colors),
+    dividerTheme: DividerThemeData(
+      color: colors.borderPrimary,
+      thickness: AppBorderWidths.regular,
+      space: AppBorderWidths.regular,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: colors.surfacePrimary,
+      modalBackgroundColor: colors.surfacePrimary,
+      surfaceTintColor: Colors.transparent,
+      showDragHandle: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadii.md)),
+      ),
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: colors.surfacePrimary,
+      indicatorColor: colors.surfaceSecondary,
+      surfaceTintColor: Colors.transparent,
+    ),
     extensions: [colors],
   );
 }
@@ -45,6 +65,10 @@ const _textTheme = TextTheme(
   titleLarge: TextStyle(
     fontSize: AppTypography.sizeLg,
     fontWeight: AppTypography.weightExtraBold,
+  ),
+  titleMedium: TextStyle(
+    fontSize: AppTypography.sizeMd,
+    fontWeight: AppTypography.weightSemibold,
   ),
   titleSmall: TextStyle(
     fontSize: AppTypography.sizeSm,
@@ -94,6 +118,20 @@ FilledButtonThemeData _filledButtonTheme(AccommodationColors colors) {
         alpha: AppButtonTokens.disabledOpacity,
       ),
       disabledForegroundColor: colors.textOnAction,
+      shape: const RoundedRectangleBorder(borderRadius: AppRadii.smBorder),
+    ),
+  );
+}
+
+OutlinedButtonThemeData _outlinedButtonTheme(AccommodationColors colors) {
+  return OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      minimumSize: const Size(0, AppButtonTokens.height),
+      foregroundColor: colors.textDefault,
+      side: BorderSide(
+        color: colors.borderPrimary,
+        width: AppBorderWidths.regular,
+      ),
       shape: const RoundedRectangleBorder(borderRadius: AppRadii.smBorder),
     ),
   );
