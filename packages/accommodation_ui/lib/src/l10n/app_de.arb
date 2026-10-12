@@ -165,5 +165,31 @@
     "guestFiltersLoadError": "Die Filteroptionen konnten nicht geladen werden.",
     "routeNotFoundTitle": "Route nicht gefunden",
     "routeNotFoundMessage": "Die Route, die du versucht hast zu öffnen, existiert nicht.",
-    "routeNotFoundAction": "Zurück zur Startseite"
+    "routeNotFoundAction": "Zurück zur Startseite",
+    "listingBedrooms": "{count, plural, =1{1 Schlafzimmer} other{{count} Schlafzimmer}}",
+    "@listingBedrooms": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingBeds": "{count, plural, =1{1 bett} other{{count} betten}}",
+    "@listingBeds": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingBathrooms": "{count, plural, =1{1 Badezimmer} other{{count} Badezimmer}}",
+    "@listingBathrooms": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "cleaningFee": "Reinigungskosten",
+    "chipNoRatingText": "Neu"
 }

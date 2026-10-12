@@ -94,6 +94,9 @@ void main() {
       city: 'Lucerne',
       maxGuests: 1,
       pricePerNight: 173,
+      bedrooms: 3,
+      beds: 2,
+      bathrooms: 2,
     ),
     createTestListing(
       id: 'b',
@@ -101,6 +104,9 @@ void main() {
       city: 'Zermatt',
       maxGuests: 6,
       pricePerNight: 237,
+      bedrooms: 4,
+      beds: 4,
+      bathrooms: 3,
     ),
   ];
 
@@ -114,9 +120,12 @@ void main() {
     expect(find.text('Any dates · Add guests · Any price'), findsOneWidget);
     expect(find.text(l10n.guestHomeStayCount(2)), findsOneWidget);
     expect(find.text('Sunlit Quarters in Lucerne'), findsOneWidget);
-    expect(find.text('Up to 1 guest'), findsOneWidget);
+    expect(find.text('1 guest'), findsOneWidget);
     expect(find.text('CHF\u00A0173 / night'), findsOneWidget);
     expect(find.text(l10n.guestHomeClearAll), findsNothing);
+    expect(find.text('2 beds'), findsOneWidget);
+    expect(find.text('3 bedrooms'), findsOneWidget);
+    expect(find.text('2 bathrooms'), findsOneWidget);
 
     await tester.scrollUntilVisible(find.text(l10n.guestHomeEndOfResults), 300);
     expect(find.text(l10n.guestHomeEndOfResults), findsOneWidget);

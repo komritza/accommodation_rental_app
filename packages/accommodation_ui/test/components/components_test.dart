@@ -61,7 +61,11 @@ void main() {
         _wrap(
           const SizedBox(
             width: 400,
-            child: AppCoverImage(url: null, semanticLabel: 'Chalet'),
+            child: AppCoverImage(
+              url: null,
+              semanticLabel: 'Chalet',
+              propertyTypeLabel: 'Loft',
+            ),
           ),
         ),
       );
@@ -211,6 +215,28 @@ void main() {
         tester.getSize(find.byType(IconButton)),
         const Size.square(AppIconButtonTokens.size),
       );
+    });
+  });
+
+  group('AppBadge', () {
+    testWidgets('renders a badge with the given label and colors', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          AppBadge(
+            label: 'New',
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+          ),
+        ),
+      );
+
+      final text = tester.widget<Text>(find.text('New'));
+      expect(text.style?.color, Colors.white);
+      final container = tester.widget<Container>(find.byType(Container).first);
+      final decoration = container.decoration as BoxDecoration;
+      expect(decoration.color, Colors.blue);
     });
   });
 }

@@ -1,3 +1,4 @@
+export 'app_badge.dart';
 export 'app_chip.dart';
 export 'app_cover_image.dart';
 export 'app_date_range_calendar.dart';

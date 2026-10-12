@@ -165,5 +165,31 @@
     "guestFiltersLoadError": "Couldn't load the filter options.",
     "routeNotFoundTitle": "Route not found",
     "routeNotFoundMessage": "The route you tried to open doesn't exist.",
-    "routeNotFoundAction": "Back to home"
+    "routeNotFoundAction": "Back to home",
+    "listingBedrooms": "{count, plural, =1{1 bedroom} other{{count} bedrooms}}",
+    "@listingBedrooms": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingBeds": "{count, plural, =1{1 bed} other{{count} beds}}",
+    "@listingBeds": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingBathrooms": "{count, plural, =1{1 bathroom} other{{count} bathrooms}}",
+    "@listingBathrooms": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "cleaningFee": "Cleaning fee",
+    "chipNoRatingText": "New"
 }

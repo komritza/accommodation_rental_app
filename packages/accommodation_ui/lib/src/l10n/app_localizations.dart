@@ -619,6 +619,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to home'**
   String get routeNotFoundAction;
+
+  /// No description provided for @listingBedrooms.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bedroom} other{{count} bedrooms}}'**
+  String listingBedrooms(int count);
+
+  /// No description provided for @listingBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bed} other{{count} beds}}'**
+  String listingBeds(int count);
+
+  /// No description provided for @listingBathrooms.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 bathroom} other{{count} bathrooms}}'**
+  String listingBathrooms(int count);
+
+  /// No description provided for @cleaningFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleaning fee'**
+  String get cleaningFee;
+
+  /// No description provided for @chipNoRatingText.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get chipNoRatingText;
 }
 
 class _AppLocalizationsDelegate

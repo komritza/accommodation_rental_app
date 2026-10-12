@@ -349,4 +349,43 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get routeNotFoundAction => 'Zurück zur Startseite';
+
+  @override
+  String listingBedrooms(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Schlafzimmer',
+      one: '1 Schlafzimmer',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String listingBeds(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count betten',
+      one: '1 bett',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String listingBathrooms(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Badezimmer',
+      one: '1 Badezimmer',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cleaningFee => 'Reinigungskosten';
+
+  @override
+  String get chipNoRatingText => 'Neu';
 }

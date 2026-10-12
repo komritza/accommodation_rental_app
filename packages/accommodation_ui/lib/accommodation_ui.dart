@@ -3,6 +3,7 @@ export 'src/design_system/colors/accommodation_colors.dart';
 export 'src/design_system/tokens/component_tokens.dart';
 export 'src/design_system/tokens/primitives.dart';
 export 'src/formatting/currency_format.dart';
+export 'src/formatting/string_capitalization.dart';
 export 'src/l10n/app_localizations.dart';
 export 'src/l10n/app_localizations_en.dart';
 export 'src/theme/tenant_theme.dart';

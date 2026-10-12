@@ -72,6 +72,9 @@ Listing createTestListing({
   num pricePerNight = 173,
   String currency = 'CHF',
   List<String> images = const ['https://example.com/lst_00001.jpg'],
+  int bedrooms = 1,
+  int beds = 1,
+  int bathrooms = 1,
 }) {
   return Listing(
     id: id,
@@ -86,9 +89,9 @@ Listing createTestListing({
     longitude: 8.29,
     propertyType: 'apartment',
     maxGuests: maxGuests,
-    bedrooms: 1,
-    beds: 1,
-    bathrooms: 1,
+    bedrooms: bedrooms,
+    beds: beds,
+    bathrooms: bathrooms,
     pricePerNight: pricePerNight,
     cleaningFee: 60,
     currency: currency,
