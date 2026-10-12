@@ -19,21 +19,34 @@ class FakeListingsRepository extends ListingsRepository {
     this.pageSize = 20,
     this.listingsFailure,
     this.facetsFailure,
+    this.listingFailure,
+    this.availabilityFailure,
     this.bookings = const {},
+    this.blockedDays = const {},
   }) : facets = facets ?? createTestFacets(),
        super(ListingsRemoteDataSource(Dio()));
 
   List<Listing> listings;
 
   Map<String, List<StayDates>> bookings;
+
+  /// Days a host took off sale, keyed by listing id.
+  Map<String, List<DateTime>> blockedDays;
   ListingFacets facets;
   int pageSize;
   ApiFailure? listingsFailure;
   ApiFailure? facetsFailure;
+  ApiFailure? listingFailure;
+  ApiFailure? availabilityFailure;
 
   Completer<void>? pendingResponse;
+  Completer<void>? pendingAvailability;
 
   final requests = <ListingsRequest>[];
+
+  final listingRequests = <({String id, String language})>[];
+
+  final availabilityRequests = <({String id, DateTime from, DateTime to})>[];
 
   int facetsRequests = 0;
 
@@ -58,6 +71,67 @@ class FakeListingsRepository extends ListingsRepository {
         items: matching.toList().sublist(offset, end),
         totalCount: matching.length,
         nextCursor: end < matching.length ? '$end' : null,
+      ),
+    );
+  }
+
+  @override
+  Future<Either<ApiFailure, Listing>> fetchListing({
+    required String id,
+    required String language,
+  }) async {
+    listingRequests.add((id: id, language: language));
+    await pendingResponse?.future;
+
+    final failure = listingFailure;
+    if (failure != null) return Left(failure);
+
+    final listing = listings.where((listing) => listing.id == id).firstOrNull;
+    return listing == null
+        ? const Left(ApiFailure(type: ApiFailureType.http, statusCode: 404))
+        : Right(listing);
+  }
+
+  @override
+  Future<Either<ApiFailure, ListingAvailability>> fetchAvailability({
+    required String id,
+    required DateTime from,
+    required DateTime to,
+  }) async {
+    availabilityRequests.add((id: id, from: from, to: to));
+    await pendingAvailability?.future;
+
+    final failure = availabilityFailure;
+    if (failure != null) return Left(failure);
+
+    final start = StayDates.calendarDate(from);
+    final end = StayDates.calendarDate(to);
+    bool inWindow(DateTime day) => !day.isBefore(start) && day.isBefore(end);
+
+    final reasons = <DateTime, UnavailableReason>{
+      for (final day in blockedDays[id] ?? const <DateTime>[])
+        StayDates.calendarDate(day): UnavailableReason.blocked,
+    };
+    for (final booking in bookings[id] ?? const <StayDates>[]) {
+      for (
+        var night = booking.checkIn;
+        night.isBefore(booking.checkOut);
+        night = night.add(const Duration(days: 1))
+      ) {
+        reasons[night] = UnavailableReason.booked;
+      }
+    }
+
+    final days = reasons.keys.where(inWindow).toList()..sort();
+    return Right(
+      ListingAvailability(
+        listingId: id,
+        from: start,
+        to: end,
+        unavailable: [
+          for (final day in days)
+            UnavailableDay(date: day, reason: reasons[day]!),
+        ],
       ),
     );
   }

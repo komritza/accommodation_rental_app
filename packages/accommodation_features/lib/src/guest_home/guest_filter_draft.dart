@@ -14,17 +14,12 @@ part 'guest_filter_draft.g.dart';
 
 const guestFilterCountDebounce = Duration(milliseconds: 300);
 
-const guestCalendarMonthsAhead = 12;
-
 typedef PriceBounds = ({int min, int max});
 
 PriceBounds priceBoundsOf(ListingFacets facets) {
   final min = facets.priceMin.floor();
   return (min: min, max: math.max(min, facets.priceMax.ceil()));
 }
-
-@riverpod
-DateTime guestCalendarToday(Ref ref) => StayDates.calendarDate(DateTime.now());
 
 @freezed
 abstract class GuestFilterDraftState with _$GuestFilterDraftState {

@@ -18,6 +18,7 @@ void main() {
           (ref) => createApiClient(
             baseUrl: apiBaseUrl,
             tenant: ref.watch(tenantSlugProvider),
+            readAccessToken: ref.watch(tokenStorageProvider).readToken,
           ),
         ),
         tokenStorageProvider.overrideWithValue(

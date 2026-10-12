@@ -10,6 +10,8 @@ Color _parseHexColor(String value) {
 
 const _stateErrorLight = Color(0xFFBA1A1A);
 const _stateErrorDark = Color(0xFFFFB4AB);
+const _stateFavouriteLight = Color(0xFFE0182D);
+const _stateFavouriteDark = Color(0xFFFF6B78);
 
 @immutable
 class AccommodationColors extends ThemeExtension<AccommodationColors> {
@@ -23,12 +25,15 @@ class AccommodationColors extends ThemeExtension<AccommodationColors> {
     required this.borderPrimary,
     required this.iconAction,
     required this.stateError,
+    required this.stateFavourite,
   });
 
   factory AccommodationColors.resolve(
     ThemePalette palette,
     Brightness brightness,
   ) {
+    final isLight = brightness == Brightness.light;
+
     return AccommodationColors(
       surfacePrimary: _parseHexColor(palette.surfacePrimary),
       surfaceSecondary: _parseHexColor(palette.surfaceSecondary),
@@ -38,9 +43,8 @@ class AccommodationColors extends ThemeExtension<AccommodationColors> {
       textOnAction: _parseHexColor(palette.textOnAction),
       borderPrimary: _parseHexColor(palette.borderPrimary),
       iconAction: _parseHexColor(palette.iconAction),
-      stateError: brightness == Brightness.light
-          ? _stateErrorLight
-          : _stateErrorDark,
+      stateError: isLight ? _stateErrorLight : _stateErrorDark,
+      stateFavourite: isLight ? _stateFavouriteLight : _stateFavouriteDark,
     );
   }
 
@@ -56,6 +60,7 @@ class AccommodationColors extends ThemeExtension<AccommodationColors> {
   final Color iconAction;
 
   final Color stateError;
+  final Color stateFavourite;
 
   @override
   AccommodationColors copyWith({
@@ -68,6 +73,7 @@ class AccommodationColors extends ThemeExtension<AccommodationColors> {
     Color? borderPrimary,
     Color? iconAction,
     Color? stateError,
+    Color? stateFavourite,
   }) {
     return AccommodationColors(
       surfacePrimary: surfacePrimary ?? this.surfacePrimary,
@@ -79,6 +85,7 @@ class AccommodationColors extends ThemeExtension<AccommodationColors> {
       borderPrimary: borderPrimary ?? this.borderPrimary,
       iconAction: iconAction ?? this.iconAction,
       stateError: stateError ?? this.stateError,
+      stateFavourite: stateFavourite ?? this.stateFavourite,
     );
   }
 
@@ -100,6 +107,7 @@ class AccommodationColors extends ThemeExtension<AccommodationColors> {
       borderPrimary: Color.lerp(borderPrimary, other.borderPrimary, t)!,
       iconAction: Color.lerp(iconAction, other.iconAction, t)!,
       stateError: Color.lerp(stateError, other.stateError, t)!,
+      stateFavourite: Color.lerp(stateFavourite, other.stateFavourite, t)!,
     );
   }
 }

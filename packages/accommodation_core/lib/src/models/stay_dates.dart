@@ -31,11 +31,12 @@ class StayDates {
 
   int get nights => nightsBetween(checkIn, checkOut);
 
-  String get checkInIso => _iso(checkIn);
+  String get checkInIso => isoDate(checkIn);
 
-  String get checkOutIso => _iso(checkOut);
+  String get checkOutIso => isoDate(checkOut);
 
-  static String _iso(DateTime date) =>
+  /// The calendar date as the API writes it, `YYYY-MM-DD`.
+  static String isoDate(DateTime date) =>
       '${date.year.toString().padLeft(4, '0')}-'
       '${date.month.toString().padLeft(2, '0')}-'
       '${date.day.toString().padLeft(2, '0')}';

@@ -8,15 +8,12 @@ part of 'guest_listing_filters.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// The filters currently applied to the guest's listing results.
 
 @ProviderFor(GuestListingFilters)
 final guestListingFiltersProvider = GuestListingFiltersProvider._();
 
-/// The filters currently applied to the guest's listing results.
 final class GuestListingFiltersProvider
     extends $NotifierProvider<GuestListingFilters, ListingSearchQuery> {
-  /// The filters currently applied to the guest's listing results.
   GuestListingFiltersProvider._()
     : super(
         from: null,
@@ -46,8 +43,6 @@ final class GuestListingFiltersProvider
 
 String _$guestListingFiltersHash() =>
     r'b07f2e1cc207530dfdddbf92310a1c4ec98c559a';
-
-/// The filters currently applied to the guest's listing results.
 
 abstract class _$GuestListingFilters extends $Notifier<ListingSearchQuery> {
   ListingSearchQuery build();

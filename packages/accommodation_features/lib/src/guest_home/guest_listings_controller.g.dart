@@ -8,25 +8,13 @@ part of 'guest_listings_controller.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
-/// Listings matching the applied guest filters, fetched one page at a time.
-///
-/// Changing the filters rebuilds the controller, which starts again from the
-/// first page.
 
 @ProviderFor(GuestListingsController)
 final guestListingsControllerProvider = GuestListingsControllerProvider._();
 
-/// Listings matching the applied guest filters, fetched one page at a time.
-///
-/// Changing the filters rebuilds the controller, which starts again from the
-/// first page.
 final class GuestListingsControllerProvider
     extends
         $AsyncNotifierProvider<GuestListingsController, GuestListingsState> {
-  /// Listings matching the applied guest filters, fetched one page at a time.
-  ///
-  /// Changing the filters rebuilds the controller, which starts again from the
-  /// first page.
   GuestListingsControllerProvider._()
     : super(
         from: null,
@@ -48,11 +36,6 @@ final class GuestListingsControllerProvider
 
 String _$guestListingsControllerHash() =>
     r'aa9b163239961fa32a6971819ecaa515c8a0e22b';
-
-/// Listings matching the applied guest filters, fetched one page at a time.
-///
-/// Changing the filters rebuilds the controller, which starts again from the
-/// first page.
 
 abstract class _$GuestListingsController
     extends $AsyncNotifier<GuestListingsState> {

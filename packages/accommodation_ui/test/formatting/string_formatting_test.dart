@@ -19,4 +19,16 @@ void main() {
       },
     );
   });
+
+  group('humanized', () {
+    test('turns a snake_case slug into capitalized words', () {
+      expect('air_conditioning'.humanized, 'Air Conditioning');
+      expect('wifi'.humanized, 'Wifi');
+    });
+
+    test('drops empty words from repeated separators', () {
+      expect('_hot__tub_'.humanized, 'Hot Tub');
+      expect(''.humanized, '');
+    });
+  });
 }

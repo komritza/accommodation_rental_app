@@ -191,5 +191,85 @@
         }
     },
     "cleaningFee": "Cleaning fee",
-    "chipNoRatingText": "New"
+    "chipNoRatingText": "New",
+    "listingLocation": "{city}, {country}",
+    "@listingLocation": {
+        "placeholders": {
+            "city": {
+                "type": "String"
+            },
+            "country": {
+                "type": "String"
+            }
+        }
+    },
+    "listingDetailErrorTitle": "Couldn't load listing details",
+    "listingDetailNotFoundTitle": "This stay is no longer available",
+    "listingDetailNotFoundMessage": "It may have been removed by the host.",
+    "listingDetailStays": "Stays",
+    "listingDetailAppBarTitle": "Stays · {city}, {country}",
+    "@listingDetailAppBarTitle": {
+        "placeholders": {
+            "city": {
+                "type": "String"
+            },
+            "country": {
+                "type": "String"
+            }
+        }
+    },
+    "listingDetailPhotoLabel": "{title}, photo {index} of {count}",
+    "@listingDetailPhotoLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            },
+            "index": {
+                "type": "int"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingDetailReviews": "{count, plural, =1{1 review} other{{count} reviews}}",
+    "@listingDetailReviews": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingDetailAboutThisPlace": "About this place",
+    "listingDetailWhatThisPlaceOffers": "What this place offers",
+    "listingAvailabilityTitle": "Availability",
+    "listingAvailabilitySubtitle": "Struck-through days are already taken.",
+    "listingAvailabilityError": "Couldn't load availability.",
+    "availabilityLegendAvailable": "Available",
+    "availabilityLegendTaken": "Taken",
+    "availabilityLegendToday": "Today",
+    "amenityWifi": "Wi-Fi",
+    "amenityKitchen": "Kitchen",
+    "amenityParking": "Parking",
+    "amenityWasher": "Washing machine",
+    "amenityDryer": "Dryer",
+    "amenityAirConditioning": "Air conditioning",
+    "amenityHeating": "Heating",
+    "amenityTv": "TV",
+    "amenityPool": "Pool",
+    "amenityHotTub": "Hot tub",
+    "amenityFireplace": "Fireplace",
+    "amenityBalcony": "Balcony",
+    "amenitySeaView": "Sea view",
+    "amenityMountainView": "Mountain view",
+    "amenitySkiStorage": "Ski storage",
+    "amenityPetsAllowed": "Pets allowed",
+    "amenityWorkspace": "Workspace",
+    "amenityElevator": "Elevator",
+    "amenityBbq": "BBQ",
+    "amenitySauna": "Sauna",
+    "favouriteAdd": "Save to favourites",
+    "favouriteRemove": "Remove from favourites",
+    "favouritesLoadError": "Unable to load favourites",
+    "favouritesUpdateError": "Unable to update favourites"
 }

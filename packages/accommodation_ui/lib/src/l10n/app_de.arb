@@ -191,5 +191,85 @@
         }
     },
     "cleaningFee": "Reinigungskosten",
-    "chipNoRatingText": "Neu"
+    "chipNoRatingText": "Neu",
+    "listingLocation": "{city}, {country}",
+    "@listingLocation": {
+        "placeholders": {
+            "city": {
+                "type": "String"
+            },
+            "country": {
+                "type": "String"
+            }
+        }
+    },
+    "listingDetailErrorTitle": "Die Unterkunftsdetails konnten nicht geladen werden",
+    "listingDetailNotFoundTitle": "Diese Unterkunft ist nicht mehr verfügbar",
+    "listingDetailNotFoundMessage": "Möglicherweise wurde sie vom Gastgeber entfernt.",
+    "listingDetailStays": "Unterkünfte",
+    "listingDetailAppBarTitle": "Unterkünfte · {city}, {country}",
+    "@listingDetailAppBarTitle": {
+        "placeholders": {
+            "city": {
+                "type": "String"
+            },
+            "country": {
+                "type": "String"
+            }
+        }
+    },
+    "listingDetailPhotoLabel": "{title}, Foto {index} von {count}",
+    "@listingDetailPhotoLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            },
+            "index": {
+                "type": "int"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingDetailReviews": "{count, plural, =1{1 Rezension} other{{count} Rezensionen}}",
+    "@listingDetailReviews": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "listingDetailAboutThisPlace": "Über diesen Ort",
+    "listingDetailWhatThisPlaceOffers": "Was dieser Ort bietet",
+    "listingAvailabilityTitle": "Verfügbarkeit",
+    "listingAvailabilitySubtitle": "Durchgestrichene Tage sind bereits belegt.",
+    "listingAvailabilityError": "Die Verfügbarkeit konnte nicht geladen werden.",
+    "availabilityLegendAvailable": "Frei",
+    "availabilityLegendTaken": "Belegt",
+    "availabilityLegendToday": "Heute",
+    "amenityWifi": "WLAN",
+    "amenityKitchen": "Küche",
+    "amenityParking": "Parkplatz",
+    "amenityWasher": "Waschmaschine",
+    "amenityDryer": "Trockner",
+    "amenityAirConditioning": "Klimaanlage",
+    "amenityHeating": "Heizung",
+    "amenityTv": "Fernseher",
+    "amenityPool": "Pool",
+    "amenityHotTub": "Whirlpool",
+    "amenityFireplace": "Kamin",
+    "amenityBalcony": "Balkon",
+    "amenitySeaView": "Meerblick",
+    "amenityMountainView": "Bergblick",
+    "amenitySkiStorage": "Skiaufbewahrung",
+    "amenityPetsAllowed": "Haustiere erlaubt",
+    "amenityWorkspace": "Arbeitsplatz",
+    "amenityElevator": "Aufzug",
+    "amenityBbq": "Grill",
+    "amenitySauna": "Sauna",
+    "favouriteAdd": "Zu Favoriten hinzufügen",
+    "favouriteRemove": "Aus Favoriten entfernen",
+    "favouritesLoadError": "Favoriten konnten nicht geladen werden",
+    "favouritesUpdateError": "Favoriten konnten nicht aktualisiert werden"
 }

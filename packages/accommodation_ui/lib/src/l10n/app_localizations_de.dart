@@ -388,4 +388,144 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get chipNoRatingText => 'Neu';
+
+  @override
+  String listingLocation(String city, String country) {
+    return '$city, $country';
+  }
+
+  @override
+  String get listingDetailErrorTitle =>
+      'Die Unterkunftsdetails konnten nicht geladen werden';
+
+  @override
+  String get listingDetailNotFoundTitle =>
+      'Diese Unterkunft ist nicht mehr verfügbar';
+
+  @override
+  String get listingDetailNotFoundMessage =>
+      'Möglicherweise wurde sie vom Gastgeber entfernt.';
+
+  @override
+  String get listingDetailStays => 'Unterkünfte';
+
+  @override
+  String listingDetailAppBarTitle(String city, String country) {
+    return 'Unterkünfte · $city, $country';
+  }
+
+  @override
+  String listingDetailPhotoLabel(String title, int index, int count) {
+    return '$title, Foto $index von $count';
+  }
+
+  @override
+  String listingDetailReviews(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Rezensionen',
+      one: '1 Rezension',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get listingDetailAboutThisPlace => 'Über diesen Ort';
+
+  @override
+  String get listingDetailWhatThisPlaceOffers => 'Was dieser Ort bietet';
+
+  @override
+  String get listingAvailabilityTitle => 'Verfügbarkeit';
+
+  @override
+  String get listingAvailabilitySubtitle =>
+      'Durchgestrichene Tage sind bereits belegt.';
+
+  @override
+  String get listingAvailabilityError =>
+      'Die Verfügbarkeit konnte nicht geladen werden.';
+
+  @override
+  String get availabilityLegendAvailable => 'Frei';
+
+  @override
+  String get availabilityLegendTaken => 'Belegt';
+
+  @override
+  String get availabilityLegendToday => 'Heute';
+
+  @override
+  String get amenityWifi => 'WLAN';
+
+  @override
+  String get amenityKitchen => 'Küche';
+
+  @override
+  String get amenityParking => 'Parkplatz';
+
+  @override
+  String get amenityWasher => 'Waschmaschine';
+
+  @override
+  String get amenityDryer => 'Trockner';
+
+  @override
+  String get amenityAirConditioning => 'Klimaanlage';
+
+  @override
+  String get amenityHeating => 'Heizung';
+
+  @override
+  String get amenityTv => 'Fernseher';
+
+  @override
+  String get amenityPool => 'Pool';
+
+  @override
+  String get amenityHotTub => 'Whirlpool';
+
+  @override
+  String get amenityFireplace => 'Kamin';
+
+  @override
+  String get amenityBalcony => 'Balkon';
+
+  @override
+  String get amenitySeaView => 'Meerblick';
+
+  @override
+  String get amenityMountainView => 'Bergblick';
+
+  @override
+  String get amenitySkiStorage => 'Skiaufbewahrung';
+
+  @override
+  String get amenityPetsAllowed => 'Haustiere erlaubt';
+
+  @override
+  String get amenityWorkspace => 'Arbeitsplatz';
+
+  @override
+  String get amenityElevator => 'Aufzug';
+
+  @override
+  String get amenityBbq => 'Grill';
+
+  @override
+  String get amenitySauna => 'Sauna';
+
+  @override
+  String get favouriteAdd => 'Zu Favoriten hinzufügen';
+
+  @override
+  String get favouriteRemove => 'Aus Favoriten entfernen';
+
+  @override
+  String get favouritesLoadError => 'Favoriten konnten nicht geladen werden';
+
+  @override
+  String get favouritesUpdateError =>
+      'Favoriten konnten nicht aktualisiert werden';
 }

@@ -11,6 +11,7 @@ import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_features/auth.dart';
 import 'package:accommodation_features/dependencies.dart';
 import 'package:accommodation_features/guest_home.dart';
+import 'package:accommodation_features/listing_detail.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -74,6 +75,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoutePaths.sessionRestoreError,
         builder: (context, state) => const SessionRestoreErrorScreen(),
       ),
+      GoRoute(
+        name: AppRouteNames.listingDetail,
+        path: AppRoutePaths.listingDetail(':listingId'),
+        builder: (context, state) =>
+            ListingDetailScreen(listingId: state.pathParameters['listingId']!),
+      ),
     ],
   );
 });
@@ -85,6 +92,10 @@ GoRoute _guestTabRoute(GuestTab tab) {
       path: AppRoutePaths.clientHome,
       builder: (context, state) => GuestHomeScreen(
         onProfilePressed: () => context.goNamed(AppRouteNames.clientProfile),
+        onListingPressed: (listingId) => context.pushNamed(
+          AppRouteNames.listingDetail,
+          pathParameters: {'listingId': listingId},
+        ),
       ),
     ),
     GuestTab.saved => GoRoute(

@@ -180,6 +180,87 @@ void main() {
       );
     });
 
+    testWidgets('strikes through unavailable days and refuses them', (
+      tester,
+    ) async {
+      final selected = <DateTime>[];
+      await tester.pumpWidget(
+        _wrap(
+          SizedBox(
+            width: 390,
+            child: AppDateRangeCalendar(
+              firstDate: DateTime(2030, 3, 10),
+              lastDate: DateTime(2030, 5, 31),
+              onDaySelected: selected.add,
+              unavailableDayPredicate: (day) => day.day == 20,
+              unavailableDayLabel: 'Taken',
+            ),
+          ),
+        ),
+      );
+
+      final taken = find.bySemanticsLabel('Wednesday, March 20, 2030');
+      await tester.tap(taken);
+
+      expect(selected, isEmpty);
+      expect(
+        tester.getSemantics(taken),
+        isSemantics(
+          value: 'Taken',
+          isButton: true,
+          hasEnabledState: true,
+          isEnabled: false,
+        ),
+      );
+      expect(
+        tester.widget<Text>(find.text('20')).style?.decoration,
+        TextDecoration.lineThrough,
+      );
+      expect(
+        tester.widget<Text>(find.text('21')).style?.decoration,
+        isNot(TextDecoration.lineThrough),
+      );
+      expect(
+        tester.getSemantics(find.bySemanticsLabel('Thursday, March 21, 2030')),
+        isSemantics(value: '', isEnabled: true),
+      );
+    });
+
+    testWidgets('shows days without offering them when read-only', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          SizedBox(
+            width: 390,
+            child: AppDateRangeCalendar(
+              firstDate: DateTime(2030, 3, 10),
+              lastDate: DateTime(2030, 5, 31),
+              unavailableDayPredicate: (day) => day.day == 20,
+              unavailableDayLabel: 'Taken',
+            ),
+          ),
+        ),
+      );
+
+      expect(
+        tester.getSemantics(find.bySemanticsLabel('Thursday, March 21, 2030')),
+        isSemantics(
+          isButton: false,
+          hasEnabledState: false,
+          hasTapAction: false,
+        ),
+      );
+      expect(
+        tester.getSemantics(find.bySemanticsLabel('Wednesday, March 20, 2030')),
+        isSemantics(value: 'Taken', isButton: false),
+      );
+
+      final freeColor = tester.widget<Text>(find.text('21')).style?.color;
+      final pastColor = tester.widget<Text>(find.text('9')).style?.color;
+      expect(freeColor, isNot(pastColor));
+    });
+
     testWidgets('keeps a full week on a narrow screen', (tester) async {
       await tester.pumpWidget(
         _wrap(

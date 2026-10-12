@@ -9,19 +9,26 @@ class AppDateRangeCalendar extends StatefulWidget {
     super.key,
     required this.firstDate,
     required this.lastDate,
-    required this.onDaySelected,
+    this.onDaySelected,
     this.rangeStart,
     this.rangeEnd,
     this.selectableDayPredicate,
+    this.unavailableDayPredicate,
+    this.unavailableDayLabel,
   });
 
   final DateTime firstDate;
   final DateTime lastDate;
   final DateTime? rangeStart;
   final DateTime? rangeEnd;
-  final ValueChanged<DateTime> onDaySelected;
+
+  final ValueChanged<DateTime>? onDaySelected;
 
   final bool Function(DateTime day)? selectableDayPredicate;
+
+  final bool Function(DateTime day)? unavailableDayPredicate;
+
+  final String? unavailableDayLabel;
 
   @override
   State<AppDateRangeCalendar> createState() => _AppDateRangeCalendarState();
@@ -61,9 +68,19 @@ class _AppDateRangeCalendarState extends State<AppDateRangeCalendar> {
     );
   }
 
-  bool _isSelectable(DateTime day) {
+  bool _isInRange(DateTime day) {
     return _dayKey(day) >= _dayKey(widget.firstDate) &&
-        _dayKey(day) <= _dayKey(widget.lastDate) &&
+        _dayKey(day) <= _dayKey(widget.lastDate);
+  }
+
+  bool _isUnavailable(DateTime day) {
+    return _isInRange(day) &&
+        (widget.unavailableDayPredicate?.call(day) ?? false);
+  }
+
+  bool _isSelectable(DateTime day) {
+    return _isInRange(day) &&
+        !_isUnavailable(day) &&
         (widget.selectableDayPredicate?.call(day) ?? true);
   }
 
@@ -92,6 +109,8 @@ class _AppDateRangeCalendarState extends State<AppDateRangeCalendar> {
                 rangeStart: widget.rangeStart,
                 rangeEnd: widget.rangeEnd,
                 isSelectable: _isSelectable,
+                isUnavailable: _isUnavailable,
+                unavailableDayLabel: widget.unavailableDayLabel,
                 onDaySelected: widget.onDaySelected,
                 onPrevious: page > 0 ? () => _showPage(page - 1) : null,
                 onNext: page < _monthCount - 1
@@ -115,6 +134,8 @@ class _MonthPage extends StatelessWidget {
     required this.rangeStart,
     required this.rangeEnd,
     required this.isSelectable,
+    required this.isUnavailable,
+    required this.unavailableDayLabel,
     required this.onDaySelected,
     required this.onPrevious,
     required this.onNext,
@@ -125,7 +146,9 @@ class _MonthPage extends StatelessWidget {
   final DateTime? rangeStart;
   final DateTime? rangeEnd;
   final bool Function(DateTime day) isSelectable;
-  final ValueChanged<DateTime> onDaySelected;
+  final bool Function(DateTime day) isUnavailable;
+  final String? unavailableDayLabel;
+  final ValueChanged<DateTime>? onDaySelected;
   final VoidCallback? onPrevious;
   final VoidCallback? onNext;
 
@@ -148,12 +171,21 @@ class _MonthPage extends StatelessWidget {
         return SizedBox.square(dimension: daySize);
       }
       final day = DateTime(month.year, month.month, dayNumber);
+      final selectable = isSelectable(day);
+      final onDaySelected = this.onDaySelected;
+      final unavailable = isUnavailable(day);
       return _Day(
         day: day,
         size: daySize,
         position: _positionOf(day),
         isToday: DateUtils.isSameDay(day, today),
-        onTap: isSelectable(day) ? () => onDaySelected(day) : null,
+        isAvailable: selectable,
+        isUnavailable: unavailable,
+        unavailableLabel: unavailable ? unavailableDayLabel : null,
+        readOnly: onDaySelected == null,
+        onTap: selectable && onDaySelected != null
+            ? () => onDaySelected(day)
+            : null,
       );
     }
 
@@ -253,6 +285,10 @@ class _Day extends StatelessWidget {
     required this.size,
     required this.position,
     required this.isToday,
+    required this.isAvailable,
+    required this.isUnavailable,
+    required this.unavailableLabel,
+    required this.readOnly,
     required this.onTap,
   });
 
@@ -260,18 +296,23 @@ class _Day extends StatelessWidget {
   final double size;
   final _RangePosition position;
   final bool isToday;
+
+  final bool isAvailable;
+  final bool isUnavailable;
+  final String? unavailableLabel;
+  final bool readOnly;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.accommodationColors;
     final localizations = MaterialLocalizations.of(context);
-    final enabled = onTap != null;
+    final interactive = onTap != null;
 
     final Color textColor;
     if (position.isEndpoint) {
       textColor = colors.textOnAction;
-    } else if (enabled) {
+    } else if (isAvailable) {
       textColor = colors.textDefault;
     } else {
       textColor = colors.textMuted.withValues(
@@ -301,10 +342,11 @@ class _Day extends StatelessWidget {
             ),
           MergeSemantics(
             child: Semantics(
-              button: true,
-              enabled: enabled,
+              button: !readOnly,
+              enabled: readOnly ? null : interactive,
               selected: position != _RangePosition.none,
               label: localizations.formatFullDate(day),
+              value: unavailableLabel,
               // Ink paints on the nearest Material; without this one the
               // range band would cover the endpoint circle.
               child: Material(
@@ -334,6 +376,10 @@ class _Day extends StatelessWidget {
                                 fontWeight: position.isEndpoint || isToday
                                     ? AppTypography.weightSemibold
                                     : null,
+                                decoration: isUnavailable
+                                    ? TextDecoration.lineThrough
+                                    : null,
+                                decorationColor: textColor,
                               ),
                         ),
                       ),

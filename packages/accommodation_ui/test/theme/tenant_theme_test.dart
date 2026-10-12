@@ -18,6 +18,7 @@ void main() {
       expect(colors.surfaceAction, const Color(0xFF3366FF));
       expect(colors.textMuted, const Color(0xFF666666));
       expect(colors.stateError, const Color(0xFFBA1A1A));
+      expect(colors.stateFavourite, const Color(0xFFE0182D));
     });
 
     test('uses the dark palette and dark state colors', () {
@@ -30,6 +31,7 @@ void main() {
       expect(theme.brightness, Brightness.dark);
       expect(theme.scaffoldBackgroundColor, const Color(0xFF111111));
       expect(colors.stateError, const Color(0xFFFFB4AB));
+      expect(colors.stateFavourite, const Color(0xFFFF6B78));
     });
 
     test('maps semantic colors onto Material color roles', () {

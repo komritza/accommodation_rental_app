@@ -15,8 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GuestFilterDraftState {
 
- ListingSearchQuery get filters;/// A check-in picked on the calendar while the check-out is still open.
- DateTime? get pendingCheckIn;
+ ListingSearchQuery get filters; DateTime? get pendingCheckIn;
 /// Create a copy of GuestFilterDraftState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -227,7 +226,6 @@ class _GuestFilterDraftState implements GuestFilterDraftState {
   
 
 @override final  ListingSearchQuery filters;
-/// A check-in picked on the calendar while the check-out is still open.
 @override final  DateTime? pendingCheckIn;
 
 /// Create a copy of GuestFilterDraftState

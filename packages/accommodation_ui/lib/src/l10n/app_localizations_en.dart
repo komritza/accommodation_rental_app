@@ -376,4 +376,140 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chipNoRatingText => 'New';
+
+  @override
+  String listingLocation(String city, String country) {
+    return '$city, $country';
+  }
+
+  @override
+  String get listingDetailErrorTitle => 'Couldn\'t load listing details';
+
+  @override
+  String get listingDetailNotFoundTitle => 'This stay is no longer available';
+
+  @override
+  String get listingDetailNotFoundMessage =>
+      'It may have been removed by the host.';
+
+  @override
+  String get listingDetailStays => 'Stays';
+
+  @override
+  String listingDetailAppBarTitle(String city, String country) {
+    return 'Stays · $city, $country';
+  }
+
+  @override
+  String listingDetailPhotoLabel(String title, int index, int count) {
+    return '$title, photo $index of $count';
+  }
+
+  @override
+  String listingDetailReviews(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reviews',
+      one: '1 review',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get listingDetailAboutThisPlace => 'About this place';
+
+  @override
+  String get listingDetailWhatThisPlaceOffers => 'What this place offers';
+
+  @override
+  String get listingAvailabilityTitle => 'Availability';
+
+  @override
+  String get listingAvailabilitySubtitle =>
+      'Struck-through days are already taken.';
+
+  @override
+  String get listingAvailabilityError => 'Couldn\'t load availability.';
+
+  @override
+  String get availabilityLegendAvailable => 'Available';
+
+  @override
+  String get availabilityLegendTaken => 'Taken';
+
+  @override
+  String get availabilityLegendToday => 'Today';
+
+  @override
+  String get amenityWifi => 'Wi-Fi';
+
+  @override
+  String get amenityKitchen => 'Kitchen';
+
+  @override
+  String get amenityParking => 'Parking';
+
+  @override
+  String get amenityWasher => 'Washing machine';
+
+  @override
+  String get amenityDryer => 'Dryer';
+
+  @override
+  String get amenityAirConditioning => 'Air conditioning';
+
+  @override
+  String get amenityHeating => 'Heating';
+
+  @override
+  String get amenityTv => 'TV';
+
+  @override
+  String get amenityPool => 'Pool';
+
+  @override
+  String get amenityHotTub => 'Hot tub';
+
+  @override
+  String get amenityFireplace => 'Fireplace';
+
+  @override
+  String get amenityBalcony => 'Balcony';
+
+  @override
+  String get amenitySeaView => 'Sea view';
+
+  @override
+  String get amenityMountainView => 'Mountain view';
+
+  @override
+  String get amenitySkiStorage => 'Ski storage';
+
+  @override
+  String get amenityPetsAllowed => 'Pets allowed';
+
+  @override
+  String get amenityWorkspace => 'Workspace';
+
+  @override
+  String get amenityElevator => 'Elevator';
+
+  @override
+  String get amenityBbq => 'BBQ';
+
+  @override
+  String get amenitySauna => 'Sauna';
+
+  @override
+  String get favouriteAdd => 'Save to favourites';
+
+  @override
+  String get favouriteRemove => 'Remove from favourites';
+
+  @override
+  String get favouritesLoadError => 'Unable to load favourites';
+
+  @override
+  String get favouritesUpdateError => 'Unable to update favourites';
 }

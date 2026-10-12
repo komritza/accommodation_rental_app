@@ -18,9 +18,14 @@ import 'widgets/guest_search_bar.dart';
 import 'widgets/listing_card.dart';
 
 class GuestHomeScreen extends ConsumerWidget {
-  const GuestHomeScreen({super.key, required this.onProfilePressed});
+  const GuestHomeScreen({
+    super.key,
+    required this.onProfilePressed,
+    required this.onListingPressed,
+  });
 
   final VoidCallback onProfilePressed;
+  final ValueChanged<String> onListingPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -230,8 +235,10 @@ class GuestHomeScreen extends ConsumerWidget {
             itemCount: state.listings.length,
             separatorBuilder: (context, index) =>
                 const SizedBox(height: AppSpacing.lg),
-            itemBuilder: (context, index) =>
-                ListingCard(listing: state.listings[index]),
+            itemBuilder: (context, index) => ListingCard(
+              listing: state.listings[index],
+              onTap: () => onListingPressed(state.listings[index].id),
+            ),
           ),
         ),
         SliverPadding(

@@ -15,8 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ListingSearchQuery {
 
- String? get city; int? get guests; num? get minPrice; num? get maxPrice;/// Only listings free for every night of the stay.
- StayDates? get dates;
+ String? get city; int? get guests; num? get minPrice; num? get maxPrice; StayDates? get dates;
 /// Create a copy of ListingSearchQuery
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -224,7 +223,6 @@ class _ListingSearchQuery extends ListingSearchQuery {
 @override final  int? guests;
 @override final  num? minPrice;
 @override final  num? maxPrice;
-/// Only listings free for every night of the stay.
 @override final  StayDates? dates;
 
 /// Create a copy of ListingSearchQuery

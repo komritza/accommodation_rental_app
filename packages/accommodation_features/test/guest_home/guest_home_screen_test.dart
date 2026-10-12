@@ -5,8 +5,10 @@ import 'package:accommodation_core/testing.dart';
 import 'package:accommodation_features/guest_home.dart';
 import 'package:accommodation_features/listings.dart';
 import 'package:accommodation_features/src/common/dependencies.dart';
+import 'package:accommodation_features/src/common/guest_calendar.dart';
 import 'package:accommodation_features/src/guest_home/guest_filter_draft.dart';
 import 'package:accommodation_features/src/guest_home/widgets/guest_filters_sheet.dart';
+import 'package:accommodation_features/src/guest_home/widgets/listing_card.dart';
 import 'package:accommodation_features/testing.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ final _today = DateTime.utc(2030, 3, 10);
 Widget _wrap(
   FakeListingsRepository repository, {
   VoidCallback? onProfilePressed,
+  ValueChanged<String>? onListingPressed,
   Brightness brightness = Brightness.light,
 }) {
   final config = createTestConfig();
@@ -39,7 +42,10 @@ Widget _wrap(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: buildTenantTheme(palette, brightness: brightness),
-      home: GuestHomeScreen(onProfilePressed: onProfilePressed ?? () {}),
+      home: GuestHomeScreen(
+        onProfilePressed: onProfilePressed ?? () {},
+        onListingPressed: onListingPressed ?? (_) {},
+      ),
     ),
   );
 }
@@ -49,13 +55,18 @@ Future<void> _pumpScreen(
   FakeListingsRepository repository, {
   Size size = _phoneSize,
   VoidCallback? onProfilePressed,
+  ValueChanged<String>? onListingPressed,
 }) async {
   tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.reset);
 
   await tester.pumpWidget(
-    _wrap(repository, onProfilePressed: onProfilePressed),
+    _wrap(
+      repository,
+      onProfilePressed: onProfilePressed,
+      onListingPressed: onListingPressed,
+    ),
   );
   await tester.pumpAndSettle();
 }
@@ -343,6 +354,21 @@ void main() {
     await tester.tap(find.byTooltip(l10n.guestNavProfile));
 
     expect(profileOpened, isTrue);
+  });
+
+  testWidgets('opens the tapped listing', (tester) async {
+    final opened = <String>[];
+    await _pumpScreen(
+      tester,
+      FakeListingsRepository(listings: listings),
+      onListingPressed: opened.add,
+    );
+
+    await tester.tap(
+      find.widgetWithText(ListingCard, 'Sunlit Quarters in Lucerne'),
+    );
+
+    expect(opened, ['a']);
   });
 
   testWidgets('keeps content to a readable column on wide screens', (

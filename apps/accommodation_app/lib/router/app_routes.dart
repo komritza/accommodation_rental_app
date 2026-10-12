@@ -6,6 +6,7 @@ abstract final class AppRouteNames {
   static const clientProfile = 'clientProfile';
   static const hostHome = 'hostHome';
   static const sessionRestoreError = 'sessionRestoreError';
+  static const listingDetail = 'listingDetail';
 }
 
 abstract final class AppRoutePaths {
@@ -16,4 +17,5 @@ abstract final class AppRoutePaths {
   static const clientProfile = '/client/profile';
   static const hostHome = '/host';
   static const sessionRestoreError = '/session-restore';
+  static String listingDetail(String listingId) => '/listing/$listingId';
 }

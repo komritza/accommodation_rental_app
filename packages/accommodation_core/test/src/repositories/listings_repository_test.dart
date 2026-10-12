@@ -178,6 +178,202 @@ void main() {
     });
   });
 
+  group('fetchListing', () {
+    test('requests the listing in the given language', () async {
+      adapter.onGet(
+        '/listings/lst_00001',
+        (server) => server.reply(200, _listingJson()),
+        queryParameters: {'language': 'de'},
+      );
+
+      final result = await repository.fetchListing(
+        id: 'lst_00001',
+        language: 'de',
+      );
+
+      result.match((failure) => fail('Unexpected failure: ${failure.type}'), (
+        listing,
+      ) {
+        expect(listing.id, 'lst_00001');
+        expect(listing.amenities, ['wifi', 'unknown_amenity']);
+      });
+    });
+
+    test('maps a missing listing to a 404 failure', () async {
+      adapter.onGet(
+        '/listings/missing',
+        (server) => server.reply(404, {
+          'statusCode': 404,
+          'messageCode': 'error.notFound',
+          'message': 'Not found',
+        }),
+        queryParameters: {'language': 'en'},
+      );
+
+      final result = await repository.fetchListing(
+        id: 'missing',
+        language: 'en',
+      );
+
+      result.match((failure) {
+        expect(failure.type, ApiFailureType.http);
+        expect(failure.statusCode, 404);
+      }, (_) => fail('Expected an HTTP failure'));
+    });
+
+    test('rejects an empty response body', () async {
+      adapter.onGet(
+        '/listings/lst_00001',
+        (server) => server.reply(200, <String, dynamic>{}),
+        queryParameters: {'language': 'en'},
+      );
+
+      final result = await repository.fetchListing(
+        id: 'lst_00001',
+        language: 'en',
+      );
+
+      result.match(
+        (failure) => expect(failure.type, ApiFailureType.invalidResponse),
+        (_) => fail('Expected an invalid response failure'),
+      );
+    });
+  });
+
+  group('fetchAvailability', () {
+    test('sends the window as calendar dates and parses taken days', () async {
+      adapter.onGet(
+        '/listings/lst_00001/availability',
+        (server) => server.reply(200, {
+          'listingId': 'lst_00001',
+          'from': '2026-03-01',
+          'to': '2027-03-02',
+          'unavailable': [
+            {'date': '2026-03-04', 'reason': 'booked'},
+            {'date': '2026-03-05', 'reason': 'blocked'},
+            {'date': '2026-03-06', 'reason': 'maintenance'},
+          ],
+        }),
+        queryParameters: {'from': '2026-03-01', 'to': '2027-03-02'},
+      );
+
+      final result = await repository.fetchAvailability(
+        id: 'lst_00001',
+        from: DateTime(2026, 3, 1, 22, 30),
+        to: DateTime.utc(2027, 3, 2),
+      );
+
+      result.match((failure) => fail('Unexpected failure: ${failure.type}'), (
+        availability,
+      ) {
+        expect(availability.listingId, 'lst_00001');
+        expect(availability.from, DateTime.utc(2026, 3, 1));
+        expect(availability.to, DateTime.utc(2027, 3, 2));
+        expect(availability.unavailable, [
+          UnavailableDay(
+            date: DateTime.utc(2026, 3, 4),
+            reason: UnavailableReason.booked,
+          ),
+          UnavailableDay(
+            date: DateTime.utc(2026, 3, 5),
+            reason: UnavailableReason.blocked,
+          ),
+          UnavailableDay(
+            date: DateTime.utc(2026, 3, 6),
+            reason: UnavailableReason.booked,
+          ),
+        ]);
+      });
+    });
+
+    test('maps a missing listing to a 404 failure', () async {
+      adapter.onGet(
+        '/listings/missing/availability',
+        (server) => server.reply(404, {
+          'statusCode': 404,
+          'messageCode': 'listing.NotFoundException',
+          'message': 'Not found',
+        }),
+        queryParameters: {'from': '2026-03-01', 'to': '2026-04-01'},
+      );
+
+      final result = await repository.fetchAvailability(
+        id: 'missing',
+        from: DateTime(2026, 3, 1),
+        to: DateTime(2026, 4, 1),
+      );
+
+      result.match((failure) {
+        expect(failure.type, ApiFailureType.http);
+        expect(failure.statusCode, 404);
+      }, (_) => fail('Expected an HTTP failure'));
+    });
+
+    test('maps a window the API refuses to a 400 failure', () async {
+      adapter.onGet(
+        '/listings/lst_00001/availability',
+        (server) => server.reply(400, {
+          'statusCode': 400,
+          'messageCode': 'error.rangeTooLong',
+          'message': 'Range too long',
+        }),
+        queryParameters: {'from': '2026-03-01', 'to': '2027-03-03'},
+      );
+
+      final result = await repository.fetchAvailability(
+        id: 'lst_00001',
+        from: DateTime(2026, 3, 1),
+        to: DateTime(2027, 3, 3),
+      );
+
+      result.match((failure) {
+        expect(failure.type, ApiFailureType.http);
+        expect(failure.statusCode, 400);
+      }, (_) => fail('Expected an HTTP failure'));
+    });
+  });
+
+  group('ListingAvailability', () {
+    ListingAvailability availability(List<DateTime> days) {
+      return ListingAvailability(
+        listingId: 'lst_00001',
+        from: DateTime.utc(2026, 3, 1),
+        to: DateTime.utc(2026, 4, 1),
+        unavailable: [
+          for (final day in days)
+            UnavailableDay(date: day, reason: UnavailableReason.booked),
+        ],
+      );
+    }
+
+    test('matches taken days whatever the time zone or time of day', () {
+      final taken = availability([DateTime.utc(2026, 3, 4)]);
+
+      expect(taken.isTaken(DateTime(2026, 3, 4)), isTrue);
+      expect(taken.isTaken(DateTime(2026, 3, 4, 23, 59)), isTrue);
+      expect(taken.isTaken(DateTime.utc(2026, 3, 4)), isTrue);
+      expect(taken.isTaken(DateTime(2026, 3, 3)), isFalse);
+      expect(taken.isTaken(DateTime(2026, 3, 5)), isFalse);
+    });
+
+    test('round-trips through JSON as calendar dates', () {
+      final taken = availability([DateTime.utc(2026, 3, 4)]);
+
+      final json = taken.toJson();
+
+      expect(json['from'], '2026-03-01');
+      expect(
+        ListingAvailability.fromJson(
+          (json
+            ..['unavailable'] = [
+              for (final day in taken.unavailable) day.toJson(),
+            ]),
+        ),
+        taken,
+      );
+    });
+  });
+
   group('fetchFacets', () {
     test('parses the filter vocabulary and bounds', () async {
       adapter.onGet(

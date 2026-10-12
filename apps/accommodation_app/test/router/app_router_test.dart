@@ -8,7 +8,9 @@ import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_core/testing.dart';
 import 'package:accommodation_features/auth.dart';
 import 'package:accommodation_features/dependencies.dart';
+import 'package:accommodation_features/favourites.dart';
 import 'package:accommodation_features/guest_home.dart';
+import 'package:accommodation_features/listing_detail.dart';
 import 'package:accommodation_features/listings.dart';
 import 'package:accommodation_features/testing.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
@@ -46,6 +48,9 @@ ProviderContainer _container(
       authControllerProvider.overrideWith(createController),
       listingsRepositoryProvider.overrideWithValue(
         FakeListingsRepository(listings: [createTestListing()]),
+      ),
+      favouritesRepositoryProvider.overrideWithValue(
+        FakeFavouritesRepository(),
       ),
     ],
   );
@@ -208,6 +213,34 @@ void main() {
     await tester.tap(find.text(l10n.signOut));
     await tester.pumpAndSettle();
     expect(find.byType(AuthScreen), findsOneWidget);
+  });
+
+  testWidgets('opens a listing from the guest home and goes back', (
+    tester,
+  ) async {
+    final config = createTestConfig();
+    final container = _container(
+      () => FakeAuthController(initialUser: testClient),
+    );
+    addTearDown(container.dispose);
+
+    await tester.pumpWidget(_wrap(container, config: config));
+    await tester.pumpAndSettle();
+
+    final card = find.bySemanticsLabel(RegExp('^Sunlit Quarters in Lucerne'));
+    await tester.ensureVisible(card);
+    await tester.pumpAndSettle();
+    await tester.tap(card);
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ListingDetailScreen), findsOneWidget);
+    expect(find.text('Stays · Lucerne, CH'), findsOneWidget);
+    expect(find.byType(NavigationBar), findsNothing);
+
+    await tester.tap(find.byType(BackButton));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(GuestHomeScreen), findsOneWidget);
   });
 
   testWidgets('sends a host to the host placeholder', (tester) async {

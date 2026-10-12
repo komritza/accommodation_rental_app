@@ -649,6 +649,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New'**
   String get chipNoRatingText;
+
+  /// No description provided for @listingLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'{city}, {country}'**
+  String listingLocation(String city, String country);
+
+  /// No description provided for @listingDetailErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load listing details'**
+  String get listingDetailErrorTitle;
+
+  /// No description provided for @listingDetailNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This stay is no longer available'**
+  String get listingDetailNotFoundTitle;
+
+  /// No description provided for @listingDetailNotFoundMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been removed by the host.'**
+  String get listingDetailNotFoundMessage;
+
+  /// No description provided for @listingDetailStays.
+  ///
+  /// In en, this message translates to:
+  /// **'Stays'**
+  String get listingDetailStays;
+
+  /// No description provided for @listingDetailAppBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stays · {city}, {country}'**
+  String listingDetailAppBarTitle(String city, String country);
+
+  /// No description provided for @listingDetailPhotoLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{title}, photo {index} of {count}'**
+  String listingDetailPhotoLabel(String title, int index, int count);
+
+  /// No description provided for @listingDetailReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 review} other{{count} reviews}}'**
+  String listingDetailReviews(int count);
+
+  /// No description provided for @listingDetailAboutThisPlace.
+  ///
+  /// In en, this message translates to:
+  /// **'About this place'**
+  String get listingDetailAboutThisPlace;
+
+  /// No description provided for @listingDetailWhatThisPlaceOffers.
+  ///
+  /// In en, this message translates to:
+  /// **'What this place offers'**
+  String get listingDetailWhatThisPlaceOffers;
+
+  /// No description provided for @listingAvailabilityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Availability'**
+  String get listingAvailabilityTitle;
+
+  /// No description provided for @listingAvailabilitySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Struck-through days are already taken.'**
+  String get listingAvailabilitySubtitle;
+
+  /// No description provided for @listingAvailabilityError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load availability.'**
+  String get listingAvailabilityError;
+
+  /// No description provided for @availabilityLegendAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get availabilityLegendAvailable;
+
+  /// No description provided for @availabilityLegendTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get availabilityLegendTaken;
+
+  /// No description provided for @availabilityLegendToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get availabilityLegendToday;
+
+  /// No description provided for @amenityWifi.
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi'**
+  String get amenityWifi;
+
+  /// No description provided for @amenityKitchen.
+  ///
+  /// In en, this message translates to:
+  /// **'Kitchen'**
+  String get amenityKitchen;
+
+  /// No description provided for @amenityParking.
+  ///
+  /// In en, this message translates to:
+  /// **'Parking'**
+  String get amenityParking;
+
+  /// No description provided for @amenityWasher.
+  ///
+  /// In en, this message translates to:
+  /// **'Washing machine'**
+  String get amenityWasher;
+
+  /// No description provided for @amenityDryer.
+  ///
+  /// In en, this message translates to:
+  /// **'Dryer'**
+  String get amenityDryer;
+
+  /// No description provided for @amenityAirConditioning.
+  ///
+  /// In en, this message translates to:
+  /// **'Air conditioning'**
+  String get amenityAirConditioning;
+
+  /// No description provided for @amenityHeating.
+  ///
+  /// In en, this message translates to:
+  /// **'Heating'**
+  String get amenityHeating;
+
+  /// No description provided for @amenityTv.
+  ///
+  /// In en, this message translates to:
+  /// **'TV'**
+  String get amenityTv;
+
+  /// No description provided for @amenityPool.
+  ///
+  /// In en, this message translates to:
+  /// **'Pool'**
+  String get amenityPool;
+
+  /// No description provided for @amenityHotTub.
+  ///
+  /// In en, this message translates to:
+  /// **'Hot tub'**
+  String get amenityHotTub;
+
+  /// No description provided for @amenityFireplace.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace'**
+  String get amenityFireplace;
+
+  /// No description provided for @amenityBalcony.
+  ///
+  /// In en, this message translates to:
+  /// **'Balcony'**
+  String get amenityBalcony;
+
+  /// No description provided for @amenitySeaView.
+  ///
+  /// In en, this message translates to:
+  /// **'Sea view'**
+  String get amenitySeaView;
+
+  /// No description provided for @amenityMountainView.
+  ///
+  /// In en, this message translates to:
+  /// **'Mountain view'**
+  String get amenityMountainView;
+
+  /// No description provided for @amenitySkiStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Ski storage'**
+  String get amenitySkiStorage;
+
+  /// No description provided for @amenityPetsAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Pets allowed'**
+  String get amenityPetsAllowed;
+
+  /// No description provided for @amenityWorkspace.
+  ///
+  /// In en, this message translates to:
+  /// **'Workspace'**
+  String get amenityWorkspace;
+
+  /// No description provided for @amenityElevator.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevator'**
+  String get amenityElevator;
+
+  /// No description provided for @amenityBbq.
+  ///
+  /// In en, this message translates to:
+  /// **'BBQ'**
+  String get amenityBbq;
+
+  /// No description provided for @amenitySauna.
+  ///
+  /// In en, this message translates to:
+  /// **'Sauna'**
+  String get amenitySauna;
+
+  /// No description provided for @favouriteAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to favourites'**
+  String get favouriteAdd;
+
+  /// No description provided for @favouriteRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favourites'**
+  String get favouriteRemove;
+
+  /// No description provided for @favouritesLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load favourites'**
+  String get favouritesLoadError;
+
+  /// No description provided for @favouritesUpdateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to update favourites'**
+  String get favouritesUpdateError;
 }
 
 class _AppLocalizationsDelegate

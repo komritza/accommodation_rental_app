@@ -1,7 +1,15 @@
 import 'package:accommodation_core/src/models/tenant_runtime_config.dart';
 import 'package:dio/dio.dart';
 
-Dio createApiClient({required String baseUrl, required TenantSlug tenant}) {
+typedef AccessTokenReader = Future<String?> Function();
+
+const _authorizationHeader = 'Authorization';
+
+Dio createApiClient({
+  required String baseUrl,
+  required TenantSlug tenant,
+  required AccessTokenReader readAccessToken,
+}) {
   final dio = Dio(
     BaseOptions(
       baseUrl: baseUrl,
@@ -15,8 +23,14 @@ Dio createApiClient({required String baseUrl, required TenantSlug tenant}) {
 
   dio.interceptors.add(
     InterceptorsWrapper(
-      onRequest: (options, handler) {
+      onRequest: (options, handler) async {
         options.headers['tenant'] = tenant.name;
+        if (!options.headers.containsKey(_authorizationHeader)) {
+          final token = await readAccessToken();
+          if (token != null && token.isNotEmpty) {
+            options.headers[_authorizationHeader] = 'Bearer $token';
+          }
+        }
         handler.next(options);
       },
     ),
