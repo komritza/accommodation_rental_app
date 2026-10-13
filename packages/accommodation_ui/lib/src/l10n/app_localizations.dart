@@ -1225,6 +1225,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Available'**
   String get hostBlockedDaysAvailableLabel;
+
+  /// No description provided for @hostBookingsButton.
+  ///
+  /// In en, this message translates to:
+  /// **'View bookings'**
+  String get hostBookingsButton;
+
+  /// No description provided for @hostBookingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get hostBookingsTitle;
+
+  /// No description provided for @hostBookingsLoadErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load bookings'**
+  String get hostBookingsLoadErrorTitle;
+
+  /// No description provided for @hostBookingsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No bookings yet'**
+  String get hostBookingsEmptyTitle;
+
+  /// No description provided for @hostBookingsEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings for this listing will appear here.'**
+  String get hostBookingsEmptyMessage;
+
+  /// No description provided for @hostBookingsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 booking} other{{count} bookings}}'**
+  String hostBookingsCount(int count);
+
+  /// No description provided for @hostBookingsNights.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 night} other{{count} nights}}'**
+  String hostBookingsNights(int count);
+
+  /// No description provided for @hostBookingsLoadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Load more'**
+  String get hostBookingsLoadMore;
+
+  /// No description provided for @hostBookingsLoadMoreError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load more bookings.'**
+  String get hostBookingsLoadMoreError;
+
+  /// No description provided for @bookingStatusConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get bookingStatusConfirmed;
+
+  /// No description provided for @bookingStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get bookingStatusPending;
+
+  /// No description provided for @bookingStatusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get bookingStatusCompleted;
+
+  /// No description provided for @bookingStatusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get bookingStatusCancelled;
+
+  /// No description provided for @bookingStatusUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown status'**
+  String get bookingStatusUnknown;
 }
 
 class _AppLocalizationsDelegate

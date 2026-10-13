@@ -103,6 +103,30 @@ Listing createTestListing({
   );
 }
 
+Booking createTestBooking({
+  String id = 'bkg_00001',
+  String listingId = 'lst_00001',
+  String guestName = 'Lena Graf',
+  DateTime? checkIn,
+  DateTime? checkOut,
+  int guests = 2,
+  BookingStatus status = BookingStatus.confirmed,
+  num totalPrice = 406,
+  String currency = 'CHF',
+}) {
+  return Booking(
+    id: id,
+    listingId: listingId,
+    guestName: guestName,
+    checkIn: checkIn ?? DateTime.utc(2026, 3, 1),
+    checkOut: checkOut ?? DateTime.utc(2026, 3, 3),
+    guests: guests,
+    status: status,
+    totalPrice: totalPrice,
+    currency: currency,
+  );
+}
+
 ListingFacets createTestFacets({
   List<String> cities = const ['Lucerne', 'Zermatt'],
   num priceMin = 80,

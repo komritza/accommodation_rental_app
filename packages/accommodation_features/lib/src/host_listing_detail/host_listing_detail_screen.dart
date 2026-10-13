@@ -14,11 +14,13 @@ class HostListingDetailScreen extends ConsumerWidget {
     required this.listingId,
     required this.onEditPressed,
     required this.onManageBlockedDaysPressed,
+    required this.onBookingsPressed,
   });
 
   final String listingId;
   final VoidCallback onEditPressed;
   final VoidCallback onManageBlockedDaysPressed;
+  final VoidCallback onBookingsPressed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -64,6 +66,7 @@ class HostListingDetailScreen extends ConsumerWidget {
           onEditPressed: onEditPressed,
           canManageBlockedDays: canManageBlockedDays,
           onManageBlockedDaysPressed: onManageBlockedDaysPressed,
+          onBookingsPressed: onBookingsPressed,
         ),
       ),
     );
@@ -76,12 +79,14 @@ class _HostListingDetailContent extends StatelessWidget {
     required this.onEditPressed,
     required this.canManageBlockedDays,
     required this.onManageBlockedDaysPressed,
+    required this.onBookingsPressed,
   });
 
   final Listing listing;
   final VoidCallback onEditPressed;
   final bool canManageBlockedDays;
   final VoidCallback onManageBlockedDaysPressed;
+  final VoidCallback onBookingsPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -203,6 +208,15 @@ class _HostListingDetailContent extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        onPressed: onBookingsPressed,
+                        icon: const Icon(Icons.event_note_outlined),
+                        label: Text(l10n.hostBookingsButton),
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.md),
                     if (canManageBlockedDays) ...[
                       SizedBox(
                         width: double.infinity,

@@ -698,4 +698,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hostBlockedDaysAvailableLabel => 'Available';
+
+  @override
+  String get hostBookingsButton => 'View bookings';
+
+  @override
+  String get hostBookingsTitle => 'Bookings';
+
+  @override
+  String get hostBookingsLoadErrorTitle => 'Couldn\'t load bookings';
+
+  @override
+  String get hostBookingsEmptyTitle => 'No bookings yet';
+
+  @override
+  String get hostBookingsEmptyMessage =>
+      'Bookings for this listing will appear here.';
+
+  @override
+  String hostBookingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count bookings',
+      one: '1 booking',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String hostBookingsNights(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count nights',
+      one: '1 night',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get hostBookingsLoadMore => 'Load more';
+
+  @override
+  String get hostBookingsLoadMoreError => 'Couldn\'t load more bookings.';
+
+  @override
+  String get bookingStatusConfirmed => 'Confirmed';
+
+  @override
+  String get bookingStatusPending => 'Pending';
+
+  @override
+  String get bookingStatusCompleted => 'Completed';
+
+  @override
+  String get bookingStatusCancelled => 'Cancelled';
+
+  @override
+  String get bookingStatusUnknown => 'Unknown status';
 }

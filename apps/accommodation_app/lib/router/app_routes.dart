@@ -11,6 +11,7 @@ abstract final class AppRouteNames {
   static const hostListingDetail = 'hostListingDetail';
   static const hostListingDetailEdit = 'hostListingDetailEdit';
   static const hostBlockedDays = 'hostBlockedDays';
+  static const hostBookings = 'hostBookings';
 }
 
 abstract final class AppRoutePaths {
@@ -29,4 +30,6 @@ abstract final class AppRoutePaths {
       '/host/listings/$listingId/edit';
   static String hostBlockedDays(String listingId) =>
       '/host/listings/$listingId/blocked-days';
+  static String hostBookings(String listingId) =>
+      '/host/listings/$listingId/bookings';
 }

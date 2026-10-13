@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 
 import '../data/listings_remote_data_source.dart';
 import '../models/blocked_day.dart';
+import '../models/booking.dart';
 import '../models/listing.dart';
 import '../models/listing_availability.dart';
 import '../models/listing_facets.dart';
@@ -67,6 +68,20 @@ class ListingsRepository {
   }) {
     return runApiCall(
       () => _remoteDataSource.updateHostListing(id: id, changes: changes),
+    );
+  }
+
+  Future<Either<ApiFailure, CursorPage<Booking>>> fetchHostBookings({
+    required String listingId,
+    String? cursor,
+    int? limit,
+  }) {
+    return runApiCall(
+      () => _remoteDataSource.fetchHostBookings(
+        listingId: listingId,
+        cursor: cursor,
+        limit: limit,
+      ),
     );
   }
 

@@ -9,6 +9,7 @@ import 'package:accommodation_features/dependencies.dart';
 import 'package:accommodation_features/favourites.dart';
 import 'package:accommodation_features/guest_home.dart';
 import 'package:accommodation_features/host_blocked_days.dart';
+import 'package:accommodation_features/host_bookings.dart';
 import 'package:accommodation_features/host_edit_listing.dart';
 import 'package:accommodation_features/host_home.dart';
 import 'package:accommodation_features/host_listing_detail.dart';
@@ -273,7 +274,7 @@ void main() {
     expect(find.byType(NavigationBar), findsNothing);
   });
 
-  testWidgets('takes a host from a listing to its blocked days', (
+  testWidgets('takes a host from a listing to its blocked days and bookings', (
     tester,
   ) async {
     tester.view.physicalSize = const Size(800, 1200);
@@ -295,6 +296,12 @@ void main() {
     await tester.tap(find.text(l10n.hostBlockedDaysManageButton));
     await tester.pumpAndSettle();
     expect(find.byType(HostBlockedDaysScreen), findsOneWidget);
+
+    await tester.tap(find.byType(BackButton));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text(l10n.hostBookingsButton));
+    await tester.pumpAndSettle();
+    expect(find.byType(HostBookingsScreen), findsOneWidget);
 
     await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
@@ -352,6 +359,7 @@ void main() {
       AppRoutePaths.hostListingDetail('lst_00001'),
       AppRoutePaths.hostListingDetailEdit('lst_00001'),
       AppRoutePaths.hostBlockedDays('lst_00001'),
+      AppRoutePaths.hostBookings('lst_00001'),
       AppRoutePaths.hostProfile,
     ]) {
       container.read(appRouterProvider).go(path);

@@ -327,5 +327,33 @@
     "hostBlockedDaysBlockButton": "Block dates",
     "hostBlockedDaysUnblockButton": "Unblock date",
     "hostBlockedDaysActionError": "The operation failed. Please try again.",
-    "hostBlockedDaysAvailableLabel": "Available"
+    "hostBlockedDaysAvailableLabel": "Available",
+    "hostBookingsButton": "View bookings",
+    "hostBookingsTitle": "Bookings",
+    "hostBookingsLoadErrorTitle": "Couldn't load bookings",
+    "hostBookingsEmptyTitle": "No bookings yet",
+    "hostBookingsEmptyMessage": "Bookings for this listing will appear here.",
+    "hostBookingsCount": "{count, plural, =1{1 booking} other{{count} bookings}}",
+    "@hostBookingsCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hostBookingsNights": "{count, plural, =1{1 night} other{{count} nights}}",
+    "@hostBookingsNights": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hostBookingsLoadMore": "Load more",
+    "hostBookingsLoadMoreError": "Couldn't load more bookings.",
+    "bookingStatusConfirmed": "Confirmed",
+    "bookingStatusPending": "Pending",
+    "bookingStatusCompleted": "Completed",
+    "bookingStatusCancelled": "Cancelled",
+    "bookingStatusUnknown": "Unknown status"
 }

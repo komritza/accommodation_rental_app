@@ -718,4 +718,65 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get hostBlockedDaysAvailableLabel => 'Verfügbar';
+
+  @override
+  String get hostBookingsButton => 'Buchungen ansehen';
+
+  @override
+  String get hostBookingsTitle => 'Buchungen';
+
+  @override
+  String get hostBookingsLoadErrorTitle =>
+      'Buchungen konnten nicht geladen werden';
+
+  @override
+  String get hostBookingsEmptyTitle => 'Noch keine Buchungen';
+
+  @override
+  String get hostBookingsEmptyMessage =>
+      'Buchungen für dieses Inserat erscheinen hier.';
+
+  @override
+  String hostBookingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Buchungen',
+      one: '1 Buchung',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String hostBookingsNights(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Nächte',
+      one: '1 Nacht',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get hostBookingsLoadMore => 'Mehr laden';
+
+  @override
+  String get hostBookingsLoadMoreError =>
+      'Weitere Buchungen konnten nicht geladen werden.';
+
+  @override
+  String get bookingStatusConfirmed => 'Bestätigt';
+
+  @override
+  String get bookingStatusPending => 'Ausstehend';
+
+  @override
+  String get bookingStatusCompleted => 'Abgeschlossen';
+
+  @override
+  String get bookingStatusCancelled => 'Storniert';
+
+  @override
+  String get bookingStatusUnknown => 'Unbekannter Status';
 }

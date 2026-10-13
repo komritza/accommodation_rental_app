@@ -219,6 +219,73 @@ void main() {
     });
   });
 
+  group('fetchHostBookings', () {
+    Map<String, dynamic> bookingJson({
+      String id = 'bkg_00001',
+      String status = 'confirmed',
+    }) {
+      return {
+        'id': id,
+        'listingId': 'lst_00001',
+        'guestName': 'Lena Graf',
+        'checkIn': '2026-03-01',
+        'checkOut': '2026-03-04',
+        'guests': 2,
+        'status': status,
+        'totalPrice': 519,
+        'currency': 'CHF',
+      };
+    }
+
+    test('parses a page of bookings for the listing', () async {
+      adapter.onGet(
+        '/host/listings/lst_00001/bookings',
+        (server) => server.reply(200, [
+          bookingJson(),
+        ], headers: _pageHeaders(total: '12', next: 'cursor-2')),
+        queryParameters: {'limit': 10, 'nextCursor': 'cursor-1'},
+      );
+
+      final result = await repository.fetchHostBookings(
+        listingId: 'lst_00001',
+        cursor: 'cursor-1',
+        limit: 10,
+      );
+
+      result.match((failure) => fail('Unexpected failure: ${failure.type}'), (
+        page,
+      ) {
+        final booking = page.items.single;
+        expect(booking.guestName, 'Lena Graf');
+        expect(booking.checkIn, DateTime.utc(2026, 3));
+        expect(booking.checkOut, DateTime.utc(2026, 3, 4));
+        expect(booking.nights, 3);
+        expect(booking.status, BookingStatus.confirmed);
+        expect(booking.totalPrice, 519);
+        expect(page.totalCount, 12);
+        expect(page.nextCursor, 'cursor-2');
+      });
+    });
+
+    test('maps an unknown status instead of failing', () async {
+      adapter.onGet(
+        '/host/listings/lst_00001/bookings',
+        (server) => server.reply(200, [
+          bookingJson(status: 'refunded'),
+        ], headers: _pageHeaders(total: '1', next: 'null')),
+      );
+
+      final result = await repository.fetchHostBookings(listingId: 'lst_00001');
+
+      result.match((failure) => fail('Unexpected failure: ${failure.type}'), (
+        page,
+      ) {
+        expect(page.items.single.status, BookingStatus.unknown);
+        expect(page.hasNextPage, isFalse);
+      });
+    });
+  });
+
   group('updateHostListing', () {
     test('sends only the changes and returns the saved listing', () async {
       adapter.onPatch(

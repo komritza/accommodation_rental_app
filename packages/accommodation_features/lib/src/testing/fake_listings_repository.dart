@@ -29,6 +29,8 @@ class FakeListingsRepository extends ListingsRepository {
     this.blockedDaysFailure,
     this.blockFailure,
     this.unblockFailure,
+    this.hostBookings = const {},
+    this.hostBookingsFailure,
   }) : facets = facets ?? createTestFacets(),
        blockedDays = {
          for (final entry in (blockedDays ?? const {}).entries)
@@ -38,6 +40,11 @@ class FakeListingsRepository extends ListingsRepository {
 
   List<Listing> listings;
   List<Listing> hostListings;
+
+  /// Bookings keyed by listing id, already newest check-in first.
+  Map<String, List<Booking>> hostBookings;
+  ApiFailure? hostBookingsFailure;
+  final hostBookingsRequests = <({String listingId, String? cursor})>[];
 
   Map<String, List<StayDates>> bookings;
 
@@ -187,6 +194,31 @@ class FakeListingsRepository extends ListingsRepository {
         items: hostListings.sublist(offset, end),
         totalCount: hostListings.length,
         nextCursor: end < hostListings.length ? '$end' : null,
+      ),
+    );
+  }
+
+  @override
+  Future<Either<ApiFailure, CursorPage<Booking>>> fetchHostBookings({
+    required String listingId,
+    String? cursor,
+    int? limit,
+  }) async {
+    hostBookingsRequests.add((listingId: listingId, cursor: cursor));
+    await pendingResponse?.future;
+
+    final failure = hostBookingsFailure;
+    if (failure != null) return Left(failure);
+
+    final bookings = hostBookings[listingId] ?? const <Booking>[];
+    final offset = cursor == null ? 0 : int.parse(cursor);
+    final end = math.min(offset + (limit ?? pageSize), bookings.length);
+
+    return Right(
+      CursorPage(
+        items: bookings.sublist(offset, end),
+        totalCount: bookings.length,
+        nextCursor: end < bookings.length ? '$end' : null,
       ),
     );
   }

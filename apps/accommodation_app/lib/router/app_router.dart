@@ -11,6 +11,7 @@ import 'package:accommodation_features/dependencies.dart';
 import 'package:accommodation_features/favourites.dart';
 import 'package:accommodation_features/guest_home.dart';
 import 'package:accommodation_features/host_blocked_days.dart';
+import 'package:accommodation_features/host_bookings.dart';
 import 'package:accommodation_features/host_edit_listing.dart';
 import 'package:accommodation_features/host_home.dart';
 import 'package:accommodation_features/host_listing_detail.dart';
@@ -112,8 +113,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               AppRouteNames.hostBlockedDays,
               pathParameters: {'listingId': listingId},
             ),
+            onBookingsPressed: () => context.pushNamed(
+              AppRouteNames.hostBookings,
+              pathParameters: {'listingId': listingId},
+            ),
           );
         },
+      ),
+      GoRoute(
+        name: AppRouteNames.hostBookings,
+        path: AppRoutePaths.hostBookings(':listingId'),
+        builder: (context, state) =>
+            HostBookingsScreen(listingId: state.pathParameters['listingId']!),
       ),
       GoRoute(
         name: AppRouteNames.hostListingDetailEdit,

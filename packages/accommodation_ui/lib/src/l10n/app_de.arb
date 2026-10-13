@@ -327,5 +327,33 @@
     "hostBlockedDaysBlockButton": "Daten sperren",
     "hostBlockedDaysUnblockButton": "Datum freigeben",
     "hostBlockedDaysActionError": "Der Vorgang ist fehlgeschlagen. Bitte versuche es erneut.",
-    "hostBlockedDaysAvailableLabel": "Verfügbar"
+    "hostBlockedDaysAvailableLabel": "Verfügbar",
+    "hostBookingsButton": "Buchungen ansehen",
+    "hostBookingsTitle": "Buchungen",
+    "hostBookingsLoadErrorTitle": "Buchungen konnten nicht geladen werden",
+    "hostBookingsEmptyTitle": "Noch keine Buchungen",
+    "hostBookingsEmptyMessage": "Buchungen für dieses Inserat erscheinen hier.",
+    "hostBookingsCount": "{count, plural, =1{1 Buchung} other{{count} Buchungen}}",
+    "@hostBookingsCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hostBookingsNights": "{count, plural, =1{1 Nacht} other{{count} Nächte}}",
+    "@hostBookingsNights": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hostBookingsLoadMore": "Mehr laden",
+    "hostBookingsLoadMoreError": "Weitere Buchungen konnten nicht geladen werden.",
+    "bookingStatusConfirmed": "Bestätigt",
+    "bookingStatusPending": "Ausstehend",
+    "bookingStatusCompleted": "Abgeschlossen",
+    "bookingStatusCancelled": "Storniert",
+    "bookingStatusUnknown": "Unbekannter Status"
 }
