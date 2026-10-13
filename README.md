@@ -1,17 +1,67 @@
-# accommodation_rental_app
+# Accommodation App
 
-A new Flutter project.
+A Flutter accommodation booking application supporting two tenant configurations: Alpine and Riviera.
 
-## Getting Started
+## Requirements
 
-This project is a starting point for a Flutter application.
+- Flutter 3.47.7
+- Dart 3.13.5
+- A running instance of the provided mock API
 
-A few resources to get you started if this is your first Flutter project:
+## Running the App
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Run commands from the repository root.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Alpine
+
+```bash
+flutter run \
+  -t apps/accommodation_app/lib/main.dart \
+  --dart-define=TENANT_SLUG=alpine \
+  --dart-define=API_BASE_URL=http://localhost:8080
+```
+
+### Riviera
+
+```bash
+flutter run \
+  -t apps/accommodation_app/lib/main.dart \
+  --dart-define=TENANT_SLUG=riviera \
+  --dart-define=API_BASE_URL=http://localhost:8080
+```
+
+### API Configuration
+
+The application expects the mock API to be available on port `8080`.
+
+| Target           | Base URL                                             |
+| ---------------- | ---------------------------------------------------- |
+| iOS simulator    | `http://localhost:8080`                              |
+| Android emulator | `http://10.0.2.2:8080`                               |
+| Physical device  | `http://<your-machine-ip>:8080` (same Wi-Fi network) |
+
+Replace `API_BASE_URL` with the appropriate address for your target device.
+
+## Code Generation
+
+Run from the package containing the generated files:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
+## Localization
+
+Translations are maintained in ARB files. After updating them, run from `packages/accommodation_ui`:
+
+```bash
+flutter gen-l10n
+```
+
+## Tests
+
+Run all tests from the repository root:
+
+```bash
+melos run test
+```
