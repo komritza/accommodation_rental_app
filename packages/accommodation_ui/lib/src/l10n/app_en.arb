@@ -38,8 +38,6 @@
     "sessionRestoreErrorTitle": "Could not restore your session",
     "sessionRestoreErrorMessage": "We could not restore your signed-in session. Check your connection and try again.",
     "guestProfilePlaceholderTitle": "Profile (placeholder)",
-    "guestSavedPlaceholderTitle": "Saved (placeholder)",
-    "guestSavedPlaceholderMessage": "Your saved stays will appear here.",
     "hostHomePlaceholderTitle": "Host home (placeholder)",
     "signedInAs": "Signed in as {name}",
     "@signedInAs": {
@@ -271,5 +269,8 @@
     "favouriteAdd": "Save to favourites",
     "favouriteRemove": "Remove from favourites",
     "favouritesLoadError": "Unable to load favourites",
-    "favouritesUpdateError": "Unable to update favourites"
+    "favouritesUpdateError": "Unable to update favourites",
+    "favouritesTitle": "Saved",
+    "favouritesEmptyTitle": "No saved stays yet",
+    "favouritesEmptyMessage": "Tap the heart on a stay to save it here."
 }

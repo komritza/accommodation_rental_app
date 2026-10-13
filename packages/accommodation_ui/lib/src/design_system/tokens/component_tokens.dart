@@ -41,3 +41,8 @@ abstract final class AppLayoutTokens {
 abstract final class AppSheetTokens {
   static const heightFactor = 0.9;
 }
+
+abstract final class AppSizedBoxTokens {
+  static const contentWidth = 88.0;
+  static const contentHeight = 88.0;
+}

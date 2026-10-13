@@ -133,13 +133,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get guestProfilePlaceholderTitle => 'Profil (Platzhalter)';
 
   @override
-  String get guestSavedPlaceholderTitle => 'Gespeichert (Platzhalter)';
-
-  @override
-  String get guestSavedPlaceholderMessage =>
-      'Deine gespeicherten Unterkünfte erscheinen hier.';
-
-  @override
   String get hostHomePlaceholderTitle => 'Gastgeberstartseite (Platzhalter)';
 
   @override
@@ -528,4 +521,14 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get favouritesUpdateError =>
       'Favoriten konnten nicht aktualisiert werden';
+
+  @override
+  String get favouritesTitle => 'Gespeichert';
+
+  @override
+  String get favouritesEmptyTitle => 'Noch keine gespeicherten Unterkünfte';
+
+  @override
+  String get favouritesEmptyMessage =>
+      'Tippe bei einer Unterkunft auf das Herz, um sie hier zu speichern.';
 }

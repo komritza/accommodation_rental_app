@@ -3,13 +3,13 @@ import 'package:accommodation_app/router/auth_redirect.dart';
 import 'package:accommodation_app/router/guest_tabs.dart';
 import 'package:accommodation_app/screens/guest/guest_shell.dart';
 import 'package:accommodation_app/screens/loading_screen.dart';
-import 'package:accommodation_app/screens/placeholders/guest_saved_placeholder.dart';
 import 'package:accommodation_app/screens/placeholders/role_home_placeholder.dart';
 import 'package:accommodation_app/screens/route_not_found_screen.dart';
 import 'package:accommodation_app/screens/session_restore_error_screen.dart';
 import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_features/auth.dart';
 import 'package:accommodation_features/dependencies.dart';
+import 'package:accommodation_features/favourites.dart';
 import 'package:accommodation_features/guest_home.dart';
 import 'package:accommodation_features/listing_detail.dart';
 import 'package:flutter/foundation.dart';
@@ -101,7 +101,12 @@ GoRoute _guestTabRoute(GuestTab tab) {
     GuestTab.saved => GoRoute(
       name: AppRouteNames.clientSaved,
       path: AppRoutePaths.clientSaved,
-      builder: (context, state) => const GuestSavedPlaceholder(),
+      builder: (context, state) => FavouritesScreen(
+        onListingPressed: (listingId) => context.pushNamed(
+          AppRouteNames.listingDetail,
+          pathParameters: {'listingId': listingId},
+        ),
+      ),
     ),
     GuestTab.profile => GoRoute(
       name: AppRouteNames.clientProfile,

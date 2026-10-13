@@ -41,7 +41,7 @@ class ListingDetailScreen extends ConsumerWidget {
         ),
         actions: [
           if (favouritesEnabled && loaded != null)
-            _FavouriteButton(listingId: listingId),
+            _FavouriteButton(listing: loaded),
         ],
         bottom: const PreferredSize(
           preferredSize: Size.fromHeight(AppBorderWidths.regular),
@@ -73,16 +73,17 @@ class ListingDetailScreen extends ConsumerWidget {
 }
 
 class _FavouriteButton extends ConsumerWidget {
-  const _FavouriteButton({required this.listingId});
+  const _FavouriteButton({required this.listing});
 
-  final String listingId;
+  final Listing listing;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final colors = context.accommodationColors;
-    final favourites = ref.watch(favouriteListingIdsProvider);
-    final isFavourite = favourites.value?.contains(listingId) ?? false;
+    final favourites = ref.watch(favouritesProvider);
+    final isFavourite =
+        favourites.value?.any((item) => item.id == listing.id) ?? false;
     final isLoadingFirstTime = favourites.isLoading && !favourites.hasValue;
 
     return Padding(
@@ -104,18 +105,18 @@ class _FavouriteButton extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     AppLocalizations l10n,
-    AsyncValue<Set<String>> favourites,
+    AsyncValue<List<Listing>> favourites,
   ) async {
     final messenger = ScaffoldMessenger.of(context);
 
     if (!favourites.hasValue) {
-      ref.invalidate(favouriteListingIdsProvider);
+      ref.invalidate(favouritesProvider);
       messenger.showSnackBar(SnackBar(content: Text(l10n.favouritesLoadError)));
       return;
     }
 
     try {
-      await ref.read(favouriteListingIdsProvider.notifier).toggle(listingId);
+      await ref.read(favouritesProvider.notifier).toggle(listing);
     } on FavouritesUpdateException {
       messenger.showSnackBar(
         SnackBar(content: Text(l10n.favouritesUpdateError)),

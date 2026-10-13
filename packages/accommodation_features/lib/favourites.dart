@@ -2,5 +2,6 @@ export 'src/favourites/favourites_providers.dart'
     show
         FavouritesLoadException,
         FavouritesUpdateException,
-        favouriteListingIdsProvider,
+        favouritesProvider,
         favouritesRepositoryProvider;
+export 'src/favourites/favourites_screen.dart' show FavouritesScreen;

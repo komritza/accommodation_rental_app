@@ -38,8 +38,6 @@
     "sessionRestoreErrorTitle": "Sitzung konnte nicht wiederhergestellt werden",
     "sessionRestoreErrorMessage": "Wir konnten deine Sitzung nicht wiederherstellen. Prüfe deine Verbindung und versuche es erneut.",
     "guestProfilePlaceholderTitle": "Profil (Platzhalter)",
-    "guestSavedPlaceholderTitle": "Gespeichert (Platzhalter)",
-    "guestSavedPlaceholderMessage": "Deine gespeicherten Unterkünfte erscheinen hier.",
     "hostHomePlaceholderTitle": "Gastgeberstartseite (Platzhalter)",
     "signedInAs": "Angemeldet als {name}",
     "@signedInAs": {
@@ -271,5 +269,8 @@
     "favouriteAdd": "Zu Favoriten hinzufügen",
     "favouriteRemove": "Aus Favoriten entfernen",
     "favouritesLoadError": "Favoriten konnten nicht geladen werden",
-    "favouritesUpdateError": "Favoriten konnten nicht aktualisiert werden"
+    "favouritesUpdateError": "Favoriten konnten nicht aktualisiert werden",
+    "favouritesTitle": "Gespeichert",
+    "favouritesEmptyTitle": "Noch keine gespeicherten Unterkünfte",
+    "favouritesEmptyMessage": "Tippe bei einer Unterkunft auf das Herz, um sie hier zu speichern."
 }

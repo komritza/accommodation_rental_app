@@ -126,13 +126,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get guestProfilePlaceholderTitle => 'Profile (placeholder)';
 
   @override
-  String get guestSavedPlaceholderTitle => 'Saved (placeholder)';
-
-  @override
-  String get guestSavedPlaceholderMessage =>
-      'Your saved stays will appear here.';
-
-  @override
   String get hostHomePlaceholderTitle => 'Host home (placeholder)';
 
   @override
@@ -512,4 +505,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get favouritesUpdateError => 'Unable to update favourites';
+
+  @override
+  String get favouritesTitle => 'Saved';
+
+  @override
+  String get favouritesEmptyTitle => 'No saved stays yet';
+
+  @override
+  String get favouritesEmptyMessage =>
+      'Tap the heart on a stay to save it here.';
 }

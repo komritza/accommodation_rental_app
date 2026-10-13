@@ -2,6 +2,7 @@ import 'package:accommodation_core/accommodation_core.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
 
+import '../../listings/widgets/listing_summary.dart';
 import '../guest_filter_labels.dart';
 
 class ListingCard extends StatelessWidget {
@@ -44,27 +45,7 @@ class ListingCard extends StatelessWidget {
                       style: textTheme.titleMedium,
                     ),
                   ),
-                  if (listing.reviewsCount > 0)
-                    Row(
-                      children: [
-                        const Icon(Icons.star_rate, size: AppIconSizes.sm),
-                        const SizedBox(width: AppSpacing.xxs),
-                        Text(
-                          listing.rating.toStringAsFixed(2),
-                          style: textTheme.bodyMedium,
-                        ),
-                        Text(
-                          ' (${listing.reviewsCount})',
-                          style: textTheme.bodyMedium,
-                        ),
-                      ],
-                    )
-                  else
-                    AppBadge(
-                      label: l10n.chipNoRatingText,
-                      backgroundColor: colors.surfaceAction,
-                      foregroundColor: colors.textOnAction,
-                    ),
+                  ListingRating(listing: listing),
                 ],
               ),
               Text(listing.city, style: muted),
@@ -95,26 +76,9 @@ class ListingCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: AppSpacing.xxs),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: formatGuestPrice(
-                        listing.pricePerNight,
-                        currencyCode: listing.currency,
-                        locale: locale,
-                      ),
-                      style: const TextStyle(
-                        fontWeight: AppTypography.weightExtraBold,
-                      ),
-                    ),
-                    TextSpan(
-                      text: l10n.listingPerNight,
-                      style: TextStyle(color: colors.textMuted),
-                    ),
-                  ],
-                ),
-                style: textTheme.bodyLarge,
+              ListingNightlyPrice(
+                listing: listing,
+                style: textTheme.bodyLarge!,
               ),
               const SizedBox(height: AppSpacing.xxs),
               if (listing.cleaningFee > 0)

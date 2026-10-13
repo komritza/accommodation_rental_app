@@ -106,44 +106,43 @@ final class FavouritesRepositoryProvider
 String _$favouritesRepositoryHash() =>
     r'6735d97329274e715fa00920eb4fdb45e6665277';
 
-@ProviderFor(FavouriteListingIds)
-final favouriteListingIdsProvider = FavouriteListingIdsProvider._();
+@ProviderFor(Favourites)
+final favouritesProvider = FavouritesProvider._();
 
-final class FavouriteListingIdsProvider
-    extends $AsyncNotifierProvider<FavouriteListingIds, Set<String>> {
-  FavouriteListingIdsProvider._()
+final class FavouritesProvider
+    extends $AsyncNotifierProvider<Favourites, List<Listing>> {
+  FavouritesProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'favouriteListingIdsProvider',
+        name: r'favouritesProvider',
         isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$favouriteListingIdsHash();
+  String debugGetCreateSourceHash() => _$favouritesHash();
 
   @$internal
   @override
-  FavouriteListingIds create() => FavouriteListingIds();
+  Favourites create() => Favourites();
 }
 
-String _$favouriteListingIdsHash() =>
-    r'598aa7304ffda099a422d354cd74af107c5759ad';
+String _$favouritesHash() => r'020dde525618b09f3278de4d00a56a8b5a4f677f';
 
-abstract class _$FavouriteListingIds extends $AsyncNotifier<Set<String>> {
-  FutureOr<Set<String>> build();
+abstract class _$Favourites extends $AsyncNotifier<List<Listing>> {
+  FutureOr<List<Listing>> build();
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<Set<String>>, Set<String>>;
+    final ref = this.ref as $Ref<AsyncValue<List<Listing>>, List<Listing>>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<Set<String>>, Set<String>>,
-              AsyncValue<Set<String>>,
+              AnyNotifier<AsyncValue<List<Listing>>, List<Listing>>,
+              AsyncValue<List<Listing>>,
               Object?,
               Object?
             >;

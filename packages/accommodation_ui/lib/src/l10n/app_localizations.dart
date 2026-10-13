@@ -326,18 +326,6 @@ abstract class AppLocalizations {
   /// **'Profile (placeholder)'**
   String get guestProfilePlaceholderTitle;
 
-  /// No description provided for @guestSavedPlaceholderTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Saved (placeholder)'**
-  String get guestSavedPlaceholderTitle;
-
-  /// No description provided for @guestSavedPlaceholderMessage.
-  ///
-  /// In en, this message translates to:
-  /// **'Your saved stays will appear here.'**
-  String get guestSavedPlaceholderMessage;
-
   /// No description provided for @hostHomePlaceholderTitle.
   ///
   /// In en, this message translates to:
@@ -889,6 +877,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unable to update favourites'**
   String get favouritesUpdateError;
+
+  /// No description provided for @favouritesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get favouritesTitle;
+
+  /// No description provided for @favouritesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved stays yet'**
+  String get favouritesEmptyTitle;
+
+  /// No description provided for @favouritesEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the heart on a stay to save it here.'**
+  String get favouritesEmptyMessage;
 }
 
 class _AppLocalizationsDelegate

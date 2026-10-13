@@ -1,6 +1,5 @@
 import 'package:accommodation_app/router/app_router.dart';
 import 'package:accommodation_app/screens/loading_screen.dart';
-import 'package:accommodation_app/screens/placeholders/guest_saved_placeholder.dart';
 import 'package:accommodation_app/screens/placeholders/role_home_placeholder.dart';
 import 'package:accommodation_app/screens/route_not_found_screen.dart';
 import 'package:accommodation_app/screens/session_restore_error_screen.dart';
@@ -146,7 +145,7 @@ void main() {
 
     await tester.tap(find.text(l10n.guestNavSaved));
     await tester.pumpAndSettle();
-    expect(find.byType(GuestSavedPlaceholder), findsOneWidget);
+    expect(find.byType(FavouritesScreen), findsOneWidget);
 
     await tester.tap(find.text(l10n.guestNavExplore));
     await tester.pumpAndSettle();
@@ -178,11 +177,11 @@ void main() {
 
     container.read(appRouterProvider).go(AppRoutePaths.clientSaved);
     await tester.pumpAndSettle();
-    expect(find.byType(GuestSavedPlaceholder), findsNothing);
+    expect(find.byType(FavouritesScreen), findsNothing);
 
     container.read(appRouterProvider).go(AppRoutePaths.clientSaved);
     await tester.pumpAndSettle();
-    expect(find.byType(GuestSavedPlaceholder), findsNothing);
+    expect(find.byType(FavouritesScreen), findsNothing);
     expect(find.byType(RouteNotFoundScreen), findsOneWidget);
     await tester.tap(find.text(l10n.routeNotFoundAction));
     await tester.pumpAndSettle();

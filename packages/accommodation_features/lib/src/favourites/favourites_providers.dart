@@ -17,17 +17,17 @@ FavouritesRepository favouritesRepository(Ref ref) {
 }
 
 @Riverpod(keepAlive: true)
-class FavouriteListingIds extends _$FavouriteListingIds {
+class Favourites extends _$Favourites {
   final Set<String> _pendingIds = {};
 
   @override
-  Future<Set<String>> build() async {
+  Future<List<Listing>> build() async {
     final userId = await ref.watch(
       authControllerProvider.selectAsync((user) => user?.id),
     );
 
     if (userId == null) {
-      return const {};
+      return const [];
     }
 
     final result = await ref
@@ -36,46 +36,56 @@ class FavouriteListingIds extends _$FavouriteListingIds {
 
     return result.match(
       (failure) => throw FavouritesLoadException(failure),
-      (listings) => listings.map((listing) => listing.id).toSet(),
+      (listings) => listings,
     );
   }
 
-  Future<void> toggle(String listingId) async {
+  Future<void> toggle(Listing listing) async {
     final current = state.value;
 
-    if (current == null || !_pendingIds.add(listingId)) {
+    if (current == null || !_pendingIds.add(listing.id)) {
       return;
     }
 
-    final wasFavourite = current.contains(listingId);
-    state = AsyncData(_withFavourite(current, listingId, !wasFavourite));
+    final index = current.indexWhere((item) => item.id == listing.id);
+    final wasFavourite = index != -1;
+    state = AsyncData(
+      wasFavourite
+          ? _without(current, listing.id)
+          : _withListing(current, listing, 0),
+    );
 
     try {
       final repository = ref.read(favouritesRepositoryProvider);
       final result = wasFavourite
-          ? await repository.removeFavourite(listingId: listingId)
-          : await repository.addFavourite(listingId: listingId);
+          ? await repository.removeFavourite(listingId: listing.id)
+          : await repository.addFavourite(listingId: listing.id);
 
       if (!ref.mounted) return;
 
       result.match((failure) {
         final latest = state.value ?? current;
-        state = AsyncData(_withFavourite(latest, listingId, wasFavourite));
+        state = AsyncData(
+          wasFavourite
+              ? _withListing(latest, current[index], index)
+              : _without(latest, listing.id),
+        );
         throw FavouritesUpdateException(failure);
       }, (_) {});
     } finally {
-      _pendingIds.remove(listingId);
+      _pendingIds.remove(listing.id);
     }
   }
 
-  Set<String> _withFavourite(Set<String> ids, String listingId, bool add) {
-    final updated = Set<String>.of(ids);
-    if (add) {
-      updated.add(listingId);
-    } else {
-      updated.remove(listingId);
-    }
-    return updated;
+  List<Listing> _withListing(List<Listing> listings, Listing listing, int at) {
+    return [...listings]..insert(at.clamp(0, listings.length), listing);
+  }
+
+  List<Listing> _without(List<Listing> listings, String listingId) {
+    return [
+      for (final item in listings)
+        if (item.id != listingId) item,
+    ];
   }
 }
 
