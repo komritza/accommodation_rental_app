@@ -87,10 +87,7 @@ class GuestHomeScreen extends ConsumerWidget {
                     SliverPadding(
                       padding: horizontal.copyWith(top: AppSpacing.md),
                       sliver: SliverToBoxAdapter(
-                        child: _GuestHomeHeader(
-                          wordmark: config?.name ?? '',
-                          onProfilePressed: onProfilePressed,
-                        ),
+                        child: _GuestHomeHeader(wordmark: config?.name ?? ''),
                       ),
                     ),
                     SliverPadding(
@@ -251,37 +248,22 @@ class GuestHomeScreen extends ConsumerWidget {
 }
 
 class _GuestHomeHeader extends StatelessWidget {
-  const _GuestHomeHeader({
-    required this.wordmark,
-    required this.onProfilePressed,
-  });
+  const _GuestHomeHeader({required this.wordmark});
 
   final String wordmark;
-  final VoidCallback onProfilePressed;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-
     return Row(
       children: [
-        Expanded(
-          child: Semantics(
-            header: true,
-            child: Text(
-              wordmark,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+        Semantics(
+          header: true,
+          child: Text(
+            wordmark,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-        ),
-        const SizedBox(width: AppSpacing.md),
-        AppIconButton(
-          icon: Icons.person_outline,
-          tooltip: l10n.guestNavProfile,
-          variant: AppIconButtonVariant.tonal,
-          onPressed: onProfilePressed,
         ),
       ],
     );

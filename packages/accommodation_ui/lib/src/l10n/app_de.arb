@@ -272,5 +272,7 @@
     "favouritesUpdateError": "Favoriten konnten nicht aktualisiert werden",
     "favouritesTitle": "Gespeichert",
     "favouritesEmptyTitle": "Noch keine gespeicherten Unterkünfte",
-    "favouritesEmptyMessage": "Tippe bei einer Unterkunft auf das Herz, um sie hier zu speichern."
+    "favouritesEmptyMessage": "Tippe bei einer Unterkunft auf das Herz, um sie hier zu speichern.",
+    "profileTitle": "Profil",
+    "profileNameFallback": "Ihr Name"
 }

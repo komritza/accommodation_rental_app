@@ -12,6 +12,7 @@ import 'package:accommodation_features/dependencies.dart';
 import 'package:accommodation_features/favourites.dart';
 import 'package:accommodation_features/guest_home.dart';
 import 'package:accommodation_features/listing_detail.dart';
+import 'package:accommodation_features/profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -111,7 +112,7 @@ GoRoute _guestTabRoute(GuestTab tab) {
     GuestTab.profile => GoRoute(
       name: AppRouteNames.clientProfile,
       path: AppRoutePaths.clientProfile,
-      builder: (context, state) => const GuestProfilePlaceholder(),
+      builder: (context, state) => const GuestProfileScreen(),
     ),
   };
 }

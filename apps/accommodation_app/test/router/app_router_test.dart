@@ -11,6 +11,7 @@ import 'package:accommodation_features/favourites.dart';
 import 'package:accommodation_features/guest_home.dart';
 import 'package:accommodation_features/listing_detail.dart';
 import 'package:accommodation_features/listings.dart';
+import 'package:accommodation_features/profile.dart';
 import 'package:accommodation_features/testing.dart';
 import 'package:accommodation_ui/accommodation_ui.dart';
 import 'package:flutter/material.dart';
@@ -187,33 +188,6 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(GuestHomeScreen), findsOneWidget);
   });
-
-  testWidgets('opens the profile from the guest home and signs out', (
-    tester,
-  ) async {
-    final config = createTestConfig();
-    final container = _container(
-      () => FakeAuthController(initialUser: testClient),
-    );
-    addTearDown(container.dispose);
-
-    await tester.pumpWidget(_wrap(container, config: config));
-    await tester.pumpAndSettle();
-
-    await tester.tap(
-      find.descendant(
-        of: find.byType(GuestHomeScreen),
-        matching: find.byTooltip(l10n.guestNavProfile),
-      ),
-    );
-    await tester.pumpAndSettle();
-    expect(find.byType(GuestProfilePlaceholder), findsOneWidget);
-
-    await tester.tap(find.text(l10n.signOut));
-    await tester.pumpAndSettle();
-    expect(find.byType(AuthScreen), findsOneWidget);
-  });
-
   testWidgets('opens a listing from the guest home and goes back', (
     tester,
   ) async {
@@ -289,7 +263,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(HostHomePlaceholder), findsOneWidget);
-    expect(find.byType(GuestProfilePlaceholder), findsNothing);
+    expect(find.byType(GuestProfileScreen), findsNothing);
     expect(find.byType(NavigationBar), findsNothing);
   });
 

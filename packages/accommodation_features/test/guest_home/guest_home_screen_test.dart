@@ -343,19 +343,6 @@ void main() {
     ]);
   });
 
-  testWidgets('opens the profile from the header', (tester) async {
-    var profileOpened = false;
-    await _pumpScreen(
-      tester,
-      FakeListingsRepository(listings: listings),
-      onProfilePressed: () => profileOpened = true,
-    );
-
-    await tester.tap(find.byTooltip(l10n.guestNavProfile));
-
-    expect(profileOpened, isTrue);
-  });
-
   testWidgets('opens the tapped listing', (tester) async {
     final opened = <String>[];
     await _pumpScreen(

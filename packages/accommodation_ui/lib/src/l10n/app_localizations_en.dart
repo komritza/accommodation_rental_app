@@ -515,4 +515,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get favouritesEmptyMessage =>
       'Tap the heart on a stay to save it here.';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileNameFallback => 'Your name';
 }

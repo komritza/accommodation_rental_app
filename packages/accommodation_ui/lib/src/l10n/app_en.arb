@@ -272,5 +272,7 @@
     "favouritesUpdateError": "Unable to update favourites",
     "favouritesTitle": "Saved",
     "favouritesEmptyTitle": "No saved stays yet",
-    "favouritesEmptyMessage": "Tap the heart on a stay to save it here."
+    "favouritesEmptyMessage": "Tap the heart on a stay to save it here.",
+    "profileTitle": "Profile",
+    "profileNameFallback": "Your name"
 }

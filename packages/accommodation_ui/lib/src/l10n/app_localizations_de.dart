@@ -531,4 +531,10 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get favouritesEmptyMessage =>
       'Tippe bei einer Unterkunft auf das Herz, um sie hier zu speichern.';
+
+  @override
+  String get profileTitle => 'Profil';
+
+  @override
+  String get profileNameFallback => 'Ihr Name';
 }

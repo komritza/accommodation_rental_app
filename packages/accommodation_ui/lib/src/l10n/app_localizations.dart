@@ -895,6 +895,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap the heart on a stay to save it here.'**
   String get favouritesEmptyMessage;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @profileNameFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get profileNameFallback;
 }
 
 class _AppLocalizationsDelegate
