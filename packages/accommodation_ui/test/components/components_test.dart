@@ -226,6 +226,69 @@ void main() {
       );
     });
 
+    testWidgets('fills marked days without changing whether they can be '
+        'selected', (tester) async {
+      final selected = <DateTime>[];
+      await tester.pumpWidget(
+        _wrap(
+          SizedBox(
+            width: 390,
+            child: AppDateRangeCalendar(
+              firstDate: DateTime(2030, 3, 10),
+              lastDate: DateTime(2030, 5, 31),
+              onDaySelected: selected.add,
+              unavailableDayPredicate: (day) => day.day == 20,
+              unavailableDayLabel: 'Taken',
+              dayMarker: (day) => switch (day.day) {
+                20 => const AppCalendarDayMarker(
+                  tone: AppCalendarDayTone.critical,
+                  label: 'Booked',
+                ),
+                22 => const AppCalendarDayMarker(
+                  tone: AppCalendarDayTone.accent,
+                  label: 'Blocked',
+                ),
+                _ => null,
+              },
+            ),
+          ),
+        ),
+      );
+
+      final scheme = Theme.of(
+        tester.element(find.byType(AppDateRangeCalendar)),
+      ).colorScheme;
+      Color? fillOf(String day) {
+        final ink = tester.widget<Ink>(
+          find.ancestor(of: find.text(day), matching: find.byType(Ink)),
+        );
+        return (ink.decoration! as ShapeDecoration).color;
+      }
+
+      expect(fillOf('20'), scheme.errorContainer);
+      expect(fillOf('22'), scheme.tertiaryContainer);
+      expect(fillOf('21'), isNull);
+      expect(
+        tester.widget<Text>(find.text('22')).style?.color,
+        scheme.onTertiaryContainer,
+      );
+
+      final booked = find.bySemanticsLabel('Wednesday, March 20, 2030');
+      final blocked = find.bySemanticsLabel('Friday, March 22, 2030');
+      expect(
+        tester.getSemantics(booked),
+        isSemantics(value: 'Booked', isEnabled: false),
+      );
+      expect(
+        tester.getSemantics(blocked),
+        isSemantics(value: 'Blocked', isEnabled: true),
+      );
+
+      await tester.tap(booked);
+      await tester.tap(blocked);
+      expect(selected, [DateTime(2030, 3, 22)]);
+    });
+
     testWidgets('shows days without offering them when read-only', (
       tester,
     ) async {

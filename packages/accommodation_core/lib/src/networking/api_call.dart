@@ -15,6 +15,7 @@ Future<Either<ApiFailure, T>> runApiCall<T>(
             ? ApiFailureType.network
             : ApiFailureType.http,
         statusCode: error.response?.statusCode,
+        messageCode: _messageCode(error.response?.data),
         message: error.message,
       ),
     );
@@ -27,4 +28,10 @@ Future<Either<ApiFailure, T>> runApiCall<T>(
       ApiFailure(type: ApiFailureType.unexpected, message: error.toString()),
     );
   }
+}
+
+String? _messageCode(Object? body) {
+  if (body is! Map) return null;
+  final code = body['messageCode'];
+  return code is String && code.isNotEmpty ? code : null;
 }

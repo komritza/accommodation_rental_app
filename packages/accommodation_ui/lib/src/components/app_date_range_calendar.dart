@@ -4,6 +4,32 @@ import 'package:flutter/material.dart';
 
 import '../design_system/design_system.dart';
 
+/// The fill a marked calendar day is painted with.
+enum AppCalendarDayTone {
+  critical,
+  accent;
+
+  Color background(ColorScheme scheme) => switch (this) {
+    critical => scheme.errorContainer,
+    accent => scheme.tertiaryContainer,
+  };
+
+  Color foreground(ColorScheme scheme) => switch (this) {
+    critical => scheme.onErrorContainer,
+    accent => scheme.onTertiaryContainer,
+  };
+}
+
+@immutable
+class AppCalendarDayMarker {
+  const AppCalendarDayMarker({required this.tone, required this.label});
+
+  final AppCalendarDayTone tone;
+
+  /// Read out by screen readers after the date.
+  final String label;
+}
+
 class AppDateRangeCalendar extends StatefulWidget {
   const AppDateRangeCalendar({
     super.key,
@@ -15,6 +41,7 @@ class AppDateRangeCalendar extends StatefulWidget {
     this.selectableDayPredicate,
     this.unavailableDayPredicate,
     this.unavailableDayLabel,
+    this.dayMarker,
   });
 
   final DateTime firstDate;
@@ -29,6 +56,13 @@ class AppDateRangeCalendar extends StatefulWidget {
   final bool Function(DateTime day)? unavailableDayPredicate;
 
   final String? unavailableDayLabel;
+
+  /// Paints a day on a filled background. Does not change whether the day
+  /// can be selected; that is still [unavailableDayPredicate] and
+  /// [selectableDayPredicate].
+  ///
+  /// Days are passed as local midnight, like every other predicate here.
+  final AppCalendarDayMarker? Function(DateTime day)? dayMarker;
 
   @override
   State<AppDateRangeCalendar> createState() => _AppDateRangeCalendarState();
@@ -116,6 +150,7 @@ class _AppDateRangeCalendarState extends State<AppDateRangeCalendar> {
                 onNext: page < _monthCount - 1
                     ? () => _showPage(page + 1)
                     : null,
+                dayMarker: widget.dayMarker,
               ),
             ),
           ),
@@ -139,6 +174,7 @@ class _MonthPage extends StatelessWidget {
     required this.onDaySelected,
     required this.onPrevious,
     required this.onNext,
+    required this.dayMarker,
   });
 
   final DateTime month;
@@ -151,6 +187,7 @@ class _MonthPage extends StatelessWidget {
   final ValueChanged<DateTime>? onDaySelected;
   final VoidCallback? onPrevious;
   final VoidCallback? onNext;
+  final AppCalendarDayMarker? Function(DateTime day)? dayMarker;
 
   @override
   Widget build(BuildContext context) {
@@ -182,6 +219,7 @@ class _MonthPage extends StatelessWidget {
         isAvailable: selectable,
         isUnavailable: unavailable,
         unavailableLabel: unavailable ? unavailableDayLabel : null,
+        marker: dayMarker?.call(day),
         readOnly: onDaySelected == null,
         onTap: selectable && onDaySelected != null
             ? () => onDaySelected(day)
@@ -288,6 +326,7 @@ class _Day extends StatelessWidget {
     required this.isAvailable,
     required this.isUnavailable,
     required this.unavailableLabel,
+    required this.marker,
     required this.readOnly,
     required this.onTap,
   });
@@ -300,18 +339,23 @@ class _Day extends StatelessWidget {
   final bool isAvailable;
   final bool isUnavailable;
   final String? unavailableLabel;
+  final AppCalendarDayMarker? marker;
   final bool readOnly;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.accommodationColors;
+    final scheme = Theme.of(context).colorScheme;
     final localizations = MaterialLocalizations.of(context);
     final interactive = onTap != null;
+    final tone = marker?.tone;
 
     final Color textColor;
     if (position.isEndpoint) {
       textColor = colors.textOnAction;
+    } else if (tone != null) {
+      textColor = tone.foreground(scheme);
     } else if (isAvailable) {
       textColor = colors.textDefault;
     } else {
@@ -346,7 +390,7 @@ class _Day extends StatelessWidget {
               enabled: readOnly ? null : interactive,
               selected: position != _RangePosition.none,
               label: localizations.formatFullDate(day),
-              value: unavailableLabel,
+              value: marker?.label ?? unavailableLabel,
               // Ink paints on the nearest Material; without this one the
               // range band would cover the endpoint circle.
               child: Material(
@@ -364,7 +408,9 @@ class _Day extends StatelessWidget {
                               )
                             : BorderSide.none,
                       ),
-                      color: position.isEndpoint ? colors.surfaceAction : null,
+                      color: position.isEndpoint
+                          ? colors.surfaceAction
+                          : tone?.background(scheme),
                     ),
                     child: Center(
                       child: ExcludeSemantics(

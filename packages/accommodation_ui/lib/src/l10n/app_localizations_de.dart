@@ -130,22 +130,6 @@ class AppLocalizationsDe extends AppLocalizations {
       'Wir konnten deine Sitzung nicht wiederherstellen. Prüfe deine Verbindung und versuche es erneut.';
 
   @override
-  String get guestProfilePlaceholderTitle => 'Profil (Platzhalter)';
-
-  @override
-  String get hostHomePlaceholderTitle => 'Gastgeberstartseite (Platzhalter)';
-
-  @override
-  String signedInAs(String name) {
-    return 'Angemeldet als $name';
-  }
-
-  @override
-  String authenticatedRole(String role) {
-    return 'Authentifizierte Rolle: $role';
-  }
-
-  @override
   String get signOut => 'Abmelden';
 
   @override
@@ -537,4 +521,201 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get profileNameFallback => 'Ihr Name';
+
+  @override
+  String get hostHomeTitle => 'Meine Unterkünfte';
+
+  @override
+  String get hostHomeProfileTooltip => 'Profil öffnen';
+
+  @override
+  String get hostHomeLoadErrorTitle =>
+      'Deine Unterkünfte konnten nicht geladen werden';
+
+  @override
+  String get hostHomeEmptyTitle => 'Noch keine Unterkünfte';
+
+  @override
+  String get hostHomeEmptyMessage => 'Deine Unterkünfte werden hier angezeigt.';
+
+  @override
+  String hostHomeListingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Unterkünfte',
+      one: '1 Unterkunft',
+      zero: 'Keine Unterkünfte',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get hostHomeLoadMoreError =>
+      'Weitere Unterkünfte konnten nicht geladen werden.';
+
+  @override
+  String get hostHomeEndOfResults => 'Du hast das Ende der Liste erreicht.';
+
+  @override
+  String get hostListingDetailTitle => 'Unterkunft verwalten';
+
+  @override
+  String get hostListingDetailLoadErrorTitle =>
+      'Unterkunft konnte nicht geladen werden';
+
+  @override
+  String get hostListingDetailLoadErrorMessage =>
+      'Bitte überprüfe deine Verbindung und versuche es erneut.';
+
+  @override
+  String get hostListingDetailPropertyInfo => 'Details zur Unterkunft';
+
+  @override
+  String get hostListingDetailPropertyType => 'Unterkunftstyp';
+
+  @override
+  String get hostListingDetailMaxGuests => 'Maximale Gästezahl';
+
+  @override
+  String get hostListingDetailBedrooms => 'Schlafzimmer';
+
+  @override
+  String get hostListingDetailBeds => 'Betten';
+
+  @override
+  String get hostListingDetailBathrooms => 'Badezimmer';
+
+  @override
+  String get hostListingDetailPricing => 'Preise';
+
+  @override
+  String get hostListingDetailPricePerNight => 'Preis pro Nacht';
+
+  @override
+  String get hostListingDetailCleaningFee => 'Reinigungsgebühr';
+
+  @override
+  String get hostListingDetailDescription => 'Beschreibung';
+
+  @override
+  String get hostListingDetailEditButton => 'Unterkunft bearbeiten';
+
+  @override
+  String get hostEditListingTitle => 'Unterkunft bearbeiten';
+
+  @override
+  String get hostEditListingLoadError =>
+      'Die Unterkunft konnte nicht geladen werden.';
+
+  @override
+  String get hostEditListingGeneralSection => 'Allgemeine Informationen';
+
+  @override
+  String get hostEditListingTitleField => 'Titel der Unterkunft';
+
+  @override
+  String get hostEditListingDescriptionField => 'Beschreibung';
+
+  @override
+  String get hostEditListingPropertyTypeField => 'Unterkunftstyp';
+
+  @override
+  String get hostEditListingPricingSection => 'Preise';
+
+  @override
+  String get hostEditListingPricePerNightField => 'Preis pro Nacht';
+
+  @override
+  String get hostEditListingCleaningFeeField => 'Reinigungsgebühr';
+
+  @override
+  String get hostEditListingCapacitySection => 'Kapazität';
+
+  @override
+  String get hostEditListingMaxGuestsField => 'Maximale Gästezahl';
+
+  @override
+  String get hostEditListingBedroomsField => 'Schlafzimmer';
+
+  @override
+  String get hostEditListingBedsField => 'Betten';
+
+  @override
+  String get hostEditListingBathroomsField => 'Badezimmer';
+
+  @override
+  String get hostEditListingAmenitiesSection => 'Ausstattung';
+
+  @override
+  String get hostEditListingSaveButton => 'Änderungen speichern';
+
+  @override
+  String get hostEditListingFieldRequired => 'Dieses Feld ist erforderlich.';
+
+  @override
+  String get hostEditListingInvalidNumber =>
+      'Gib eine gültige Zahl ein, null oder mehr.';
+
+  @override
+  String get hostEditListingInvalidWholeNumber =>
+      'Gib eine ganze Zahl ein, null oder mehr.';
+
+  @override
+  String hostEditListingMinValue(int min) {
+    return 'Muss mindestens $min sein.';
+  }
+
+  @override
+  String get hostEditListingErrorRejected =>
+      'Einige Werte wurden nicht akzeptiert. Prüfe das Formular und versuche es erneut.';
+
+  @override
+  String get hostEditListingErrorFieldRequired =>
+      'Fülle alle Pflichtfelder aus.';
+
+  @override
+  String get hostEditListingErrorNotFound =>
+      'Dieses Inserat existiert nicht mehr oder gehört nicht dir.';
+
+  @override
+  String get hostEditListingErrorGeneric =>
+      'Deine Änderungen konnten nicht gespeichert werden. Bitte versuche es erneut.';
+
+  @override
+  String get hostBlockedDaysManageButton => 'Gesperrte Tage verwalten';
+
+  @override
+  String get hostBlockedDaysTitle => 'Gesperrte Tage verwalten';
+
+  @override
+  String get hostBlockedDaysLoadError =>
+      'Kalenderdaten konnten nicht geladen werden. Bitte versuche es erneut.';
+
+  @override
+  String get hostBlockedDaysNotAvailable =>
+      'Das Verwalten gesperrter Tage ist für diese Unterkunft nicht verfügbar.';
+
+  @override
+  String get hostBlockedDaysInstructions =>
+      'Wähle ein Datum zum Sperren oder zwei Daten für einen einschließlich gewählten Zeitraum. Tippe auf einen gesperrten Tag, um ihn freizugeben.';
+
+  @override
+  String get hostBlockedDaysBlockedLabel => 'Gesperrt';
+
+  @override
+  String get hostBlockedDaysBookedLabel => 'Gebucht';
+
+  @override
+  String get hostBlockedDaysBlockButton => 'Daten sperren';
+
+  @override
+  String get hostBlockedDaysUnblockButton => 'Datum freigeben';
+
+  @override
+  String get hostBlockedDaysActionError =>
+      'Der Vorgang ist fehlgeschlagen. Bitte versuche es erneut.';
+
+  @override
+  String get hostBlockedDaysAvailableLabel => 'Verfügbar';
 }

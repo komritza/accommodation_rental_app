@@ -37,24 +37,6 @@
     "authErrorGeneric": "Something went wrong. Please try again.",
     "sessionRestoreErrorTitle": "Could not restore your session",
     "sessionRestoreErrorMessage": "We could not restore your signed-in session. Check your connection and try again.",
-    "guestProfilePlaceholderTitle": "Profile (placeholder)",
-    "hostHomePlaceholderTitle": "Host home (placeholder)",
-    "signedInAs": "Signed in as {name}",
-    "@signedInAs": {
-        "placeholders": {
-            "name": {
-                "type": "String"
-            }
-        }
-    },
-    "authenticatedRole": "Authenticated role: {role}",
-    "@authenticatedRole": {
-        "placeholders": {
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "signOut": "Sign out",
     "guestNavExplore": "Explore",
     "guestNavSaved": "Saved",
@@ -274,5 +256,76 @@
     "favouritesEmptyTitle": "No saved stays yet",
     "favouritesEmptyMessage": "Tap the heart on a stay to save it here.",
     "profileTitle": "Profile",
-    "profileNameFallback": "Your name"
+    "profileNameFallback": "Your name",
+    "hostHomeTitle": "My listings",
+    "hostHomeProfileTooltip": "Open profile",
+    "hostHomeLoadErrorTitle": "Couldn't load your listings",
+    "hostHomeEmptyTitle": "No listings yet",
+    "hostHomeEmptyMessage": "Your listings will appear here.",
+    "hostHomeListingCount": "{count, plural, =0{No listings} =1{1 listing} other{{count} listings}}",
+    "@hostHomeListingCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hostHomeLoadMoreError": "Couldn't load more listings.",
+    "hostHomeEndOfResults": "You've reached the end.",
+    "hostListingDetailTitle": "Manage listing",
+    "hostListingDetailLoadErrorTitle": "Couldn't load listing",
+    "hostListingDetailLoadErrorMessage": "Please check your connection and try again.",
+    "hostListingDetailPropertyInfo": "Property details",
+    "hostListingDetailPropertyType": "Property type",
+    "hostListingDetailMaxGuests": "Maximum guests",
+    "hostListingDetailBedrooms": "Bedrooms",
+    "hostListingDetailBeds": "Beds",
+    "hostListingDetailBathrooms": "Bathrooms",
+    "hostListingDetailPricing": "Pricing",
+    "hostListingDetailPricePerNight": "Price per night",
+    "hostListingDetailCleaningFee": "Cleaning fee",
+    "hostListingDetailDescription": "Description",
+    "hostListingDetailEditButton": "Edit listing",
+    "hostEditListingTitle": "Edit listing",
+    "hostEditListingLoadError": "Couldn't load listing.",
+    "hostEditListingGeneralSection": "General information",
+    "hostEditListingTitleField": "Listing title",
+    "hostEditListingDescriptionField": "Description",
+    "hostEditListingPropertyTypeField": "Property type",
+    "hostEditListingPricingSection": "Pricing",
+    "hostEditListingPricePerNightField": "Price per night",
+    "hostEditListingCleaningFeeField": "Cleaning fee",
+    "hostEditListingCapacitySection": "Capacity",
+    "hostEditListingMaxGuestsField": "Maximum guests",
+    "hostEditListingBedroomsField": "Bedrooms",
+    "hostEditListingBedsField": "Beds",
+    "hostEditListingBathroomsField": "Bathrooms",
+    "hostEditListingAmenitiesSection": "Amenities",
+    "hostEditListingSaveButton": "Save changes",
+    "hostEditListingFieldRequired": "This field is required.",
+    "hostEditListingInvalidNumber": "Enter a valid number, zero or more.",
+    "hostEditListingInvalidWholeNumber": "Enter a whole number, zero or more.",
+    "hostEditListingMinValue": "Must be at least {min}.",
+    "@hostEditListingMinValue": {
+        "placeholders": {
+            "min": {
+                "type": "int"
+            }
+        }
+    },
+    "hostEditListingErrorRejected": "Some values weren't accepted. Check the form and try again.",
+    "hostEditListingErrorFieldRequired": "Fill in every required field.",
+    "hostEditListingErrorNotFound": "This listing no longer exists or isn't yours.",
+    "hostEditListingErrorGeneric": "Couldn't save your changes. Please try again.",
+    "hostBlockedDaysManageButton": "Manage blocked dates",
+    "hostBlockedDaysTitle": "Manage blocked dates",
+    "hostBlockedDaysLoadError": "Couldn't load calendar data. Please try again.",
+    "hostBlockedDaysNotAvailable": "Managing blocked dates isn't available for this property.",
+    "hostBlockedDaysInstructions": "Select a date to block it, or select two dates to block the inclusive range. Tap a blocked date to unblock it.",
+    "hostBlockedDaysBlockedLabel": "Blocked",
+    "hostBlockedDaysBookedLabel": "Booked",
+    "hostBlockedDaysBlockButton": "Block dates",
+    "hostBlockedDaysUnblockButton": "Unblock date",
+    "hostBlockedDaysActionError": "The operation failed. Please try again.",
+    "hostBlockedDaysAvailableLabel": "Available"
 }

@@ -22,11 +22,22 @@ class FakeListingsRepository extends ListingsRepository {
     this.listingFailure,
     this.availabilityFailure,
     this.bookings = const {},
-    this.blockedDays = const {},
+    Map<String, List<DateTime>>? blockedDays,
+    this.hostListings = const [],
+    this.hostListingsFailure,
+    this.updateFailure,
+    this.blockedDaysFailure,
+    this.blockFailure,
+    this.unblockFailure,
   }) : facets = facets ?? createTestFacets(),
+       blockedDays = {
+         for (final entry in (blockedDays ?? const {}).entries)
+           entry.key: [...entry.value],
+       },
        super(ListingsRemoteDataSource(Dio()));
 
   List<Listing> listings;
+  List<Listing> hostListings;
 
   Map<String, List<StayDates>> bookings;
 
@@ -38,8 +49,22 @@ class FakeListingsRepository extends ListingsRepository {
   ApiFailure? facetsFailure;
   ApiFailure? listingFailure;
   ApiFailure? availabilityFailure;
+  ApiFailure? hostListingsFailure;
+  ApiFailure? updateFailure;
+  ApiFailure? blockedDaysFailure;
+  ApiFailure? blockFailure;
+  ApiFailure? unblockFailure;
+
+  /// Fails a block request for this day only, to leave a range half done.
+  DateTime? failBlockOn;
 
   Completer<void>? pendingResponse;
+  Completer<void>? pendingMutation;
+
+  final hostListingsRequests = <({String? cursor, int? limit})>[];
+  final updateRequests = <({String id, Map<String, dynamic> changes})>[];
+  final blockRequests = <DateTime>[];
+  final unblockRequests = <DateTime>[];
   Completer<void>? pendingAvailability;
 
   final requests = <ListingsRequest>[];
@@ -141,6 +166,110 @@ class FakeListingsRepository extends ListingsRepository {
     facetsRequests += 1;
     final failure = facetsFailure;
     return failure == null ? Right(facets) : Left(failure);
+  }
+
+  @override
+  Future<Either<ApiFailure, CursorPage<Listing>>> fetchHostListings({
+    String? cursor,
+    int? limit,
+  }) async {
+    hostListingsRequests.add((cursor: cursor, limit: limit));
+    await pendingResponse?.future;
+
+    final failure = hostListingsFailure;
+    if (failure != null) return Left(failure);
+
+    final offset = cursor == null ? 0 : int.parse(cursor);
+    final end = math.min(offset + (limit ?? pageSize), hostListings.length);
+
+    return Right(
+      CursorPage(
+        items: hostListings.sublist(offset, end),
+        totalCount: hostListings.length,
+        nextCursor: end < hostListings.length ? '$end' : null,
+      ),
+    );
+  }
+
+  @override
+  Future<Either<ApiFailure, Listing>> updateHostListing({
+    required String id,
+    required Map<String, dynamic> changes,
+  }) async {
+    updateRequests.add((id: id, changes: changes));
+    await pendingMutation?.future;
+
+    final failure = updateFailure;
+    if (failure != null) return Left(failure);
+
+    final listing = [
+      ...hostListings,
+      ...listings,
+    ].where((listing) => listing.id == id).firstOrNull;
+    if (listing == null) {
+      return const Left(
+        ApiFailure(
+          type: ApiFailureType.http,
+          statusCode: 404,
+          messageCode: 'listing.NotFoundException',
+        ),
+      );
+    }
+
+    final json = listing.toJson()..addAll(changes);
+    return Right(Listing.fromJson(json));
+  }
+
+  @override
+  Future<Either<ApiFailure, List<BlockedDay>>> fetchBlockedDays({
+    required String listingId,
+  }) async {
+    final failure = blockedDaysFailure;
+    if (failure != null) return Left(failure);
+
+    final days = {
+      for (final day in blockedDays[listingId] ?? const <DateTime>[])
+        StayDates.calendarDate(day),
+    }.toList()..sort();
+
+    return Right([
+      for (final day in days) BlockedDay(listingId: listingId, date: day),
+    ]);
+  }
+
+  @override
+  Future<Either<ApiFailure, BlockedDay>> blockDay({
+    required String listingId,
+    required DateTime date,
+  }) async {
+    blockRequests.add(date);
+    await pendingMutation?.future;
+
+    final failure = blockFailure;
+    if (failure != null) return Left(failure);
+    if (failBlockOn == date) {
+      return const Left(ApiFailure(type: ApiFailureType.network));
+    }
+
+    (blockedDays[listingId] ??= []).add(date);
+    return Right(BlockedDay(listingId: listingId, date: date));
+  }
+
+  @override
+  Future<Either<ApiFailure, void>> unblockDay({
+    required String listingId,
+    required DateTime date,
+  }) async {
+    unblockRequests.add(date);
+    await pendingMutation?.future;
+
+    final failure = unblockFailure;
+    if (failure != null) return Left(failure);
+
+    blockedDays[listingId]?.removeWhere(
+      (day) => StayDates.calendarDate(day) == date,
+    );
+    return const Right(null);
   }
 
   bool _matches(Listing listing, ListingSearchQuery query) {

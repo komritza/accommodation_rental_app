@@ -3,6 +3,7 @@ export 'src/data/favourites_remote_data_source.dart';
 export 'src/data/listings_remote_data_source.dart';
 export 'src/data/runtime_config_remote_data_source.dart';
 export 'src/models/auth_session.dart';
+export 'src/models/blocked_day.dart';
 export 'src/models/listing.dart';
 export 'src/models/listing_availability.dart';
 export 'src/models/listing_facets.dart';

@@ -37,7 +37,7 @@ Future<_TrackingAuthController> _pumpScreen(WidgetTester tester) async {
           config.theme.light,
           brightness: Brightness.light,
         ),
-        home: const GuestProfileScreen(),
+        home: const ProfileScreen(),
       ),
     ),
   );

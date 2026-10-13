@@ -320,30 +320,6 @@ abstract class AppLocalizations {
   /// **'We could not restore your signed-in session. Check your connection and try again.'**
   String get sessionRestoreErrorMessage;
 
-  /// No description provided for @guestProfilePlaceholderTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Profile (placeholder)'**
-  String get guestProfilePlaceholderTitle;
-
-  /// No description provided for @hostHomePlaceholderTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Host home (placeholder)'**
-  String get hostHomePlaceholderTitle;
-
-  /// No description provided for @signedInAs.
-  ///
-  /// In en, this message translates to:
-  /// **'Signed in as {name}'**
-  String signedInAs(String name);
-
-  /// No description provided for @authenticatedRole.
-  ///
-  /// In en, this message translates to:
-  /// **'Authenticated role: {role}'**
-  String authenticatedRole(String role);
-
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:
@@ -907,6 +883,348 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your name'**
   String get profileNameFallback;
+
+  /// No description provided for @hostHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My listings'**
+  String get hostHomeTitle;
+
+  /// No description provided for @hostHomeProfileTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Open profile'**
+  String get hostHomeProfileTooltip;
+
+  /// No description provided for @hostHomeLoadErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load your listings'**
+  String get hostHomeLoadErrorTitle;
+
+  /// No description provided for @hostHomeEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No listings yet'**
+  String get hostHomeEmptyTitle;
+
+  /// No description provided for @hostHomeEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your listings will appear here.'**
+  String get hostHomeEmptyMessage;
+
+  /// No description provided for @hostHomeListingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No listings} =1{1 listing} other{{count} listings}}'**
+  String hostHomeListingCount(int count);
+
+  /// No description provided for @hostHomeLoadMoreError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load more listings.'**
+  String get hostHomeLoadMoreError;
+
+  /// No description provided for @hostHomeEndOfResults.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve reached the end.'**
+  String get hostHomeEndOfResults;
+
+  /// No description provided for @hostListingDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage listing'**
+  String get hostListingDetailTitle;
+
+  /// No description provided for @hostListingDetailLoadErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load listing'**
+  String get hostListingDetailLoadErrorTitle;
+
+  /// No description provided for @hostListingDetailLoadErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your connection and try again.'**
+  String get hostListingDetailLoadErrorMessage;
+
+  /// No description provided for @hostListingDetailPropertyInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Property details'**
+  String get hostListingDetailPropertyInfo;
+
+  /// No description provided for @hostListingDetailPropertyType.
+  ///
+  /// In en, this message translates to:
+  /// **'Property type'**
+  String get hostListingDetailPropertyType;
+
+  /// No description provided for @hostListingDetailMaxGuests.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum guests'**
+  String get hostListingDetailMaxGuests;
+
+  /// No description provided for @hostListingDetailBedrooms.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrooms'**
+  String get hostListingDetailBedrooms;
+
+  /// No description provided for @hostListingDetailBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds'**
+  String get hostListingDetailBeds;
+
+  /// No description provided for @hostListingDetailBathrooms.
+  ///
+  /// In en, this message translates to:
+  /// **'Bathrooms'**
+  String get hostListingDetailBathrooms;
+
+  /// No description provided for @hostListingDetailPricing.
+  ///
+  /// In en, this message translates to:
+  /// **'Pricing'**
+  String get hostListingDetailPricing;
+
+  /// No description provided for @hostListingDetailPricePerNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per night'**
+  String get hostListingDetailPricePerNight;
+
+  /// No description provided for @hostListingDetailCleaningFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleaning fee'**
+  String get hostListingDetailCleaningFee;
+
+  /// No description provided for @hostListingDetailDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get hostListingDetailDescription;
+
+  /// No description provided for @hostListingDetailEditButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit listing'**
+  String get hostListingDetailEditButton;
+
+  /// No description provided for @hostEditListingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit listing'**
+  String get hostEditListingTitle;
+
+  /// No description provided for @hostEditListingLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load listing.'**
+  String get hostEditListingLoadError;
+
+  /// No description provided for @hostEditListingGeneralSection.
+  ///
+  /// In en, this message translates to:
+  /// **'General information'**
+  String get hostEditListingGeneralSection;
+
+  /// No description provided for @hostEditListingTitleField.
+  ///
+  /// In en, this message translates to:
+  /// **'Listing title'**
+  String get hostEditListingTitleField;
+
+  /// No description provided for @hostEditListingDescriptionField.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get hostEditListingDescriptionField;
+
+  /// No description provided for @hostEditListingPropertyTypeField.
+  ///
+  /// In en, this message translates to:
+  /// **'Property type'**
+  String get hostEditListingPropertyTypeField;
+
+  /// No description provided for @hostEditListingPricingSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Pricing'**
+  String get hostEditListingPricingSection;
+
+  /// No description provided for @hostEditListingPricePerNightField.
+  ///
+  /// In en, this message translates to:
+  /// **'Price per night'**
+  String get hostEditListingPricePerNightField;
+
+  /// No description provided for @hostEditListingCleaningFeeField.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleaning fee'**
+  String get hostEditListingCleaningFeeField;
+
+  /// No description provided for @hostEditListingCapacitySection.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity'**
+  String get hostEditListingCapacitySection;
+
+  /// No description provided for @hostEditListingMaxGuestsField.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum guests'**
+  String get hostEditListingMaxGuestsField;
+
+  /// No description provided for @hostEditListingBedroomsField.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrooms'**
+  String get hostEditListingBedroomsField;
+
+  /// No description provided for @hostEditListingBedsField.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds'**
+  String get hostEditListingBedsField;
+
+  /// No description provided for @hostEditListingBathroomsField.
+  ///
+  /// In en, this message translates to:
+  /// **'Bathrooms'**
+  String get hostEditListingBathroomsField;
+
+  /// No description provided for @hostEditListingAmenitiesSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Amenities'**
+  String get hostEditListingAmenitiesSection;
+
+  /// No description provided for @hostEditListingSaveButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get hostEditListingSaveButton;
+
+  /// No description provided for @hostEditListingFieldRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required.'**
+  String get hostEditListingFieldRequired;
+
+  /// No description provided for @hostEditListingInvalidNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number, zero or more.'**
+  String get hostEditListingInvalidNumber;
+
+  /// No description provided for @hostEditListingInvalidWholeNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number, zero or more.'**
+  String get hostEditListingInvalidWholeNumber;
+
+  /// No description provided for @hostEditListingMinValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Must be at least {min}.'**
+  String hostEditListingMinValue(int min);
+
+  /// No description provided for @hostEditListingErrorRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Some values weren\'t accepted. Check the form and try again.'**
+  String get hostEditListingErrorRejected;
+
+  /// No description provided for @hostEditListingErrorFieldRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in every required field.'**
+  String get hostEditListingErrorFieldRequired;
+
+  /// No description provided for @hostEditListingErrorNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This listing no longer exists or isn\'t yours.'**
+  String get hostEditListingErrorNotFound;
+
+  /// No description provided for @hostEditListingErrorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t save your changes. Please try again.'**
+  String get hostEditListingErrorGeneric;
+
+  /// No description provided for @hostBlockedDaysManageButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage blocked dates'**
+  String get hostBlockedDaysManageButton;
+
+  /// No description provided for @hostBlockedDaysTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage blocked dates'**
+  String get hostBlockedDaysTitle;
+
+  /// No description provided for @hostBlockedDaysLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load calendar data. Please try again.'**
+  String get hostBlockedDaysLoadError;
+
+  /// No description provided for @hostBlockedDaysNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Managing blocked dates isn\'t available for this property.'**
+  String get hostBlockedDaysNotAvailable;
+
+  /// No description provided for @hostBlockedDaysInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a date to block it, or select two dates to block the inclusive range. Tap a blocked date to unblock it.'**
+  String get hostBlockedDaysInstructions;
+
+  /// No description provided for @hostBlockedDaysBlockedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get hostBlockedDaysBlockedLabel;
+
+  /// No description provided for @hostBlockedDaysBookedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked'**
+  String get hostBlockedDaysBookedLabel;
+
+  /// No description provided for @hostBlockedDaysBlockButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Block dates'**
+  String get hostBlockedDaysBlockButton;
+
+  /// No description provided for @hostBlockedDaysUnblockButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock date'**
+  String get hostBlockedDaysUnblockButton;
+
+  /// No description provided for @hostBlockedDaysActionError.
+  ///
+  /// In en, this message translates to:
+  /// **'The operation failed. Please try again.'**
+  String get hostBlockedDaysActionError;
+
+  /// No description provided for @hostBlockedDaysAvailableLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get hostBlockedDaysAvailableLabel;
 }
 
 class _AppLocalizationsDelegate

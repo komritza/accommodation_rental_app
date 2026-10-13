@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 
 import '../data/listings_remote_data_source.dart';
+import '../models/blocked_day.dart';
 import '../models/listing.dart';
 import '../models/listing_availability.dart';
 import '../models/listing_facets.dart';
@@ -49,5 +50,49 @@ class ListingsRepository {
 
   Future<Either<ApiFailure, ListingFacets>> fetchFacets() {
     return runApiCall(_remoteDataSource.fetchFacets);
+  }
+
+  Future<Either<ApiFailure, CursorPage<Listing>>> fetchHostListings({
+    String? cursor,
+    int? limit,
+  }) {
+    return runApiCall(
+      () => _remoteDataSource.fetchHostListings(cursor: cursor, limit: limit),
+    );
+  }
+
+  Future<Either<ApiFailure, Listing>> updateHostListing({
+    required String id,
+    required Map<String, dynamic> changes,
+  }) {
+    return runApiCall(
+      () => _remoteDataSource.updateHostListing(id: id, changes: changes),
+    );
+  }
+
+  Future<Either<ApiFailure, List<BlockedDay>>> fetchBlockedDays({
+    required String listingId,
+  }) {
+    return runApiCall(
+      () => _remoteDataSource.fetchBlockedDays(listingId: listingId),
+    );
+  }
+
+  Future<Either<ApiFailure, BlockedDay>> blockDay({
+    required String listingId,
+    required DateTime date,
+  }) {
+    return runApiCall(
+      () => _remoteDataSource.blockDay(listingId: listingId, date: date),
+    );
+  }
+
+  Future<Either<ApiFailure, void>> unblockDay({
+    required String listingId,
+    required DateTime date,
+  }) {
+    return runApiCall(
+      () => _remoteDataSource.unblockDay(listingId: listingId, date: date),
+    );
   }
 }

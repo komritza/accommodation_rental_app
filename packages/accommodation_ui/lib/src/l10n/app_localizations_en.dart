@@ -123,22 +123,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'We could not restore your signed-in session. Check your connection and try again.';
 
   @override
-  String get guestProfilePlaceholderTitle => 'Profile (placeholder)';
-
-  @override
-  String get hostHomePlaceholderTitle => 'Host home (placeholder)';
-
-  @override
-  String signedInAs(String name) {
-    return 'Signed in as $name';
-  }
-
-  @override
-  String authenticatedRole(String role) {
-    return 'Authenticated role: $role';
-  }
-
-  @override
   String get signOut => 'Sign out';
 
   @override
@@ -521,4 +505,197 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileNameFallback => 'Your name';
+
+  @override
+  String get hostHomeTitle => 'My listings';
+
+  @override
+  String get hostHomeProfileTooltip => 'Open profile';
+
+  @override
+  String get hostHomeLoadErrorTitle => 'Couldn\'t load your listings';
+
+  @override
+  String get hostHomeEmptyTitle => 'No listings yet';
+
+  @override
+  String get hostHomeEmptyMessage => 'Your listings will appear here.';
+
+  @override
+  String hostHomeListingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count listings',
+      one: '1 listing',
+      zero: 'No listings',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get hostHomeLoadMoreError => 'Couldn\'t load more listings.';
+
+  @override
+  String get hostHomeEndOfResults => 'You\'ve reached the end.';
+
+  @override
+  String get hostListingDetailTitle => 'Manage listing';
+
+  @override
+  String get hostListingDetailLoadErrorTitle => 'Couldn\'t load listing';
+
+  @override
+  String get hostListingDetailLoadErrorMessage =>
+      'Please check your connection and try again.';
+
+  @override
+  String get hostListingDetailPropertyInfo => 'Property details';
+
+  @override
+  String get hostListingDetailPropertyType => 'Property type';
+
+  @override
+  String get hostListingDetailMaxGuests => 'Maximum guests';
+
+  @override
+  String get hostListingDetailBedrooms => 'Bedrooms';
+
+  @override
+  String get hostListingDetailBeds => 'Beds';
+
+  @override
+  String get hostListingDetailBathrooms => 'Bathrooms';
+
+  @override
+  String get hostListingDetailPricing => 'Pricing';
+
+  @override
+  String get hostListingDetailPricePerNight => 'Price per night';
+
+  @override
+  String get hostListingDetailCleaningFee => 'Cleaning fee';
+
+  @override
+  String get hostListingDetailDescription => 'Description';
+
+  @override
+  String get hostListingDetailEditButton => 'Edit listing';
+
+  @override
+  String get hostEditListingTitle => 'Edit listing';
+
+  @override
+  String get hostEditListingLoadError => 'Couldn\'t load listing.';
+
+  @override
+  String get hostEditListingGeneralSection => 'General information';
+
+  @override
+  String get hostEditListingTitleField => 'Listing title';
+
+  @override
+  String get hostEditListingDescriptionField => 'Description';
+
+  @override
+  String get hostEditListingPropertyTypeField => 'Property type';
+
+  @override
+  String get hostEditListingPricingSection => 'Pricing';
+
+  @override
+  String get hostEditListingPricePerNightField => 'Price per night';
+
+  @override
+  String get hostEditListingCleaningFeeField => 'Cleaning fee';
+
+  @override
+  String get hostEditListingCapacitySection => 'Capacity';
+
+  @override
+  String get hostEditListingMaxGuestsField => 'Maximum guests';
+
+  @override
+  String get hostEditListingBedroomsField => 'Bedrooms';
+
+  @override
+  String get hostEditListingBedsField => 'Beds';
+
+  @override
+  String get hostEditListingBathroomsField => 'Bathrooms';
+
+  @override
+  String get hostEditListingAmenitiesSection => 'Amenities';
+
+  @override
+  String get hostEditListingSaveButton => 'Save changes';
+
+  @override
+  String get hostEditListingFieldRequired => 'This field is required.';
+
+  @override
+  String get hostEditListingInvalidNumber =>
+      'Enter a valid number, zero or more.';
+
+  @override
+  String get hostEditListingInvalidWholeNumber =>
+      'Enter a whole number, zero or more.';
+
+  @override
+  String hostEditListingMinValue(int min) {
+    return 'Must be at least $min.';
+  }
+
+  @override
+  String get hostEditListingErrorRejected =>
+      'Some values weren\'t accepted. Check the form and try again.';
+
+  @override
+  String get hostEditListingErrorFieldRequired =>
+      'Fill in every required field.';
+
+  @override
+  String get hostEditListingErrorNotFound =>
+      'This listing no longer exists or isn\'t yours.';
+
+  @override
+  String get hostEditListingErrorGeneric =>
+      'Couldn\'t save your changes. Please try again.';
+
+  @override
+  String get hostBlockedDaysManageButton => 'Manage blocked dates';
+
+  @override
+  String get hostBlockedDaysTitle => 'Manage blocked dates';
+
+  @override
+  String get hostBlockedDaysLoadError =>
+      'Couldn\'t load calendar data. Please try again.';
+
+  @override
+  String get hostBlockedDaysNotAvailable =>
+      'Managing blocked dates isn\'t available for this property.';
+
+  @override
+  String get hostBlockedDaysInstructions =>
+      'Select a date to block it, or select two dates to block the inclusive range. Tap a blocked date to unblock it.';
+
+  @override
+  String get hostBlockedDaysBlockedLabel => 'Blocked';
+
+  @override
+  String get hostBlockedDaysBookedLabel => 'Booked';
+
+  @override
+  String get hostBlockedDaysBlockButton => 'Block dates';
+
+  @override
+  String get hostBlockedDaysUnblockButton => 'Unblock date';
+
+  @override
+  String get hostBlockedDaysActionError =>
+      'The operation failed. Please try again.';
+
+  @override
+  String get hostBlockedDaysAvailableLabel => 'Available';
 }

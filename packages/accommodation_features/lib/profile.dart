@@ -1,1 +1,1 @@
-export 'src/profile/guest_profile_screen.dart';
+export 'src/profile/profile_screen.dart';

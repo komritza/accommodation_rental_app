@@ -37,24 +37,6 @@
     "authErrorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
     "sessionRestoreErrorTitle": "Sitzung konnte nicht wiederhergestellt werden",
     "sessionRestoreErrorMessage": "Wir konnten deine Sitzung nicht wiederherstellen. Prüfe deine Verbindung und versuche es erneut.",
-    "guestProfilePlaceholderTitle": "Profil (Platzhalter)",
-    "hostHomePlaceholderTitle": "Gastgeberstartseite (Platzhalter)",
-    "signedInAs": "Angemeldet als {name}",
-    "@signedInAs": {
-        "placeholders": {
-            "name": {
-                "type": "String"
-            }
-        }
-    },
-    "authenticatedRole": "Authentifizierte Rolle: {role}",
-    "@authenticatedRole": {
-        "placeholders": {
-            "role": {
-                "type": "String"
-            }
-        }
-    },
     "signOut": "Abmelden",
     "guestNavExplore": "Entdecken",
     "guestNavSaved": "Gespeichert",
@@ -274,5 +256,76 @@
     "favouritesEmptyTitle": "Noch keine gespeicherten Unterkünfte",
     "favouritesEmptyMessage": "Tippe bei einer Unterkunft auf das Herz, um sie hier zu speichern.",
     "profileTitle": "Profil",
-    "profileNameFallback": "Ihr Name"
+    "profileNameFallback": "Ihr Name",
+    "hostHomeTitle": "Meine Unterkünfte",
+    "hostHomeProfileTooltip": "Profil öffnen",
+    "hostHomeLoadErrorTitle": "Deine Unterkünfte konnten nicht geladen werden",
+    "hostHomeEmptyTitle": "Noch keine Unterkünfte",
+    "hostHomeEmptyMessage": "Deine Unterkünfte werden hier angezeigt.",
+    "hostHomeListingCount": "{count, plural, =0{Keine Unterkünfte} =1{1 Unterkunft} other{{count} Unterkünfte}}",
+    "@hostHomeListingCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "hostHomeLoadMoreError": "Weitere Unterkünfte konnten nicht geladen werden.",
+    "hostHomeEndOfResults": "Du hast das Ende der Liste erreicht.",
+    "hostListingDetailTitle": "Unterkunft verwalten",
+    "hostListingDetailLoadErrorTitle": "Unterkunft konnte nicht geladen werden",
+    "hostListingDetailLoadErrorMessage": "Bitte überprüfe deine Verbindung und versuche es erneut.",
+    "hostListingDetailPropertyInfo": "Details zur Unterkunft",
+    "hostListingDetailPropertyType": "Unterkunftstyp",
+    "hostListingDetailMaxGuests": "Maximale Gästezahl",
+    "hostListingDetailBedrooms": "Schlafzimmer",
+    "hostListingDetailBeds": "Betten",
+    "hostListingDetailBathrooms": "Badezimmer",
+    "hostListingDetailPricing": "Preise",
+    "hostListingDetailPricePerNight": "Preis pro Nacht",
+    "hostListingDetailCleaningFee": "Reinigungsgebühr",
+    "hostListingDetailDescription": "Beschreibung",
+    "hostListingDetailEditButton": "Unterkunft bearbeiten",
+    "hostEditListingTitle": "Unterkunft bearbeiten",
+    "hostEditListingLoadError": "Die Unterkunft konnte nicht geladen werden.",
+    "hostEditListingGeneralSection": "Allgemeine Informationen",
+    "hostEditListingTitleField": "Titel der Unterkunft",
+    "hostEditListingDescriptionField": "Beschreibung",
+    "hostEditListingPropertyTypeField": "Unterkunftstyp",
+    "hostEditListingPricingSection": "Preise",
+    "hostEditListingPricePerNightField": "Preis pro Nacht",
+    "hostEditListingCleaningFeeField": "Reinigungsgebühr",
+    "hostEditListingCapacitySection": "Kapazität",
+    "hostEditListingMaxGuestsField": "Maximale Gästezahl",
+    "hostEditListingBedroomsField": "Schlafzimmer",
+    "hostEditListingBedsField": "Betten",
+    "hostEditListingBathroomsField": "Badezimmer",
+    "hostEditListingAmenitiesSection": "Ausstattung",
+    "hostEditListingSaveButton": "Änderungen speichern",
+    "hostEditListingFieldRequired": "Dieses Feld ist erforderlich.",
+    "hostEditListingInvalidNumber": "Gib eine gültige Zahl ein, null oder mehr.",
+    "hostEditListingInvalidWholeNumber": "Gib eine ganze Zahl ein, null oder mehr.",
+    "hostEditListingMinValue": "Muss mindestens {min} sein.",
+    "@hostEditListingMinValue": {
+        "placeholders": {
+            "min": {
+                "type": "int"
+            }
+        }
+    },
+    "hostEditListingErrorRejected": "Einige Werte wurden nicht akzeptiert. Prüfe das Formular und versuche es erneut.",
+    "hostEditListingErrorFieldRequired": "Fülle alle Pflichtfelder aus.",
+    "hostEditListingErrorNotFound": "Dieses Inserat existiert nicht mehr oder gehört nicht dir.",
+    "hostEditListingErrorGeneric": "Deine Änderungen konnten nicht gespeichert werden. Bitte versuche es erneut.",
+    "hostBlockedDaysManageButton": "Gesperrte Tage verwalten",
+    "hostBlockedDaysTitle": "Gesperrte Tage verwalten",
+    "hostBlockedDaysLoadError": "Kalenderdaten konnten nicht geladen werden. Bitte versuche es erneut.",
+    "hostBlockedDaysNotAvailable": "Das Verwalten gesperrter Tage ist für diese Unterkunft nicht verfügbar.",
+    "hostBlockedDaysInstructions": "Wähle ein Datum zum Sperren oder zwei Daten für einen einschließlich gewählten Zeitraum. Tippe auf einen gesperrten Tag, um ihn freizugeben.",
+    "hostBlockedDaysBlockedLabel": "Gesperrt",
+    "hostBlockedDaysBookedLabel": "Gebucht",
+    "hostBlockedDaysBlockButton": "Daten sperren",
+    "hostBlockedDaysUnblockButton": "Datum freigeben",
+    "hostBlockedDaysActionError": "Der Vorgang ist fehlgeschlagen. Bitte versuche es erneut.",
+    "hostBlockedDaysAvailableLabel": "Verfügbar"
 }

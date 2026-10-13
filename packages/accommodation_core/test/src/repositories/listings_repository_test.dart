@@ -174,7 +174,140 @@ void main() {
       result.match((failure) {
         expect(failure.type, ApiFailureType.http);
         expect(failure.statusCode, 400);
+        expect(failure.messageCode, 'error.badRequest');
       }, (_) => fail('Expected an HTTP failure'));
+    });
+
+    test('leaves the message code empty when the body has none', () async {
+      adapter.onGet(
+        '/listings',
+        (server) => server.reply(502, '<html>Bad gateway</html>'),
+        queryParameters: const <String, dynamic>{},
+      );
+
+      final result = await repository.fetchListings();
+
+      result.match((failure) {
+        expect(failure.statusCode, 502);
+        expect(failure.messageCode, isNull);
+      }, (_) => fail('Expected an HTTP failure'));
+    });
+  });
+
+  group('fetchHostListings', () {
+    test('pages through the host listings with the cursor', () async {
+      adapter.onGet(
+        '/host/listings',
+        (server) => server.reply(200, [
+          _listingJson(id: 'lst_00007'),
+        ], headers: _pageHeaders(total: '3', next: 'null')),
+        queryParameters: {'limit': 20, 'nextCursor': 'cursor-1'},
+      );
+
+      final result = await repository.fetchHostListings(
+        cursor: 'cursor-1',
+        limit: 20,
+      );
+
+      result.match((failure) => fail('Unexpected failure: ${failure.type}'), (
+        page,
+      ) {
+        expect(page.items.single.id, 'lst_00007');
+        expect(page.totalCount, 3);
+        expect(page.hasNextPage, isFalse);
+      });
+    });
+  });
+
+  group('updateHostListing', () {
+    test('sends only the changes and returns the saved listing', () async {
+      adapter.onPatch(
+        '/host/listings/lst_00001',
+        (server) => server.reply(200, _listingJson()..['pricePerNight'] = 199),
+        data: {'pricePerNight': 199},
+      );
+
+      final result = await repository.updateHostListing(
+        id: 'lst_00001',
+        changes: {'pricePerNight': 199},
+      );
+
+      result.match(
+        (failure) => fail('Unexpected failure: ${failure.type}'),
+        (listing) => expect(listing.pricePerNight, 199),
+      );
+    });
+
+    test('keeps the message code of a rejected edit', () async {
+      adapter.onPatch(
+        '/host/listings/lst_00001',
+        (server) => server.reply(400, {
+          'statusCode': 400,
+          'messageCode': 'error.fieldRequired',
+          'message': 'Field required',
+        }),
+        data: {'title': ''},
+      );
+
+      final result = await repository.updateHostListing(
+        id: 'lst_00001',
+        changes: {'title': ''},
+      );
+
+      result.match(
+        (failure) => expect(failure.messageCode, 'error.fieldRequired'),
+        (_) => fail('Expected an HTTP failure'),
+      );
+    });
+  });
+
+  group('blocked days', () {
+    test('reads blocked days as calendar dates', () async {
+      adapter.onGet(
+        '/host/listings/lst_00001/blocked-days',
+        (server) => server.reply(200, [
+          {'listingId': 'lst_00001', 'date': '2026-03-04'},
+        ]),
+      );
+
+      final result = await repository.fetchBlockedDays(listingId: 'lst_00001');
+
+      result.match(
+        (failure) => fail('Unexpected failure: ${failure.type}'),
+        (days) => expect(days, [
+          BlockedDay(listingId: 'lst_00001', date: DateTime.utc(2026, 3, 4)),
+        ]),
+      );
+    });
+
+    test('blocks a day by its calendar date, whatever the time', () async {
+      adapter.onPost(
+        '/host/listings/lst_00001/blocked-days',
+        (server) =>
+            server.reply(201, {'listingId': 'lst_00001', 'date': '2026-03-04'}),
+        data: {'date': '2026-03-04'},
+      );
+
+      final result = await repository.blockDay(
+        listingId: 'lst_00001',
+        date: DateTime(2026, 3, 4, 23, 30),
+      );
+
+      expect(result.isRight(), isTrue);
+    });
+
+    test('unblocks a day by its calendar date', () async {
+      adapter.onDelete(
+        '/host/listings/lst_00001/blocked-days/2026-03-04',
+        (server) => server.reply(204, null),
+      );
+
+      final result = await repository.unblockDay(
+        listingId: 'lst_00001',
+        date: DateTime.utc(2026, 3, 4),
+      );
+
+      expect(result.isRight(), isTrue);
     });
   });
 
