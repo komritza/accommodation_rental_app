@@ -1,13 +1,5 @@
+import 'package:accommodation_core/accommodation_core.dart';
 import 'package:dio/dio.dart';
-
-import '../models/blocked_day.dart';
-import '../models/booking.dart';
-import '../models/listing.dart';
-import '../models/listing_availability.dart';
-import '../models/listing_facets.dart';
-import '../models/listing_search_query.dart';
-import '../models/stay_dates.dart';
-import '../networking/cursor_page.dart';
 
 class ListingsRemoteDataSource {
   const ListingsRemoteDataSource(this._dio);
@@ -20,7 +12,7 @@ class ListingsRemoteDataSource {
     int? limit,
   }) async {
     final response = await _dio.get<List<dynamic>>(
-      '/listings',
+      ApiPaths.listings,
       queryParameters: {
         ...query.toQueryParameters(),
         'limit': ?limit,
@@ -36,7 +28,7 @@ class ListingsRemoteDataSource {
     required String language,
   }) async {
     final response = await _dio.get<Map<String, dynamic>>(
-      '/listings/$id',
+      ApiPaths.listingDetails(id),
       queryParameters: {'language': language},
     );
 
@@ -56,7 +48,7 @@ class ListingsRemoteDataSource {
     required DateTime to,
   }) async {
     final response = await _dio.get<Map<String, dynamic>>(
-      '/listings/$id/availability',
+      ApiPaths.listingDetailsAvailability(id),
       queryParameters: {
         'from': StayDates.isoDate(from),
         'to': StayDates.isoDate(to),
@@ -74,7 +66,9 @@ class ListingsRemoteDataSource {
   }
 
   Future<ListingFacets> fetchFacets() async {
-    final response = await _dio.get<Map<String, dynamic>>('/listings/facets');
+    final response = await _dio.get<Map<String, dynamic>>(
+      ApiPaths.listingsFacets,
+    );
 
     final data = response.data;
     if (data == null) {
@@ -91,7 +85,7 @@ class ListingsRemoteDataSource {
     int? limit,
   }) async {
     final response = await _dio.get<List<dynamic>>(
-      '/host/listings',
+      ApiPaths.hostListings,
       queryParameters: {'limit': ?limit, 'nextCursor': ?cursor},
     );
 
@@ -103,7 +97,7 @@ class ListingsRemoteDataSource {
     required Map<String, dynamic> changes,
   }) async {
     final response = await _dio.patch<Map<String, dynamic>>(
-      '/host/listings/$id',
+      ApiPaths.hostListing(id),
       data: changes,
     );
 
@@ -123,7 +117,7 @@ class ListingsRemoteDataSource {
     int? limit,
   }) async {
     final response = await _dio.get<List<dynamic>>(
-      '/host/listings/$listingId/bookings',
+      ApiPaths.hostListingBookings(listingId),
       queryParameters: {'limit': ?limit, 'nextCursor': ?cursor},
     );
 
@@ -132,7 +126,7 @@ class ListingsRemoteDataSource {
 
   Future<List<BlockedDay>> fetchBlockedDays({required String listingId}) async {
     final response = await _dio.get<List<dynamic>>(
-      '/host/listings/$listingId/blocked-days',
+      ApiPaths.hostListingBlockedDays(listingId),
     );
 
     final data = response.data;
@@ -150,7 +144,7 @@ class ListingsRemoteDataSource {
     required DateTime date,
   }) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/host/listings/$listingId/blocked-days',
+      ApiPaths.hostListingBlockedDays(listingId),
       data: {'date': StayDates.isoDate(date)},
     );
 
@@ -169,7 +163,7 @@ class ListingsRemoteDataSource {
     required DateTime date,
   }) async {
     await _dio.delete<void>(
-      '/host/listings/$listingId/blocked-days/${StayDates.isoDate(date)}',
+      ApiPaths.hostListingBlockedDay(listingId, StayDates.isoDate(date)),
     );
   }
 }

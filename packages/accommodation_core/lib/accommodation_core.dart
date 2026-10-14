@@ -13,6 +13,7 @@ export 'src/models/stay_dates.dart';
 export 'src/models/tenant_runtime_config.dart';
 export 'src/networking/api_client.dart';
 export 'src/networking/api_failure.dart';
+export 'src/networking/api_paths.dart';
 export 'src/networking/cursor_page.dart';
 export 'src/repositories/auth_repository.dart';
 export 'src/repositories/favourites_repository.dart';

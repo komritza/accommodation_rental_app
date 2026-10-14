@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../models/auth_session.dart';
+import '../networking/api_paths.dart';
 
 class AuthRemoteDataSource {
   const AuthRemoteDataSource(this._dio);
@@ -15,7 +16,7 @@ class AuthRemoteDataSource {
     required String language,
   }) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/auth/register',
+      ApiPaths.authRegister,
       queryParameters: {'language': language},
       data: {
         'email': email,
@@ -34,7 +35,7 @@ class AuthRemoteDataSource {
     required String language,
   }) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      '/auth/login',
+      ApiPaths.authLogin,
       queryParameters: {'language': language},
       data: {'email': email, 'password': password},
     );
@@ -44,7 +45,7 @@ class AuthRemoteDataSource {
 
   Future<AuthUser> getCurrentUser({required String accessToken}) async {
     final response = await _dio.get<Map<String, dynamic>>(
-      '/auth/me',
+      ApiPaths.authMe,
       options: Options(headers: {'Authorization': 'Bearer $accessToken'}),
     );
 
@@ -53,7 +54,7 @@ class AuthRemoteDataSource {
 
   Future<void> logout({required String accessToken}) async {
     await _dio.post<void>(
-      '/auth/logout',
+      ApiPaths.authLogout,
       options: Options(headers: {'Authorization': 'Bearer $accessToken'}),
     );
   }

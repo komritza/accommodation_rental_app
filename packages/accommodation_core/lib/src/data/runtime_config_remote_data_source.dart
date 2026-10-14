@@ -1,5 +1,7 @@
-import 'package:accommodation_core/src/models/tenant_runtime_config.dart';
 import 'package:dio/dio.dart';
+
+import '../models/tenant_runtime_config.dart';
+import '../networking/api_paths.dart';
 
 class RuntimeConfigRemoteDataSource {
   const RuntimeConfigRemoteDataSource(this._dio);
@@ -8,7 +10,7 @@ class RuntimeConfigRemoteDataSource {
 
   Future<TenantRuntimeConfig> fetchRuntimeConfig(TenantSlug tenant) async {
     final response = await _dio.get<Map<String, dynamic>>(
-      '/tenants/${tenant.name}/runtime-config',
+      ApiPaths.tenantRuntimeConfig(tenant.name),
     );
 
     final data = response.data;
